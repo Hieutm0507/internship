@@ -10,8 +10,8 @@ import kotlin.math.sqrt
 */
 
 /* HƯỚNG GIẢI QUYẾT:
- *      a) Sẽ convert Int thành String
- *      b)
+ *      a) Chia cho 10 lấy phần dư => cộng lại
+ *      b) chạy giá trị từ 2 đến căn => while loop + soNguyenTo()
  *      c) for loop, chia hết => lấy
  *      d) for loop, chia hết + số nguyên tố => lấy
  */
@@ -48,11 +48,12 @@ fun main() {
 
 fun sumNumber(number: Int): Int {
     var sum = 0
-    val numberStr = number.toString()
-    for (char in numberStr) {
-        sum += char.toString().toInt()
-    }
+    var num = number
 
+    while (num != 0) {
+        sum += num % 10
+        num /= 10
+    }
     return sum
 }
 
