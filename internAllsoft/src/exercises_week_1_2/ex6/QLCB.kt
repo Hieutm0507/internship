@@ -111,15 +111,14 @@ class QLCB {
 
     // Task 2: Tìm kiếm theo họ tên
     fun timKiem(hoTenTimKiem: String) {
-        val isOk = danhSachCanBo.filter {
+        val ketQua = danhSachCanBo.filter {
             it.hoTen.lowercase().contains(hoTenTimKiem.lowercase())
         }
 
-        if (isOk.isNotEmpty()) {
+        if (ketQua.isNotEmpty()) {
             println("Kết quả tìm kiếm:")
-            isOk.forEachIndexed { index, canBo ->
-                println("can bo so $index: ${canBo.toString()}")
-
+            ketQua.forEachIndexed { index, canBo ->
+                println("Cán bộ số ${index+1}:" + canBo.toString())
             }
         } else {
             println("Không tìm thấy")
