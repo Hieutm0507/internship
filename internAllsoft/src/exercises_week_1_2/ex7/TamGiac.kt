@@ -10,7 +10,7 @@ open class TamGiac(
         return canh.sum()
     }
 
-    fun nuaChuVi(): Int {
+    private fun nuaChuVi(): Int {
         return chuVi()/2
     }
 
