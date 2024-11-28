@@ -12,12 +12,12 @@ package exercises_week_1_2
 
 
 fun main() {
-    for (i in 10..100) {
-        if (i%7 == 0) {
-            if (i%5 == 0) {
-                continue
-            }
-            print("$i, ")
+    val tapSo = mutableListOf<Int>()
+
+    for (i in 10..200) {
+        if (i%7 == 0 && i%5 != 0) {
+            tapSo.add(i)
         }
     }
+    println(tapSo.joinToString ( ", " ))
 }
