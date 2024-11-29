@@ -15,7 +15,7 @@ open class CanBo (
     }
 
     open fun printOutput() : String {
-        val output = "$viTri - $hoTen - $tuoi - $gioiTinh - $diaChi"
+        val output = "$viTri - $hoTen - $tuoi - $gioiTinh - $diaChi - "
         return output
     }
 }

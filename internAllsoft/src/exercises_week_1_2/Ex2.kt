@@ -10,7 +10,7 @@ fun main() {
     // Lấy giá trị và kiểm tra
     var n = 0
     while (n <= 0) {
-        println("Hãy nhập một số nguyên dương bất kỳ:")
+        print("Hãy nhập một số nguyên dương bất kỳ: ")
         val s:String = readln()
         n = s.toInt()
     }

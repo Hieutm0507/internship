@@ -60,7 +60,7 @@ fun sumNumber(number: Int): Int {
 fun phanTichNguyenTo(num: Int): String {
     val thuaSoNguyenTo = mutableListOf<Int>()
     var n = num
-    for (i in 2..sqrt(num.toDouble()).toInt()) {
+    for (i in 2..num) {
         while (n % i == 0 && soNguyenTo(i)) {
             thuaSoNguyenTo.add(i)
             n /= i

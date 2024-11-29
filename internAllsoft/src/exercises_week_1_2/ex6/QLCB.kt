@@ -2,6 +2,8 @@ package exercises_week_1_2.ex6
 
 fun main() {
     val qlcb = QLCB()
+    qlcb.themCanBo()
+
     while (true) {
         print("\n")
         println("CHƯƠNG TRÌNH QUẢN LÝ CÁN BỘ")
@@ -96,6 +98,14 @@ fun main() {
 class QLCB {
     private val danhSachCanBo: MutableList<CanBo> = mutableListOf()
 
+    // Thêm cán bộ có sẵn
+    fun themCanBo() {
+        val nhanVien1 = NhanVien("Nhân viên", "Minh Hiếu", 20, "Nam", "Hà Nội", "Android Dev")
+        danhSachCanBo.add(nhanVien1)
+        val kySu1 = KySu("Kỹ Sư", "Minh Anh", 30, "Nữ", "Hà Nam", "Công nghệ phần mềm")
+        danhSachCanBo.add(kySu1)
+    }
+
     // Task 1: Thêm mới cán bộ
     fun themCongNhan(congNhan: CongNhan) {
         danhSachCanBo.add(congNhan)
@@ -108,6 +118,7 @@ class QLCB {
     fun themNhanVien(nhanVien: NhanVien) {
         danhSachCanBo.add(nhanVien)
     }
+
 
     // Task 2: Tìm kiếm theo họ tên
     fun timKiem(hoTenTimKiem: String) {
@@ -131,7 +142,7 @@ class QLCB {
             println("Danh sách cán bộ trống")
         else {
             println("Danh sách Cán Bộ là:")
-            println("VỊ TRÍ - HỌ TÊN - TUỔI - GIỚI TNH - ĐỊA CHỈ")
+            println("VỊ TRÍ - HỌ TÊN - TUỔI - GIỚI TNH - ĐỊA CHỈ - GHI CHÚ")
             danhSachCanBo.forEach {
                 println(it.printOutput())
             }
