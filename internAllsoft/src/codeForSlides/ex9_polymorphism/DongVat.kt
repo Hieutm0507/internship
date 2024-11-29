@@ -1,4 +1,4 @@
-package codeForSlides.ex7_polymorphism
+package codeForSlides.ex9_polymorphism
 
 open class DongVat {
     open fun phatRaTieng() {

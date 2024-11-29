@@ -1,4 +1,4 @@
-package codeForSlides.ex8_overloading
+package codeForSlides.ex10_overloading
 
 class Nguoi (ten: String, tuoi: Int) {
     fun hienThiThongTin (ten: String) {

@@ -1,4 +1,4 @@
-package codeForSlides.ex5_encapsulation
+package codeForSlides.ex7_encapsulation
 
 fun main() {
     val p = Person()

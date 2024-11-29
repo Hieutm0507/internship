@@ -1,4 +1,4 @@
-package codeForSlides.ex6_inheritance
+package codeForSlides.ex8_inheritance
 
 open class DongVat {
     val nguonGoc = "Thổ Nhỹ Kỳ"

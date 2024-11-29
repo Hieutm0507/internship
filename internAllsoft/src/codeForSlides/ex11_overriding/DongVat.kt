@@ -1,4 +1,4 @@
-package codeForSlides.ex9_overriding
+package codeForSlides.ex11_overriding
 
 open class DongVat {
     open fun phatRaTieng() {
