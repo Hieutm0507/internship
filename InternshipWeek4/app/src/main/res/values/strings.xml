@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Internship Week 4</string>
+    <string name="greetings">Hi, Welcome Back! 👋</string>
+    <string name="email">Email</string>
+    <string name="hint_email">example@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="hint_password">Enter Your Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="login">Login</string>
+    <string name="or_with">_____________ Or With _____________</string>
+    <string name="login_with_fb">Login with Facebook</string>
+    <string name="login_with_gg">Login with Google</string>
+    <string name="not_have_acc">Don\'t have an account ?</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
