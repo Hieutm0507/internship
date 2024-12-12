@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tl_ex4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".codeForSlides.Ex4TableLayout">
+
+    <TableRow>
+        <TextView
+            android:id="@+id/tv_col1"
+            android:layout_width="80dp"
+            android:text="STT"
+            android:textSize="30sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_col2"
+            android:layout_width="200dp"
+            android:text="Việc cần làm"
+            android:textSize="30sp"
+            android:layout_gravity="center"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/stt01"
+            android:text="01"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_todo1"
+            android:text="Chạy deadline"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/bt_delete1"
+            android:text="Delete"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/stt02"
+            android:text="02"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_todo2"
+            android:text="Ôn thi nè"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/bt_delete2"
+            android:text="Delete"/>
+    </TableRow>
+</TableLayout>
+

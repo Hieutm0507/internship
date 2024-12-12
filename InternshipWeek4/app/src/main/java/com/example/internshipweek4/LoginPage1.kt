@@ -11,7 +11,7 @@ class LoginPage1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login_page1)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.login_page_1)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ll_login_page)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

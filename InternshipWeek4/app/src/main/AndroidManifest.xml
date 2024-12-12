@@ -13,6 +13,21 @@
         android:theme="@style/Theme.InternshipWeek4"
         tools:targetApi="35">
         <activity
+            android:name=".codeForSlides.Ex2RelativeLayout"
+            android:exported="false" />
+        <activity
+            android:name=".codeForSlides.Ex1LinearLayout"
+            android:exported="false" />
+        <activity
+            android:name=".codeForSlides.Ex6ConstraintLayout"
+            android:exported="false" />
+        <activity
+            android:name=".codeForSlides.Ex4TableLayout"
+            android:exported="false" />
+        <activity
+            android:name=".codeForSlides.Ex5GridLayout"
+            android:exported="false" />
+        <activity
             android:name=".LoginPage2"
             android:exported="true">
             <intent-filter>

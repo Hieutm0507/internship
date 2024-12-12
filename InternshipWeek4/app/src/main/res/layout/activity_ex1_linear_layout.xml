@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_ex1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="5dp"
+    tools:context=".codeForSlides.Ex1LinearLayout">
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cả nhà có quý em Híu không ?"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/ll_choices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_opt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Có"
+            android:textSize="25sp"
+            />
+
+        <Button
+            android:id="@+id/bt_opt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tất nhiên"
+            android:textSize="25sp"/>
+
+        <Button
+            android:id="@+id/bt_opt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rất nhiều"
+            android:textSize="25sp"/>
+    </LinearLayout>
+
+</LinearLayout>
+

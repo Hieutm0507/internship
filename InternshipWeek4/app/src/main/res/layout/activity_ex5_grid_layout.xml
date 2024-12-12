@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gl_ex5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".codeForSlides.Ex5GridLayout"
+    android:columnCount="2"
+    android:rowCount="2">
+
+    <TextView
+        android:id="@+id/tv_element1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="01"
+        android:background="#6c7ee1"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/tv_element2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="02"
+        android:background="#ffc4a4"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/tv_element3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="03"
+        android:background="#fba2d0"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/tv_element4"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="04"
+        android:background="#92b9e3"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="50sp"/>
+
+</GridLayout>
