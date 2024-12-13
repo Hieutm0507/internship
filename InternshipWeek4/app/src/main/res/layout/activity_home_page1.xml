@@ -1,16 +1,401 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_page_1"
+    android:id="@+id/ll_home_page_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg_color_home_page"
-    tools:context=".HomePage1"
-    android:layout_margin="@dimen/margin_layout">
+    tools:context=".HomePage1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_homepage">
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/homepage"
+            android:textSize="@dimen/header"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/ic_search"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/ct_search"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/margin_homepage">
+
+        <RelativeLayout
+            android:id="@+id/rl_apple"
+            android:layout_width="@dimen/stocks_width_1"
+            android:layout_height="@dimen/stocks_height_1"
+            android:padding="@dimen/margin_stock"
+            android:background="@drawable/bg_apple">
+
+            <ImageView
+                android:id="@+id/iv_apple"
+                android:layout_width="@dimen/size_icon_1"
+                android:layout_height="@dimen/size_icon_1"
+                android:src="@drawable/ic_apple"
+                android:contentDescription="@string/cd_apple"/>
+
+            <LinearLayout
+                android:id="@+id/ll_stock_apple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_co_apple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/co_apple"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+
+                <TextView
+                    android:id="@+id/tv_stock_apple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stock_apple"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_mc"
+            android:layout_width="@dimen/stocks_width_3"
+            android:layout_height="@dimen/stocks_height_1"
+            android:padding="@dimen/margin_stock"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_mcd">
+
+            <ImageView
+                android:id="@+id/iv_mc"
+                android:layout_width="@dimen/size_icon_1"
+                android:layout_height="@dimen/size_icon_1"
+                android:src="@drawable/ic_apple"
+                android:contentDescription="@string/cd_mc"/>
+
+            <LinearLayout
+                android:id="@+id/ll_stock_mc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_co_mc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/co_mc"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+
+                <TextView
+                    android:id="@+id/tv_stock_mc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stock_mc"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/rl_row2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/margin_homepage"
+        android:paddingTop="@dimen/margin_homepage">
+        
+        <RelativeLayout
+            android:id="@+id/rl_twtr"
+            android:layout_width="@dimen/stocks_width_3"
+            android:layout_height="@dimen/stocks_height_3"
+            android:padding="@dimen/margin_stock"
+            android:background="@drawable/bg_twtr">
+            
+            <ImageView
+                android:id="@id/iv_twtr"
+                android:layout_width="@dimen/size_icon_1"
+                android:layout_height="@dimen/size_icon_1"
+                android:src="@drawable/ic_twitter"
+                android:contentDescription="@string/cd_twtr"/>
+
+            <LinearLayout
+                android:id="@+id/ll_stock_twtr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_co_twtr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/co_twtr"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+
+                <TextView
+                    android:id="@+id/tv_stock_twtr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stock_twtr"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_col"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/stocks_height_3"
+            android:layout_alignParentEnd="true">
+
+            <RelativeLayout
+                android:id="@+id/rl_nke"
+                android:layout_width="@dimen/stocks_width_1"
+                android:layout_height="@dimen/stocks_height_2"
+                android:padding="@dimen/margin_stock"
+                android:background="@drawable/bg_nke">
+
+                <ImageView
+                    android:id="@+id/iv_nke"
+                    android:layout_width="@dimen/size_icon_1"
+                    android:layout_height="@dimen/size_icon_1"
+                    android:src="@drawable/ic_apple"
+                    android:contentDescription="@string/cd_nke"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_stock_nke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_co_nke"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/co_nke"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/para"/>
+
+                    <TextView
+                        android:id="@+id/tv_stock_nke"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_nke"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/para"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_pypl"
+                android:layout_width="@dimen/stocks_width_1"
+                android:layout_height="@dimen/stocks_height_2"
+                android:padding="@dimen/margin_stock"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_pypl">
+
+                <ImageView
+                    android:id="@+id/iv_pypl"
+                    android:layout_width="@dimen/size_icon_1"
+                    android:layout_height="@dimen/size_icon_1"
+                    android:src="@drawable/ic_apple"
+                    android:contentDescription="@string/cd_pypl"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_stock_pypl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_co_pypl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/co_pypl"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/para"/>
+
+                    <TextView
+                        android:id="@+id/tv_stock_pypl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock_pypl"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/para"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_lyft"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/stocks_height_1"
+        android:padding="@dimen/margin_stock"
+        android:layout_marginHorizontal="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_lyft">
+
+        <ImageView
+            android:id="@+id/iv_lyft"
+            android:layout_width="@dimen/size_icon_1"
+            android:layout_height="@dimen/size_icon_1"
+            android:src="@drawable/ic_lyft"
+            android:contentDescription="@string/cd_lyft"/>
+
+        <LinearLayout
+            android:id="@+id/ll_stock_lyft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_co_lyft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/co_lyft"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_lyft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stock_lyft"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_row3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_homepage"
+        android:paddingHorizontal="@dimen/margin_homepage">
+
+        <RelativeLayout
+            android:id="@+id/rl_amzn"
+            android:layout_width="@dimen/stocks_width_2"
+            android:layout_height="@dimen/stocks_height_1"
+            android:padding="@dimen/margin_stock"
+            android:background="@drawable/bg_amzn">
+
+            <ImageView
+                android:id="@+id/iv_amzn"
+                android:layout_width="@dimen/size_icon_1"
+                android:layout_height="@dimen/size_icon_1"
+                android:src="@drawable/ic_amazon"
+                android:contentDescription="@string/cd_amzn"/>
+
+            <LinearLayout
+                android:id="@+id/ll_stock_amzn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_co_amzn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/co_amzn"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+
+                <TextView
+                    android:id="@+id/tv_stock_amzn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stock_amzn"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_in"
+            android:layout_width="@dimen/stocks_width_3"
+            android:layout_height="@dimen/stocks_height_1"
+            android:padding="@dimen/margin_stock"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_in">
+
+            <ImageView
+                android:id="@+id/iv_in"
+                android:layout_width="@dimen/size_icon_1"
+                android:layout_height="@dimen/size_icon_1"
+                android:src="@drawable/ic_apple"
+                android:contentDescription="@string/cd_mc"/>
+
+            <LinearLayout
+                android:id="@+id/ll_stock_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_co_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/co_in"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+
+                <TextView
+                    android:id="@+id/tv_stock_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stock_apple"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/para"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

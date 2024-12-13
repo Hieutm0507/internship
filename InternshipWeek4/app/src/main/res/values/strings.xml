@@ -13,4 +13,30 @@
     <string name="login_with_gg">Login with Google</string>
     <string name="not_have_acc">Don\'t have an account ?</string>
     <string name="sign_up">Sign Up</string>
+
+    <string name="homepage">Browse Stocks</string>
+    <string name="co_apple">AAPL</string>
+    <string name="co_mc">MCD</string>
+    <string name="co_twtr">TWTR</string>
+    <string name="co_nke">NKE</string>
+    <string name="co_pypl">PYPL</string>
+    <string name="co_lyft">LYFT</string>
+    <string name="co_amzn">AMZN</string>
+    <string name="co_in">LNKD</string>
+    <string name="stock_apple">$ 364.11</string>
+    <string name="stock_mc">$ 183.52</string>
+    <string name="stock_twtr">$ 30.87</string>
+    <string name="stock_nke">$ 98.43</string>
+    <string name="stock_pypl">$ 177.21</string>
+    <string name="stock_lyft">$ 31.32</string>
+    <string name="stock_amzn">$ 183.52</string>
+    <string name="ct_search">Search Icon</string>
+    <string name="cd_apple">Icon Apple</string>
+    <string name="cd_mc">Icon Mc</string>
+    <string name="cd_twtr">Icon Twitter</string>
+    <string name="cd_nke">Icon Nike</string>
+    <string name="cd_pypl">Icon PayPal</string>
+    <string name="cd_lyft">Icon Lyft</string>
+    <string name="cd_amzn">Icon Amazon</string>
+    <string name="cd_in">Icon In</string>
 </resources>

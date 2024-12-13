@@ -13,13 +13,19 @@
         android:theme="@style/Theme.InternshipWeek4"
         tools:targetApi="35">
         <activity
-            android:name=".codeForSlides.Ex2RelativeLayout"
-            android:exported="false" />
+            android:name=".HomePage2"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".codeForSlides.Ex1LinearLayout"
             android:exported="false" />
         <activity
-            android:name=".codeForSlides.Ex6ConstraintLayout"
+            android:name=".codeForSlides.Ex2RelativeLayout"
             android:exported="false" />
         <activity
             android:name=".codeForSlides.Ex4TableLayout"
@@ -27,6 +33,18 @@
         <activity
             android:name=".codeForSlides.Ex5GridLayout"
             android:exported="false" />
+        <activity
+            android:name=".codeForSlides.Ex6ConstraintLayout"
+            android:exported="false" />
+        <activity
+            android:name=".HomePage1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".LoginPage2"
             android:exported="true">
@@ -36,9 +54,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".HomePage1"
-            android:exported="false" />
         <activity
             android:name=".LoginPage1"
             android:exported="true">

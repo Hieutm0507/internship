@@ -16,4 +16,17 @@
     <dimen name="margin_4">20dp</dimen>
     <dimen name="margin_5">15dp</dimen>
     <dimen name="margin_6">5dp</dimen>
+
+    <dimen name="size_icon_1">25dp</dimen>
+    <dimen name="size_icon_2">35dp</dimen>
+    <dimen name="size_icon_3">50dp</dimen>
+    <dimen name="margin_homepage">30dp</dimen>
+    <dimen name="corner_stock">15dp</dimen>
+    <dimen name="margin_stock">15dp</dimen>
+    <dimen name="stocks_width_1">150dp</dimen>
+    <dimen name="stocks_width_2">150dp</dimen>
+    <dimen name="stocks_width_3">210dp</dimen>
+    <dimen name="stocks_height_1">140dp</dimen>
+    <dimen name="stocks_height_2">130dp</dimen>
+    <dimen name="stocks_height_3">290dp</dimen>
 </resources>

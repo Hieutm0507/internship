@@ -25,7 +25,7 @@
 
     <TableRow>
         <TextView
-            android:id="@+id/stt01"
+            android:id="@+id/tv_stt01"
             android:text="01"
             android:textSize="20sp"
             android:layout_gravity="center"/>
@@ -43,7 +43,7 @@
 
     <TableRow>
         <TextView
-            android:id="@+id/stt02"
+            android:id="@+id/tv_stt02"
             android:text="02"
             android:textSize="20sp"
             android:layout_gravity="center"/>

@@ -36,7 +36,7 @@
         android:layout_marginEnd="30dp"/>
 
     <CheckBox
-        android:id="@+id/remember_me"
+        android:id="@+id/cb_remember_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/remember_me"
@@ -49,6 +49,7 @@
         android:layout_marginStart="30dp"/>
 
     <TextView
+        android:id="@+id/tv_forgot_passwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgot_password"
@@ -57,11 +58,11 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="35dp"
-        app:layout_constraintTop_toBottomOf="@+id/input_password"
-        app:layout_constraintBottom_toTopOf="@id/button_login"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
+        app:layout_constraintBottom_toTopOf="@id/bt_login"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_login"
+        android:id="@+id/bt_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_login"
@@ -74,7 +75,7 @@
         android:layout_marginStart="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/remember_me"
+        app:layout_constraintTop_toBottomOf="@+id/cb_remember_me"
         android:layout_marginTop="@dimen/margin_5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

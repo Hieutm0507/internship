@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_home_page_2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color_home_page"
+    tools:context=".HomePage2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_stock"
+        android:layout_marginHorizontal="@dimen/margin_homepage">
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/homepage"
+            android:textSize="@dimen/header"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/ic_search"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_search"
+            android:contentDescription="@string/ct_search"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_apple"
+        android:layout_width="@dimen/stocks_width_1"
+        android:layout_height="@dimen/stocks_height_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_header"
+        android:layout_marginStart="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_apple">
+
+        <ImageView
+            android:id="@+id/iv_apple"
+            android:layout_width="@dimen/size_icon_1"
+            android:layout_height="@dimen/size_icon_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_apple"
+            android:contentDescription="@string/cd_apple"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_apple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_apple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_apple"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_apple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_apple"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_apple"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_mc"
+        android:layout_width="@dimen/stocks_width_3"
+        android:layout_height="@dimen/stocks_height_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_header"
+        android:layout_marginEnd="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_mcd">
+
+        <ImageView
+            android:id="@+id/iv_mc"
+            android:layout_width="@dimen/size_icon_1"
+            android:layout_height="@dimen/size_icon_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_mcdonalds"
+            android:contentDescription="@string/cd_mc"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_mc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_mc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_mc"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_mc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_mc"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_mc"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_twtr"
+        android:layout_width="@dimen/stocks_width_3"
+        android:layout_height="@dimen/stocks_height_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_apple"
+        android:layout_marginStart="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_twtr">
+
+        <ImageView
+            android:id="@+id/iv_twtr"
+            android:layout_width="@dimen/size_icon_1"
+            android:layout_height="@dimen/size_icon_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_twitter"
+            android:contentDescription="@string/cd_twtr"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_twtr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_twtr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_twtr"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_twtr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_twtr"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_twtr"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_nke"
+        android:layout_width="@dimen/stocks_width_1"
+        android:layout_height="@dimen/stocks_height_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_mc"
+        android:layout_marginEnd="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_nke">
+
+        <ImageView
+            android:id="@+id/iv_nke"
+            android:layout_width="@dimen/size_icon_2"
+            android:layout_height="@dimen/size_icon_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_nike"
+            android:contentDescription="@string/cd_nke"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_nke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_nke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_nke"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_nke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_nke"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_nke"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_pypl"
+        android:layout_width="@dimen/stocks_width_1"
+        android:layout_height="@dimen/stocks_height_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_nke"
+        android:layout_marginEnd="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_pypl">
+
+        <ImageView
+            android:id="@+id/iv_pypl"
+            android:layout_width="@dimen/size_icon_1"
+            android:layout_height="@dimen/size_icon_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_paypal"
+            android:contentDescription="@string/cd_pypl"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_pypl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_pypl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_pypl"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_pypl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_pypl"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_pypl"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_lyft"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/stocks_height_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_twtr"
+        android:layout_marginStart="@dimen/margin_homepage"
+        android:layout_marginEnd="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_lyft">
+
+        <ImageView
+            android:id="@+id/iv_lyft"
+            android:layout_width="@dimen/size_icon_3"
+            android:layout_height="@dimen/size_icon_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_lyft"
+            android:contentDescription="@string/cd_lyft"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_lyft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_lyft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_lyft"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_lyft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_lyft"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_apple"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_amzn"
+        android:layout_width="@dimen/stocks_width_2"
+        android:layout_height="@dimen/stocks_height_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_lyft"
+        android:layout_marginStart="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_amzn">
+
+        <ImageView
+            android:id="@+id/iv_amzn"
+            android:layout_width="@dimen/size_icon_1"
+            android:layout_height="@dimen/size_icon_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_amazon"
+            android:contentDescription="@string/cd_amzn"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_amzn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_amzn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_amzn"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_amzn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_amzn"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_apple"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_in"
+        android:layout_width="@dimen/stocks_width_3"
+        android:layout_height="@dimen/stocks_height_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_lyft"
+        android:layout_marginEnd="@dimen/margin_homepage"
+        android:layout_marginTop="@dimen/margin_homepage"
+        android:background="@drawable/bg_in">
+
+        <ImageView
+            android:id="@+id/iv_in"
+            android:layout_width="@dimen/size_icon_1"
+            android:layout_height="@dimen/size_icon_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock"
+            android:src="@drawable/ic_linkedin"
+            android:contentDescription="@string/cd_in"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_stock_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/margin_stock"
+            android:layout_marginStart="@dimen/margin_stock">
+
+            <TextView
+                android:id="@+id/tv_co_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/co_in"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+
+            <TextView
+                android:id="@+id/tv_stock_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_co_in"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/stock_apple"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/para"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

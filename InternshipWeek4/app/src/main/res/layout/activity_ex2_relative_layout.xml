@@ -9,15 +9,39 @@
     tools:context=".codeForSlides.Ex2RelativeLayout">
 
     <TextView
+        android:id="@+id/tv_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
         android:text="Cả nhà có yêu Híu không ?"
         android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:textStyle="bold"/>
 
     <Button
+        android:id="@+id/bt_opt1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Có"
+        android:textSize="25sp"/>
+
+    <Button
+        android:id="@+id/bt_opt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:text="Oui"
+        android:textSize="25sp"/>
+
+    <Button
+        android:id="@+id/bt_opt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Yes"
+        android:textSize="25sp"/>
 
 </RelativeLayout>
