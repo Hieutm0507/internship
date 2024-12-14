@@ -1,6 +1,8 @@
 package com.example.internshipweek4
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +18,25 @@ class LoginPage1 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "Activity is started")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG, "Activity is resumed")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG, "Activity is paused")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG, "Activity is terminated")
     }
 }
