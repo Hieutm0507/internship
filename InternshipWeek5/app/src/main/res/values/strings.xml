@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Internship Week 5</string>
+    <string name="program1">Chương trình tính chỉ số BMI</string>
+    <string name="bt_danh_gia">Đánh giá</string>
+    <string name="text_height">Chiều cao</string>
+    <string name="hint_height">Nhập chiều cao (cm)</string>
+    <string name="text_weight">Cân nặng</string>
+    <string name="hint_weight">Nhập cân nặng (kg)</string>
+    <string name="text_pre_result">Kết quả trước đó</string>
+
+    <string name="result_program1">Kết quả</string>
+    <string name="bt_go_back">Quay lại</string>
+</resources>

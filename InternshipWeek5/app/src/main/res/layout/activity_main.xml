@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_name_prog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:text="@string/program1"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize_header"/>
+
+    <TextView
+        android:id="@+id/tv_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_name_prog"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_prog"
+        android:layout_marginTop="40dp"
+        android:text="@string/text_height"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/et_height"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_height"
+        app:layout_constraintEnd_toEndOf="@id/tv_name_prog"
+        app:layout_constraintTop_toTopOf="@id/tv_height"
+        app:layout_constraintBottom_toBottomOf="@id/tv_height"
+        android:layout_marginStart="15dp"
+        android:hint="@string/hint_height"
+        android:inputType="number"
+        android:autofillHints="height"/>
+
+    <TextView
+        android:id="@+id/tv_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_height"
+        app:layout_constraintTop_toBottomOf="@id/tv_height"
+        android:layout_marginTop="30dp"
+        android:text="@string/text_weight"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize_element"
+        />
+
+    <EditText
+        android:id="@+id/et_weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/et_height"
+        app:layout_constraintEnd_toEndOf="@id/tv_name_prog"
+        app:layout_constraintTop_toTopOf="@id/tv_weight"
+        app:layout_constraintBottom_toBottomOf="@id/tv_weight"
+        android:hint="@string/hint_weight"
+        android:inputType="number"
+        android:autofillHints="height"/>
+
+    <Button
+        android:id="@+id/bt_danh_gia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintStart_toStartOf="@id/tv_name_prog"
+        app:layout_constraintEnd_toEndOf="@id/tv_name_prog"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_prog"
+        android:layout_marginTop="180dp"
+        android:text="@string/bt_danh_gia"
+        android:textSize="@dimen/textSize_element"/>
+
+    <TextView
+        android:id="@+id/tv_pre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_pre_result"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize_element"
+        app:layout_constraintTop_toBottomOf="@id/bt_danh_gia"
+        app:layout_constraintStart_toStartOf="@id/tv_name_prog"
+        app:layout_constraintEnd_toEndOf="@id/tv_name_prog"
+        android:layout_marginTop="80dp"/>
+
+    <TextView
+        android:id="@+id/tv_pre_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pink"
+        app:layout_constraintTop_toBottomOf="@id/tv_pre"
+        app:layout_constraintStart_toStartOf="@id/tv_name_prog"
+        app:layout_constraintEnd_toEndOf="@id/tv_name_prog"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

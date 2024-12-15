@@ -46,8 +46,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_apple"
-        android:layout_width="@dimen/stocks_width_1"
-        android:layout_height="@dimen/stocks_height_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintWidth_percent="0.30"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_header"
         android:layout_marginStart="@dimen/margin_homepage"
@@ -101,13 +103,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_mc"
-        android:layout_width="@dimen/stocks_width_3"
-        android:layout_height="@dimen/stocks_height_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="0.20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_header"
+        app:layout_constraintTop_toTopOf="@id/cl_apple"
+        app:layout_constraintBottom_toBottomOf="@id/cl_apple"
+        app:layout_constraintStart_toEndOf="@id/cl_apple"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="@dimen/margin_homepage"
-        android:layout_marginTop="@dimen/margin_homepage"
-        android:background="@drawable/bg_mcd">
+        android:background="@drawable/bg_mcd"
+        >
 
         <ImageView
             android:id="@+id/iv_mc"
@@ -156,12 +162,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_twtr"
-        android:layout_width="@dimen/stocks_width_3"
-        android:layout_height="@dimen/stocks_height_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.30"
+        app:layout_constraintWidth_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_apple"
         android:layout_marginStart="@dimen/margin_homepage"
-        android:layout_marginTop="@dimen/margin_homepage"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_twtr">
 
         <ImageView
@@ -211,12 +219,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_nke"
-        android:layout_width="@dimen/stocks_width_1"
-        android:layout_height="@dimen/stocks_height_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.14"
+        app:layout_constraintTop_toTopOf="@+id/cl_twtr"
+        app:layout_constraintStart_toEndOf="@id/cl_twtr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_mc"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="@dimen/margin_homepage"
-        android:layout_marginTop="@dimen/margin_homepage"
         android:background="@drawable/bg_nke">
 
         <ImageView
@@ -266,12 +276,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_pypl"
-        android:layout_width="@dimen/stocks_width_1"
-        android:layout_height="@dimen/stocks_height_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_nke"
+        app:layout_constraintStart_toEndOf="@+id/cl_twtr"
+        app:layout_constraintBottom_toBottomOf="@id/cl_twtr"
         android:layout_marginEnd="@dimen/margin_homepage"
-        android:layout_marginTop="@dimen/margin_homepage"
+        android:layout_marginStart="20dp"
         android:background="@drawable/bg_pypl">
 
         <ImageView
@@ -322,13 +334,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_lyft"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/stocks_height_1"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_twtr"
         android:layout_marginStart="@dimen/margin_homepage"
         android:layout_marginEnd="@dimen/margin_homepage"
-        android:layout_marginTop="@dimen/margin_homepage"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_lyft">
 
         <ImageView
@@ -378,12 +391,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_amzn"
-        android:layout_width="@dimen/stocks_width_2"
-        android:layout_height="@dimen/stocks_height_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.30"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_lyft"
         android:layout_marginStart="@dimen/margin_homepage"
-        android:layout_marginTop="@dimen/margin_homepage"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_amzn">
 
         <ImageView
@@ -433,12 +448,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_in"
-        android:layout_width="@dimen/stocks_width_3"
-        android:layout_height="@dimen/stocks_height_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_lyft"
+        app:layout_constraintStart_toEndOf="@+id/cl_amzn"
+        app:layout_constraintTop_toTopOf="@+id/cl_amzn"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_amzn"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="@dimen/margin_homepage"
-        android:layout_marginTop="@dimen/margin_homepage"
         android:background="@drawable/bg_in">
 
         <ImageView

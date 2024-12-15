@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_result_prog1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:text="@string/result_program1"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize_header"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/tv_result"
+        app:layout_constraintEnd_toEndOf="@id/tv_result"
+        app:layout_constraintTop_toBottomOf="@id/tv_result"
+        app:layout_constraintBottom_toTopOf="@id/bt_go_back"
+        android:layout_marginVertical="40dp">
+
+        <TextView
+            android:id="@+id/tv_result_bmi"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/textSize_element"
+            android:gravity="bottom"/>
+
+        <TextView
+            android:id="@+id/tv_result_type"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/textSize_element"
+            android:gravity="bottom"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/bt_go_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintStart_toStartOf="@id/tv_result"
+        app:layout_constraintEnd_toEndOf="@id/tv_result"
+        app:layout_constraintTop_toBottomOf="@id/tv_result"
+        android:layout_marginTop="180dp"
+        android:text="@string/bt_go_back"
+        android:textSize="@dimen/textSize_element"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

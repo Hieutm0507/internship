@@ -8,7 +8,7 @@
     android:background="@color/bg_color_home_page"
     tools:context=".HomePage1">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,10 +16,11 @@
 
         <TextView
             android:id="@+id/tv_header"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/homepage"
             android:textSize="@dimen/header"
+            android:layout_weight="1"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
@@ -27,13 +28,12 @@
             android:id="@+id/ic_search"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
             android:src="@drawable/ic_search"
             android:contentDescription="@string/ct_search"/>
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,8 +42,9 @@
 
         <RelativeLayout
             android:id="@+id/rl_apple"
-            android:layout_width="@dimen/stocks_width_1"
+            android:layout_width="0dp"
             android:layout_height="@dimen/stocks_height_1"
+            android:layout_weight="1"
             android:padding="@dimen/margin_stock"
             android:background="@drawable/bg_apple">
 
@@ -83,17 +84,17 @@
 
         <RelativeLayout
             android:id="@+id/rl_mc"
-            android:layout_width="@dimen/stocks_width_3"
+            android:layout_width="0dp"
             android:layout_height="@dimen/stocks_height_1"
+            android:layout_weight="1.5"
             android:padding="@dimen/margin_stock"
-            android:layout_alignParentEnd="true"
             android:background="@drawable/bg_mcd">
 
             <ImageView
                 android:id="@+id/iv_mc"
                 android:layout_width="@dimen/size_icon_1"
                 android:layout_height="@dimen/size_icon_1"
-                android:src="@drawable/ic_apple"
+                android:src="@drawable/ic_mcdonalds"
                 android:contentDescription="@string/cd_mc"/>
 
             <LinearLayout
@@ -122,7 +123,7 @@
                     android:textSize="@dimen/para"/>
             </LinearLayout>
         </RelativeLayout>
-    </RelativeLayout>
+    </LinearLayout>
     
     <RelativeLayout
         android:id="@+id/rl_row2"
@@ -190,7 +191,7 @@
                     android:id="@+id/iv_nke"
                     android:layout_width="@dimen/size_icon_1"
                     android:layout_height="@dimen/size_icon_1"
-                    android:src="@drawable/ic_apple"
+                    android:src="@drawable/ic_nike"
                     android:contentDescription="@string/cd_nke"/>
 
                 <LinearLayout
@@ -232,7 +233,7 @@
                     android:id="@+id/iv_pypl"
                     android:layout_width="@dimen/size_icon_1"
                     android:layout_height="@dimen/size_icon_1"
-                    android:src="@drawable/ic_apple"
+                    android:src="@drawable/ic_paypal"
                     android:contentDescription="@string/cd_pypl"/>
 
                 <LinearLayout
