@@ -16,12 +16,17 @@ class MainActivity : AppCompatActivity() {
     }
     // Define variables
     private lateinit var binding: ActivityMainBinding
+    @SuppressLint("SetTextI18n")
     private var getPreResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         result: ActivityResult ->
         if (result.resultCode == RESULT_OK) {
-            val a = result.data
-            val bmi = a?.getIntExtra("Pre Result", 0)
-            Log.d("PREEEEE", "$bmi")
+            val preResult = result.data
+            preResult?.let {
+                val bmi = it.getDoubleExtra("Pre BMI", 0.0)
+                val type = it.getStringExtra("Pre Type")
+                Log.d("PRERESULT", "$bmi  $type")
+                binding.etPreResult.setText("Chỉ số BMI: $bmi.\nThuộc loại: $type.")
+            }
         }
     }
 
@@ -45,11 +50,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ResultActivity::class.java)
             intent.putExtra("Send Height", sendHeight)
             intent.putExtra("Send Weight", sendWeight)
-            startActivity(intent)
-            // Lấy kết quả lần trước
+            getPreResult.launch(intent)
         }
-
-        binding.tvPreResult.text = "Chiều cao: \tCân nặng: \nChỉ số BMI: \tThuộc loại:"
-
     }
 }

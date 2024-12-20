@@ -1,19 +1,15 @@
 package com.example.internshipweek5
 
-import android.net.Uri
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.internshipweek5.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var bindingResult: ActivityResultBinding
 
-    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) {uri: Uri? ->
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,18 +18,24 @@ class ResultActivity : AppCompatActivity() {
         setContentView(bindingResult.root)
 
         // Nhận HEIGHT, WEIGHT và tính BMI
-        val intent = intent
-        val receiveHeight = intent.getIntExtra("Send Height", 0)
-        val receiveWeight = intent.getIntExtra("Send Weight", 0)
+        val intentReceive = intent
+        val receiveHeight = intentReceive.getIntExtra("Send Height", 0)
+        val receiveWeight = intentReceive.getIntExtra("Send Weight", 0)
         Log.d("NHẬN SỐ LIỆU", "$receiveHeight, $receiveWeight")
         val bmi = tinhBMI(receiveHeight, receiveWeight)
         bindingResult.tvResultBmi.text = "$bmi"
 
         // Đánh giá chỉ số BMI
-        bindingResult.tvResultType.text = danhGiaBMI(bmi)
+        val type = danhGiaBMI(bmi)
+        bindingResult.tvResultType.text = type
+
 
         // Quay lại
         bindingResult.btGoBack.setOnClickListener {
+            val resultIntent = Intent()
+            resultIntent.putExtra("Pre BMI", bmi)
+            resultIntent.putExtra("Pre Type", type)
+            setResult(RESULT_OK, resultIntent)
             finish()
         }
 
