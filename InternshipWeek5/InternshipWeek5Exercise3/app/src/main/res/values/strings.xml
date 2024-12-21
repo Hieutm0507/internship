@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Internship Week 5 Exercise3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="multiple">x 2</string>
+    <string name="division">/ 2</string>
+    <string name="square">^2</string>
+</resources>
