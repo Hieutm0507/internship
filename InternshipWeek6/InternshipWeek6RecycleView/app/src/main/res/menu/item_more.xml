@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/edit_employee"
+        android:title="@string/edit"
+        android:icon="@drawable/ic_edit"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/delete_employee"
+        android:title="@string/delete"
+        android:icon="@drawable/ic_delete"
+        tools:ignore="HardcodedText" />
+</menu>

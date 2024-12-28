@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Employee Management</string>
+    <string name="search">Search</string>
+    <string name="add_new">Add new Employee</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="delete">Xoá</string>
+    <string name="more">More</string>
+</resources>
