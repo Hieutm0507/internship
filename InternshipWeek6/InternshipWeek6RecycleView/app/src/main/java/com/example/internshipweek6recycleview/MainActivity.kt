@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         // ToolBar
         toolbar = bindingMain.toolbar
         setSupportActionBar(toolbar)
+        supportActionBar?.title = ""
 
         mListNV = mutableListOf()
 

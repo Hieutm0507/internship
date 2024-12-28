@@ -17,7 +17,7 @@ class InfoActivity : AppCompatActivity() {
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.main)
 
-        val receive = intent
+        // Receive Information
         binding.tvIn4Name.text = intent.getStringExtra("EXTRA_SEND_NAME")
         binding.tvIn4Username.text = intent.getStringExtra("EXTRA_SEND_USERNAME")
         binding.tvIn4Department.text = intent.getStringExtra("EXTRA_SEND_DEPARTMENT")
