@@ -37,13 +37,12 @@
 
     <ImageView
         android:id="@+id/iv_more"
-        android:layout_width="20dp"
+        android:layout_width="40dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_more"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="10dp"
         android:contentDescription="@string/more"/>
 
 

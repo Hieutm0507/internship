@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/edit_employee"
-        android:title="Edit"
+        android:title="@string/edit"
         tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/delete_employee"
-        android:title="Delete"
+        android:title="@string/delete"
         tools:ignore="HardcodedText" />
 </menu>
