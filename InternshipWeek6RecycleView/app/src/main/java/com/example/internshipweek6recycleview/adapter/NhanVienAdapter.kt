@@ -36,8 +36,13 @@ class NhanVienAdapter(
             ivMore.setOnClickListener {
                 popupMenus(it)
             }
+
+            itemView.setOnLongClickListener {
+                ivMore.performClick()
+            }
         }
 
+        // PopUp Menu for each items
         @SuppressLint("NotifyDataSetChanged")
         private fun popupMenus(view: View) {
             val popupMenus = PopupMenu(itemView.context, view)
