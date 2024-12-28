@@ -4,10 +4,12 @@
     <item
         android:id="@+id/edit_employee"
         android:title="@string/edit"
+        android:icon="@drawable/ic_edit"
         tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/delete_employee"
         android:title="@string/delete"
+        android:icon="@drawable/ic_delete"
         tools:ignore="HardcodedText" />
 </menu>
