@@ -2,6 +2,8 @@ package com.example.internshipweek6recycleview
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -72,16 +74,28 @@ class MainActivity : AppCompatActivity() {
         val nhanVien20 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
         mListNV.add(nhanVien20)
 
-        nhanVienAdapter = NhanVienAdapter(mListNV)
+        val adapter = NhanVienAdapter(mListNV)
+        nhanVienAdapter = adapter
+
+        // Direct and sent data to InfoActivity
+        adapter.setOnClickListener(object : NhanVienAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val employee: NhanVien = mListNV[position]
+                Log.d("TAG_GET_IN4", "${employee.name}, ${employee.department}")
+
+                val intent = Intent(this@MainActivity, InfoActivity::class.java)
+                intent.putExtra("EXTRA_SEND_NAME", employee.name)
+                intent.putExtra("EXTRA_SEND_USERNAME", employee.id)
+                intent.putExtra("EXTRA_SEND_DEPARTMENT", employee.department)
+                intent.putExtra("EXTRA_SEND_STATE", employee.state)
+                startActivity(intent)
+                Toast.makeText(this@MainActivity, "Clicked on $position", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         val linearLayoutManager = LinearLayoutManager(this)
         bindingMain.rvListNv.layoutManager = linearLayoutManager
         bindingMain.rvListNv.adapter = nhanVienAdapter
-
-        // Display the information of an Employee
-//        holder.setOnClickListener {
-//            val intent = Intent(this, InfoActivity::class.java)
-//        }
 
         // Activate ADD Button
         bindingMain.btAdd.setOnClickListener {

@@ -1,20 +1,31 @@
 package com.example.internshipweek6recycleview
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.internshipweek6recycleview.databinding.ActivityInfoBinding
 
 class InfoActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityInfoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_info)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityInfoBinding.inflate(layoutInflater)
+        setContentView(binding.main)
+
+        val receive = intent
+        binding.tvIn4Name.text = intent.getStringExtra("EXTRA_SEND_NAME")
+        binding.tvIn4Username.text = intent.getStringExtra("EXTRA_SEND_USERNAME")
+        binding.tvIn4Department.text = intent.getStringExtra("EXTRA_SEND_DEPARTMENT")
+        binding.tvIn4State.text = intent.getStringExtra("EXTRA_SEND_STATE")
+
+        // Activate BACK
+        binding.btBack.setOnClickListener {
+            finish()
         }
     }
 }
