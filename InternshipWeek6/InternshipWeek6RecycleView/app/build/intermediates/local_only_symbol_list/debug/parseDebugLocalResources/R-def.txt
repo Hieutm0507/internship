@@ -4,6 +4,7 @@ array departments_array
 color black
 color blue
 color white
+drawable bg_fragment_add
 drawable bg_search
 drawable ic_add
 drawable ic_back
@@ -63,10 +64,17 @@ mipmap ic_launcher_round
 string add_new
 string app_name
 string delete
+string department
 string edit
+string finish
+string go_back
+string header_add
 string hello_blank_fragment
 string more
+string name
 string search
+string state
+string username
 style Base.Theme.InternshipWeek6RecycleView
 style Theme.InternshipWeek6RecycleView
 xml backup_rules

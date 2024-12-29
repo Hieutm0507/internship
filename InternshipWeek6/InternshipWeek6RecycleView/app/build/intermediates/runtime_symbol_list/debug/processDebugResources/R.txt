@@ -3001,6 +3001,7 @@ int drawable abc_textfield_search_material 0x7f070076
 int drawable abc_vector_test 0x7f070077
 int drawable avd_hide_password 0x7f070078
 int drawable avd_show_password 0x7f070079
+int drawable bg_fragment_add 0x7f0700f8
 int drawable bg_search 0x7f07007a
 int drawable btn_checkbox_checked_mtrl 0x7f07007b
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f07007c
@@ -3912,12 +3913,16 @@ int string character_counter_overflowed_content_description 0x7f10002d
 int string character_counter_pattern 0x7f10002e
 int string clear_text_end_icon_content_description 0x7f10002f
 int string delete 0x7f1000aa
+int string department 0x7f1000ad
 int string edit 0x7f1000ab
 int string error_a11y_label 0x7f100030
 int string error_icon_content_description 0x7f100031
 int string exposed_dropdown_menu_content_description 0x7f100032
 int string fab_transformation_scrim_behavior 0x7f100033
 int string fab_transformation_sheet_behavior 0x7f100034
+int string finish 0x7f1000ae
+int string go_back 0x7f1000af
+int string header_add 0x7f1000b0
 int string hello_blank_fragment 0x7f1000ac
 int string hide_bottom_view_on_scroll_behavior 0x7f100035
 int string icon_content_description 0x7f100036
@@ -4023,6 +4028,7 @@ int string mtrl_switch_track_decoration_path 0x7f100098
 int string mtrl_switch_track_path 0x7f100099
 int string mtrl_timepicker_cancel 0x7f10009a
 int string mtrl_timepicker_confirm 0x7f10009b
+int string name 0x7f1000b1
 int string password_toggle_content_description 0x7f10009c
 int string path_password_eye 0x7f10009d
 int string path_password_eye_mask_strike_through 0x7f10009e
@@ -4035,7 +4041,9 @@ int string searchview_clear_text_content_description 0x7f1000a4
 int string searchview_navigation_content_description 0x7f1000a5
 int string side_sheet_accessibility_pane_title 0x7f1000a6
 int string side_sheet_behavior 0x7f1000a7
+int string state 0x7f1000b2
 int string status_bar_notification_info_overflow 0x7f1000a8
+int string username 0x7f1000b3
 int style AlertDialog_AppCompat 0x7f110000
 int style AlertDialog_AppCompat_Light 0x7f110001
 int style Animation_AppCompat_Dialog 0x7f110002

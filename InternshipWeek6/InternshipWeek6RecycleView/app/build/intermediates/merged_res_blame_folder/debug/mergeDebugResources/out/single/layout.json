@@ -1,11 +1,15 @@
 [
     {
+        "merged": "com.example.internshipweek6recycleview.app-mergeDebugResources-31:/layout/activity_info.xml",
+        "source": "com.example.internshipweek6recycleview.app-main-34:/layout/activity_info.xml"
+    },
+    {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-mergeDebugResources-31:\\layout\\activity_info.xml",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\layout\\activity_info.xml"
     },
     {
-        "merged": "com.example.internshipweek6recycleview.app-mergeDebugResources-31:/layout/item_nhan_vien.xml",
-        "source": "com.example.internshipweek6recycleview.app-main-34:/layout/item_nhan_vien.xml"
+        "merged": "com.example.internshipweek6recycleview.app-mergeDebugResources-31:/layout/fragment_add.xml",
+        "source": "com.example.internshipweek6recycleview.app-main-34:/layout/fragment_add.xml"
     },
     {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-mergeDebugResources-31:\\layout\\item_nhan_vien.xml",
@@ -14,6 +18,10 @@
     {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-mergeDebugResources-31:\\layout\\fragment_add.xml",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\layout\\fragment_add.xml"
+    },
+    {
+        "merged": "com.example.internshipweek6recycleview.app-mergeDebugResources-31:/layout/activity_main.xml",
+        "source": "com.example.internshipweek6recycleview.app-main-34:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-mergeDebugResources-31:\\layout\\activity_main.xml",

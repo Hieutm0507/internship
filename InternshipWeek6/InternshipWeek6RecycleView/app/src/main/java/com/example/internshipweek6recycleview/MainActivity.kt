@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nhanVienAdapter: NhanVienAdapter
     private lateinit var mListNV: MutableList<NhanVien>
     private lateinit var searchView: SearchView
-    private lateinit var searchList: List<NhanVien>
+    private lateinit var searchList: MutableList<NhanVien>
     private val fragmentManager = supportFragmentManager
 
     @SuppressLint("CommitTransaction")
@@ -32,9 +32,10 @@ class MainActivity : AppCompatActivity() {
         // ToolBar
         toolbar = bindingMain.toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = ""
+        supportActionBar?.title = ""    // to hide the default title of ToolBar
 
         mListNV = mutableListOf()
+        searchList = mListNV.toMutableList()
 
         // List of Employee
         val nhanVien1 = NhanVien("anhnq", "Nguyễn Quang Anh", "Marketing", "Chính thức")
@@ -78,7 +79,8 @@ class MainActivity : AppCompatActivity() {
         val nhanVien20 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
         mListNV.add(nhanVien20)
 
-        val adapter = NhanVienAdapter(mListNV)
+        val adapter = NhanVienAdapter(searchList)
+        searchList.addAll(mListNV)                  // To display the mListNV at the beginning
         nhanVienAdapter = adapter
 
         // Direct and sent data to InfoActivity
@@ -100,6 +102,34 @@ class MainActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         bindingMain.rvListNv.layoutManager = linearLayoutManager
         bindingMain.rvListNv.adapter = nhanVienAdapter
+
+        // Search Bar
+        searchView = bindingMain.svSearchBar
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                return true
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val searchText = newText!!.lowercase()
+                searchList.clear()
+                if (searchText.isNotEmpty()) {
+                    mListNV.forEach {
+                        if (it.name.lowercase().contains(searchText)) {
+                            searchList.add(it)
+                        }
+                    }
+                }
+                else {
+                    searchList.addAll(mListNV)
+                }
+                nhanVienAdapter.notifyDataSetChanged()
+                return true
+            }
+        })
 
         // Activate ADD Button
         bindingMain.btAdd.setOnClickListener {

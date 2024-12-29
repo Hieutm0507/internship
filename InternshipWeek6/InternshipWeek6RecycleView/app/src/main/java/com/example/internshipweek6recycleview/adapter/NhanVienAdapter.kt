@@ -13,7 +13,7 @@ import com.example.internshipweek6recycleview.databinding.ItemNhanVienBinding
 import com.example.internshipweek6recycleview.model.NhanVien
 
 class NhanVienAdapter(
-    private val mListNV: MutableList<NhanVien> = mutableListOf(),
+    private val mListNV: MutableList<NhanVien> = mutableListOf()
 ) : RecyclerView.Adapter<NhanVienAdapter.NhanVienHolder>() {
     private lateinit var mListener: OnItemClickListener
 

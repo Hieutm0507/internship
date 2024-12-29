@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="400dp"
     android:layout_height="wrap_content"
-    android:background="#CFEBFC"
+    android:background="@drawable/bg_fragment_add"
     tools:context=".AddFragment">
 
     <TextView
@@ -118,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="@id/tv_header_title"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginVertical="40dp"
-        android:text="Hoàn tất"
+        android:text="@string/finish"
         android:textStyle="bold"
         android:textSize="20sp"
         />
