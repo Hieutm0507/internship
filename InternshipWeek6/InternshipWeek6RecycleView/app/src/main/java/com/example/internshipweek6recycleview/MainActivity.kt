@@ -1,5 +1,6 @@
 package com.example.internshipweek6recycleview
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,7 +20,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mListNV: MutableList<NhanVien>
     private lateinit var searchView: SearchView
     private lateinit var searchList: List<NhanVien>
+    private val fragmentManager = supportFragmentManager
 
+    @SuppressLint("CommitTransaction")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // View Binding
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         mListNV = mutableListOf()
 
         // List of Employee
-        val nhanVien1 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien1 = NhanVien("anhnq", "Nguyễn Quang Anh", "Marketing", "Chính thức")
         mListNV.add(nhanVien1)
         val nhanVien2 = NhanVien("linhnn", "Nguyễn Ngọc Linh", "Design", "Chính thức")
         mListNV.add(nhanVien2)
@@ -52,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         mListNV.add(nhanVien8)
         val nhanVien9 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
         mListNV.add(nhanVien9)
-        val nhanVien10 = NhanVien("", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien10 = NhanVien("ola", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
         mListNV.add(nhanVien10)
         val nhanVien11 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
         mListNV.add(nhanVien11)
@@ -100,7 +103,10 @@ class MainActivity : AppCompatActivity() {
 
         // Activate ADD Button
         bindingMain.btAdd.setOnClickListener {
-
+            val ft = fragmentManager.beginTransaction()
+            ft.add(R.id.fl_add_employee, AddFragment())
+            ft.addToBackStack(null)
+            ft.commit()
         }
     }
 }

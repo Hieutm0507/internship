@@ -4,7 +4,9 @@ package com.example.internshipweek6recycleview.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
@@ -27,7 +29,10 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FloatingActionButton btAdd;
 
   @NonNull
-  public final ImageView btSearch;
+  public final FrameLayout flAddEmployee;
+
+  @NonNull
+  public final ImageView ivSearch;
 
   @NonNull
   public final ConstraintLayout main;
@@ -41,17 +46,23 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final MaterialToolbar toolbar;
 
+  @NonNull
+  public final TextView tvAppName;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull FloatingActionButton btAdd, @NonNull ImageView btSearch,
-      @NonNull ConstraintLayout main, @NonNull RecyclerView rvListNv,
-      @NonNull SearchView svSearchBar, @NonNull MaterialToolbar toolbar) {
+      @NonNull FloatingActionButton btAdd, @NonNull FrameLayout flAddEmployee,
+      @NonNull ImageView ivSearch, @NonNull ConstraintLayout main, @NonNull RecyclerView rvListNv,
+      @NonNull SearchView svSearchBar, @NonNull MaterialToolbar toolbar,
+      @NonNull TextView tvAppName) {
     this.rootView = rootView;
     this.btAdd = btAdd;
-    this.btSearch = btSearch;
+    this.flAddEmployee = flAddEmployee;
+    this.ivSearch = ivSearch;
     this.main = main;
     this.rvListNv = rvListNv;
     this.svSearchBar = svSearchBar;
     this.toolbar = toolbar;
+    this.tvAppName = tvAppName;
   }
 
   @Override
@@ -87,9 +98,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.bt_search;
-      ImageView btSearch = ViewBindings.findChildViewById(rootView, id);
-      if (btSearch == null) {
+      id = R.id.fl_add_employee;
+      FrameLayout flAddEmployee = ViewBindings.findChildViewById(rootView, id);
+      if (flAddEmployee == null) {
+        break missingId;
+      }
+
+      id = R.id.iv_search;
+      ImageView ivSearch = ViewBindings.findChildViewById(rootView, id);
+      if (ivSearch == null) {
         break missingId;
       }
 
@@ -113,8 +130,14 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, btAdd, btSearch, main, rvListNv,
-          svSearchBar, toolbar);
+      id = R.id.tv_app_name;
+      TextView tvAppName = ViewBindings.findChildViewById(rootView, id);
+      if (tvAppName == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((ConstraintLayout) rootView, btAdd, flAddEmployee, ivSearch,
+          main, rvListNv, svSearchBar, toolbar, tvAppName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

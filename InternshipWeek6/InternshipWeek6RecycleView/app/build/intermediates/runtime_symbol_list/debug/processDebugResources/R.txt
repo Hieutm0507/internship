@@ -76,6 +76,7 @@ int animator mtrl_fab_hide_motion_spec 0x7f02001e
 int animator mtrl_fab_show_motion_spec 0x7f02001f
 int animator mtrl_fab_transformation_sheet_collapse_spec 0x7f020020
 int animator mtrl_fab_transformation_sheet_expand_spec 0x7f020021
+int array departments_array 0x7f140000
 int attr SharedValue 0x7f030000
 int attr SharedValueId 0x7f030001
 int attr actionBarDivider 0x7f030002
@@ -3017,6 +3018,7 @@ int drawable design_snackbar_background 0x7f070087
 int drawable ic_add 0x7f070088
 int drawable ic_arrow_back_black_24 0x7f070089
 int drawable ic_back 0x7f0700eb
+int drawable ic_business 0x7f0700f2
 int drawable ic_call_answer 0x7f07008a
 int drawable ic_call_answer_low 0x7f07008b
 int drawable ic_call_answer_video 0x7f07008c
@@ -3026,18 +3028,25 @@ int drawable ic_call_decline_low 0x7f07008f
 int drawable ic_clear_black_24 0x7f070090
 int drawable ic_clock_black_24dp 0x7f070091
 int drawable ic_delete 0x7f0700ee
+int drawable ic_delete_24 0x7f0700f0
+int drawable ic_des 0x7f0700f3
+int drawable ic_deselect 0x7f0700f1
+int drawable ic_dev 0x7f0700f4
 int drawable ic_edit 0x7f0700ef
+int drawable ic_intern 0x7f0700f6
 int drawable ic_keyboard_black_24dp 0x7f070092
 int drawable ic_launcher_background 0x7f070093
 int drawable ic_launcher_foreground 0x7f070094
 int drawable ic_m3_chip_check 0x7f070095
 int drawable ic_m3_chip_checked_circle 0x7f070096
 int drawable ic_m3_chip_close 0x7f070097
+int drawable ic_mkt 0x7f0700f5
 int drawable ic_more 0x7f0700ec
 int drawable ic_mtrl_checked_circle 0x7f070098
 int drawable ic_mtrl_chip_checked_black 0x7f070099
 int drawable ic_mtrl_chip_checked_circle 0x7f07009a
 int drawable ic_mtrl_chip_close_circle 0x7f07009b
+int drawable ic_official 0x7f0700f7
 int drawable ic_search 0x7f07009c
 int drawable ic_search_black_24 0x7f07009d
 int drawable ic_settings_24 0x7f07009e
@@ -3221,7 +3230,7 @@ int id bounceEnd 0x7f080063
 int id bounceStart 0x7f080064
 int id bt_add 0x7f080065
 int id bt_back 0x7f080204
-int id bt_search 0x7f080066
+int id bt_finish 0x7f080215
 int id buttonPanel 0x7f080067
 int id cache_measures 0x7f080068
 int id callMeasure 0x7f080069
@@ -3307,6 +3316,8 @@ int id endToStart 0x7f0800b8
 int id enterAlways 0x7f0800b9
 int id enterAlwaysCollapsed 0x7f0800ba
 int id escape 0x7f0800bb
+int id et_name 0x7f080210
+int id et_username 0x7f080211
 int id exitUntilCollapsed 0x7f0800bc
 int id expand_activities_button 0x7f0800bd
 int id expanded_menu 0x7f0800be
@@ -3321,6 +3332,7 @@ int id fitStart 0x7f0800c6
 int id fitToContents 0x7f0800c7
 int id fitXY 0x7f0800c8
 int id fixed 0x7f0800c9
+int id fl_add_employee 0x7f080212
 int id flip 0x7f0800ca
 int id floating 0x7f0800cb
 int id forever 0x7f0800cc
@@ -3357,7 +3369,10 @@ int id invisible 0x7f0800ea
 int id inward 0x7f0800eb
 int id italic 0x7f0800ec
 int id item_touch_helper_previous_elevation 0x7f0800ed
+int id iv_department 0x7f080218
 int id iv_more 0x7f08020f
+int id iv_search 0x7f080216
+int id iv_state 0x7f080219
 int id jumpToEnd 0x7f0800ee
 int id jumpToStart 0x7f0800ef
 int id labeled 0x7f0800f0
@@ -3540,6 +3555,8 @@ int id spacer 0x7f0801a0
 int id special_effects_controller_view_tag 0x7f0801a1
 int id spline 0x7f0801a2
 int id split_action_bar 0x7f0801a3
+int id spn_department 0x7f080213
+int id spn_state 0x7f080214
 int id spread 0x7f0801a4
 int id spread_inside 0x7f0801a5
 int id spring 0x7f0801a6
@@ -3610,6 +3627,7 @@ int id transition_position 0x7f0801e6
 int id transition_scene_layoutid_cache 0x7f0801e7
 int id transition_transform 0x7f0801e8
 int id triangle 0x7f0801e9
+int id tv_app_name 0x7f080217
 int id tv_department 0x7f080205
 int id tv_header_title 0x7f080206
 int id tv_in4_department 0x7f080207
@@ -3776,6 +3794,7 @@ int layout design_navigation_menu 0x7f0b0029
 int layout design_navigation_menu_item 0x7f0b002a
 int layout design_text_input_end_icon 0x7f0b002b
 int layout design_text_input_start_icon 0x7f0b002c
+int layout fragment_add 0x7f0b006e
 int layout ime_base_split_test_activity 0x7f0b002d
 int layout ime_secondary_split_test_activity 0x7f0b002e
 int layout item_nhan_vien 0x7f0b002f
@@ -3899,6 +3918,7 @@ int string error_icon_content_description 0x7f100031
 int string exposed_dropdown_menu_content_description 0x7f100032
 int string fab_transformation_scrim_behavior 0x7f100033
 int string fab_transformation_sheet_behavior 0x7f100034
+int string hello_blank_fragment 0x7f1000ac
 int string hide_bottom_view_on_scroll_behavior 0x7f100035
 int string icon_content_description 0x7f100036
 int string item_view_role_description 0x7f100037

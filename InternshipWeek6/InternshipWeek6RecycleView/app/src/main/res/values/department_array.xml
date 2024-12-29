@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="departments_array">
+        <item>Dev</item>
+        <item>Kinh doanh</item>
+        <item>Design</item>
+        <item>Marketing</item>
+    </string-array>
+</resources>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="departments_array">
+        <item>Dev</item>
+        <item>Kinh doanh</item>
+        <item>Design</item>
+        <item>Marketing</item>
+    </string-array>
     <color name="black">#FF000000</color>
     <color name="blue">#2051E5</color>
     <color name="white">#FFFFFFFF</color>
@@ -7,6 +13,7 @@
     <string name="app_name">Employee Management</string>
     <string name="delete">Xoá</string>
     <string name="edit">Chỉnh sửa</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="more">More</string>
     <string name="search">Search</string>
     <style name="Base.Theme.InternshipWeek6RecycleView" parent="Theme.Material3.DayNight.NoActionBar">

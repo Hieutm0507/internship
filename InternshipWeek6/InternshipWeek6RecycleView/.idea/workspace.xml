@@ -15,6 +15,11 @@
           <theme>@style/Theme.InternshipWeek6RecycleView</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add.xml">
+        <config>
+          <theme>@style/Theme.InternshipWeek6RecycleView</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_nhan_vien.xml">
         <config>
           <theme>@style/Theme.InternshipWeek6RecycleView</theme>
@@ -51,6 +56,7 @@
       <list>
         <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="valueResourceFile" />
         <option value="resourceFile" />
       </list>
     </option>
@@ -239,5 +245,16 @@
       <updated>1734921702656</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/internshipweek6recycleview/MainActivity.kt</url>
+          <line>90</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

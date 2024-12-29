@@ -48,24 +48,48 @@
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\layout\\activity_info.xml"
     },
     {
-        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_business.png.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_business.png"
     },
     {
-        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_des.png.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_des.png"
+    },
+    {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_mkt.jpg.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_mkt.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_back.xml.flat",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_back.xml"
     },
     {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_intern.jpg.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_intern.jpg"
+    },
+    {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_delete_24.xml.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_delete_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_dev.jpg.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_dev.jpg"
     },
     {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_edit.png.flat",
@@ -84,12 +108,12 @@
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\menu\\item_more.xml"
     },
     {
-        "merged": "com.example.internshipweek6recycleview.app-debug-32:/menu_item_more.xml.flat",
-        "source": "com.example.internshipweek6recycleview.app-main-34:/menu/item_more.xml"
-    },
-    {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_add.xml.flat",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_add.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_official.jpg.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_official.jpg"
     },
     {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
@@ -116,7 +140,19 @@
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_deselect.xml.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_deselect.xml"
+    },
+    {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_delete.png.flat",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_delete.png"
+    },
+    {
+        "merged": "com.example.internshipweek6recycleview.app-debug-32:/layout_item_nhan_vien.xml.flat",
+        "source": "com.example.internshipweek6recycleview.app-main-34:/layout/item_nhan_vien.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\layout_fragment_add.xml.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\layout\\fragment_add.xml"
     }
 ]

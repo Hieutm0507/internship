@@ -19,6 +19,7 @@
         android:background="@color/blue">
 
         <TextView
+            android:id="@+id/tv_app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
@@ -27,7 +28,7 @@
             android:textColor="@color/white"/>
 
         <ImageView
-            android:id="@+id/bt_search"
+            android:id="@+id/iv_search"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="end"
@@ -70,5 +71,14 @@
         android:src="@drawable/ic_add"
         android:backgroundTint="@color/material_dynamic_neutral_variant40"
         android:contentDescription="@string/add_new"/>
+
+    <FrameLayout
+        android:id="@+id/fl_add_employee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

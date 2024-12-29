@@ -5,4 +5,6 @@
     <string name="edit">Chỉnh sửa</string>
     <string name="delete">Xoá</string>
     <string name="more">More</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

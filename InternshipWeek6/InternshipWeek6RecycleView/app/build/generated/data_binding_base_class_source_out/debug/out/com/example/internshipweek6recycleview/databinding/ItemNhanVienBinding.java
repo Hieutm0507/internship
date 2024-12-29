@@ -25,7 +25,13 @@ public final class ItemNhanVienBinding implements ViewBinding {
   public final CheckBox cbSelect;
 
   @NonNull
+  public final ImageView ivDepartment;
+
+  @NonNull
   public final ImageView ivMore;
+
+  @NonNull
+  public final ImageView ivState;
 
   @NonNull
   public final TextView tvTenNv;
@@ -34,10 +40,13 @@ public final class ItemNhanVienBinding implements ViewBinding {
   public final TextView tvUsername;
 
   private ItemNhanVienBinding(@NonNull ConstraintLayout rootView, @NonNull CheckBox cbSelect,
-      @NonNull ImageView ivMore, @NonNull TextView tvTenNv, @NonNull TextView tvUsername) {
+      @NonNull ImageView ivDepartment, @NonNull ImageView ivMore, @NonNull ImageView ivState,
+      @NonNull TextView tvTenNv, @NonNull TextView tvUsername) {
     this.rootView = rootView;
     this.cbSelect = cbSelect;
+    this.ivDepartment = ivDepartment;
     this.ivMore = ivMore;
+    this.ivState = ivState;
     this.tvTenNv = tvTenNv;
     this.tvUsername = tvUsername;
   }
@@ -75,9 +84,21 @@ public final class ItemNhanVienBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.iv_department;
+      ImageView ivDepartment = ViewBindings.findChildViewById(rootView, id);
+      if (ivDepartment == null) {
+        break missingId;
+      }
+
       id = R.id.iv_more;
       ImageView ivMore = ViewBindings.findChildViewById(rootView, id);
       if (ivMore == null) {
+        break missingId;
+      }
+
+      id = R.id.iv_state;
+      ImageView ivState = ViewBindings.findChildViewById(rootView, id);
+      if (ivState == null) {
         break missingId;
       }
 
@@ -93,8 +114,8 @@ public final class ItemNhanVienBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemNhanVienBinding((ConstraintLayout) rootView, cbSelect, ivMore, tvTenNv,
-          tvUsername);
+      return new ItemNhanVienBinding((ConstraintLayout) rootView, cbSelect, ivDepartment, ivMore,
+          ivState, tvTenNv, tvUsername);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

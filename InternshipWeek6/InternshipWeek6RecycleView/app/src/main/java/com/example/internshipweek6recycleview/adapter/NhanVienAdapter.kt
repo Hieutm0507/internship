@@ -50,7 +50,7 @@ class NhanVienAdapter(
             popupMenus.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.edit_employee -> {
-                        Toast.makeText(itemView.context, "Clicked on Edit $adapterPosition", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(itemView.context, "Clicked on Edit $adapterPosition", Toast.LENGTH_SHORT).show()
                         true
                     }
                     R.id.delete_employee -> {
@@ -90,5 +90,17 @@ class NhanVienAdapter(
         // Attach data to container
         holder.binding.tvTenNv.text = nhanVien.name
         holder.binding.tvUsername.text = nhanVien.id
+
+        when(nhanVien.department) {
+            "Marketing" -> holder.binding.ivDepartment.setImageResource(R.drawable.ic_mkt)
+            "Dev" -> holder.binding.ivDepartment.setImageResource(R.drawable.ic_dev)
+            "Design" -> holder.binding.ivDepartment.setImageResource(R.drawable.ic_des)
+            "Kinh doanh" -> holder.binding.ivDepartment.setImageResource(R.drawable.ic_business)
+        }
+
+        when(nhanVien.state) {
+            "Chính thức" -> holder.binding.ivState.setImageResource(R.drawable.ic_official)
+            "Thực tập" -> holder.binding.ivState.setImageResource(R.drawable.ic_intern)
+        }
     }
 }
