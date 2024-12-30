@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
         nhanVienAdapter = adapter
 
         // Event Listeners for items in RecyclerView
-        adapter.setOnClickListener(object : NhanVienAdapter.OnItemClickListener {
+        adapter.setOnClickListener(object : NhanVienAdapter.OnItemClickListener, NhanVienAdapter.OnCheckChangeListener {
             // Direct and sent data to InfoActivity
             override fun onItemClick(position: Int) {
                 val employee: NhanVien = mListNV[position]
@@ -99,15 +100,22 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
             }
 
             // Delete Item
-            override fun deleteItem(item: Int) {
-                mListNV.removeAt(item)
-//                mListNV.removeIf { it.id == item.id }
+            override fun deleteItem(item: NhanVien) {
+//                mListNV.removeAt(item)
+                mListNV.removeIf { it.id == item.id }
                 adapter.submitList(mListNV)
-                searchList.removeAt(item)
+                searchList.removeIf { it.id == item.id }
                 adapter.submitList(searchList)
             }
 
+            // Checked
+            // TODO: Click on CheckBox will display Select_ToolBar
+            override fun onChecked(boolean: Boolean, position: Int) {
+                bindingMain.tbSelect.visibility = View.VISIBLE
+
+            }
         })
+
 
 
         val linearLayoutManager = LinearLayoutManager(this)
@@ -162,9 +170,13 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
     // Receive Data from Add Fragment
     @SuppressLint("NotifyDataSetChanged")
     override fun onDataPass(name: String, username: String, department: String, state: String) {
-        mListNV.add(NhanVien(name, username, department, state))
-        searchList.add(NhanVien(name, username, department, state))
+        mListNV.add(NhanVien(username, name, department, state))
+        searchList.add(NhanVien(username, name, department, state))
 //        Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
+
         nhanVienAdapter.notifyDataSetChanged()
+        //nhanVienAdapter.submitList(mListNV)
+        //nhanVienAdapter.submitList(searchList)
+
     }
 }

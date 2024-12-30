@@ -16,13 +16,16 @@ class NhanVienAdapter(
     private var mListNV: MutableList<NhanVien> = mutableListOf()
 ) : RecyclerView.Adapter<NhanVienAdapter.NhanVienHolder>() {
     private var mListener: OnItemClickListener? = null
+    private var mIsCheck: OnCheckChangeListener? = null
     private var totalChecked: Int = 0
 
     fun setOnClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
 
-
+    fun onChecked(isCheck: OnCheckChangeListener) {
+        mIsCheck = isCheck
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun submitList(listNV: MutableList<NhanVien>) {
@@ -46,6 +49,18 @@ class NhanVienAdapter(
                 ivMore.performClick()
             }
 
+            // CheckBox isChecked Listener
+            binding.cbSelect.setOnCheckedChangeListener { _, _ ->
+                mIsCheck?.onChecked(true, adapterPosition)
+
+
+                if (binding.cbSelect.isChecked) {
+                    totalChecked += 1
+                }
+                else {
+                    totalChecked -= 1
+                }
+            }
         }
 
         // PopUp Menu for each items
@@ -63,7 +78,7 @@ class NhanVienAdapter(
                             .setIcon(R.drawable.ic_warning)
                             .setMessage("Bạn chắc chắn muốn xoá nhân viên này?")
                             .setPositiveButton("Có") { dialog, _ ->
-                                mListener?.deleteItem(adapterPosition)
+                                mListener?.deleteItem(mListNV[adapterPosition])
                                 Toast.makeText(itemView.context, "Đã xoá thành công", Toast.LENGTH_SHORT).show()
                                 dialog.dismiss()
                             }
@@ -127,8 +142,10 @@ class NhanVienAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
-        fun deleteItem(item: Int)
+        fun deleteItem(item: NhanVien)
     }
 
-
+    interface OnCheckChangeListener {
+        fun onChecked(boolean: Boolean, position: Int)
+    }
 }

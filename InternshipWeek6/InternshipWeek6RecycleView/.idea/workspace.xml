@@ -20,6 +20,11 @@
           <theme>@style/Theme.InternshipWeek6RecycleView</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml">
+        <config>
+          <theme>@style/Theme.InternshipWeek6RecycleView</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_nhan_vien.xml">
         <config>
           <theme>@style/Theme.InternshipWeek6RecycleView</theme>
@@ -251,7 +256,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/internshipweek6recycleview/MainActivity.kt</url>
-          <line>92</line>
+          <line>93</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
