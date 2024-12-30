@@ -212,11 +212,22 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
     // Receive Data from Add Fragment
     @SuppressLint("NotifyDataSetChanged")
     override fun onDataPass(name: String, username: String, department: String, state: String) {
-        mListNV.add(NhanVien(username, name, department, state))
-        searchList.add(NhanVien(username, name, department, state))
-        //Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
+        if (mListNV.any { it.id == username }) {
+            Toast.makeText(this, "Username đã tồn tại!!!", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            mListNV.add(NhanVien(username, name, department, state))
+            searchList.add(NhanVien(username, name, department, state))
+            //Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
 
-        nhanVienAdapter.notifyDataSetChanged()
+            nhanVienAdapter.notifyDataSetChanged()
+        }
+
+//        mListNV.add(NhanVien(username, name, department, state))
+//        searchList.add(NhanVien(username, name, department, state))
+//        //Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
+//
+//        nhanVienAdapter.notifyDataSetChanged()
 
     }
 }
