@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
@@ -32,7 +33,16 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FrameLayout flAddEmployee;
 
   @NonNull
+  public final ImageView ivClose;
+
+  @NonNull
+  public final ImageView ivDelete;
+
+  @NonNull
   public final ImageView ivSearch;
+
+  @NonNull
+  public final ImageView ivSelectAll;
 
   @NonNull
   public final ConstraintLayout main;
@@ -44,25 +54,38 @@ public final class ActivityMainBinding implements ViewBinding {
   public final SearchView svSearchBar;
 
   @NonNull
+  public final Toolbar tbSelect;
+
+  @NonNull
   public final MaterialToolbar toolbar;
 
   @NonNull
   public final TextView tvAppName;
 
+  @NonNull
+  public final TextView tvCountSelected;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull FloatingActionButton btAdd, @NonNull FrameLayout flAddEmployee,
-      @NonNull ImageView ivSearch, @NonNull ConstraintLayout main, @NonNull RecyclerView rvListNv,
-      @NonNull SearchView svSearchBar, @NonNull MaterialToolbar toolbar,
-      @NonNull TextView tvAppName) {
+      @NonNull ImageView ivClose, @NonNull ImageView ivDelete, @NonNull ImageView ivSearch,
+      @NonNull ImageView ivSelectAll, @NonNull ConstraintLayout main,
+      @NonNull RecyclerView rvListNv, @NonNull SearchView svSearchBar, @NonNull Toolbar tbSelect,
+      @NonNull MaterialToolbar toolbar, @NonNull TextView tvAppName,
+      @NonNull TextView tvCountSelected) {
     this.rootView = rootView;
     this.btAdd = btAdd;
     this.flAddEmployee = flAddEmployee;
+    this.ivClose = ivClose;
+    this.ivDelete = ivDelete;
     this.ivSearch = ivSearch;
+    this.ivSelectAll = ivSelectAll;
     this.main = main;
     this.rvListNv = rvListNv;
     this.svSearchBar = svSearchBar;
+    this.tbSelect = tbSelect;
     this.toolbar = toolbar;
     this.tvAppName = tvAppName;
+    this.tvCountSelected = tvCountSelected;
   }
 
   @Override
@@ -104,9 +127,27 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.iv_close;
+      ImageView ivClose = ViewBindings.findChildViewById(rootView, id);
+      if (ivClose == null) {
+        break missingId;
+      }
+
+      id = R.id.iv_delete;
+      ImageView ivDelete = ViewBindings.findChildViewById(rootView, id);
+      if (ivDelete == null) {
+        break missingId;
+      }
+
       id = R.id.iv_search;
       ImageView ivSearch = ViewBindings.findChildViewById(rootView, id);
       if (ivSearch == null) {
+        break missingId;
+      }
+
+      id = R.id.iv_select_all;
+      ImageView ivSelectAll = ViewBindings.findChildViewById(rootView, id);
+      if (ivSelectAll == null) {
         break missingId;
       }
 
@@ -124,6 +165,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tb_select;
+      Toolbar tbSelect = ViewBindings.findChildViewById(rootView, id);
+      if (tbSelect == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
@@ -136,8 +183,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, btAdd, flAddEmployee, ivSearch,
-          main, rvListNv, svSearchBar, toolbar, tvAppName);
+      id = R.id.tv_count_selected;
+      TextView tvCountSelected = ViewBindings.findChildViewById(rootView, id);
+      if (tvCountSelected == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((ConstraintLayout) rootView, btAdd, flAddEmployee, ivClose,
+          ivDelete, ivSearch, ivSelectAll, main, rvListNv, svSearchBar, tbSelect, toolbar,
+          tvAppName, tvCountSelected);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

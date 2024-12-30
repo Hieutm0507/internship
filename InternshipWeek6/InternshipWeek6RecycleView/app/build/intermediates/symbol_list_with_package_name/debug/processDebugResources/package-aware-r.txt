@@ -3029,6 +3029,7 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_close
 drawable ic_delete
 drawable ic_delete_24
 drawable ic_des
@@ -3051,6 +3052,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_official
 drawable ic_search
 drawable ic_search_black_24
+drawable ic_select_all
 drawable ic_settings_24
 drawable ic_warning
 drawable indeterminate_static
@@ -3371,9 +3373,12 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
+id iv_close
+id iv_delete
 id iv_department
 id iv_more
 id iv_search
+id iv_select_all
 id iv_state
 id jumpToEnd
 id jumpToStart
@@ -3593,6 +3598,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id tb_select
 id text
 id text2
 id textEnd
@@ -3630,6 +3636,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tv_app_name
+id tv_count_selected
 id tv_department
 id tv_header_title
 id tv_in4_department
@@ -3797,6 +3804,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_add
+layout fragment_blank
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_nhan_vien
@@ -3913,6 +3921,7 @@ string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
+string close
 string delete
 string department
 string edit
@@ -3924,6 +3933,7 @@ string fab_transformation_sheet_behavior
 string finish
 string go_back
 string header_add
+string header_in4
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
@@ -4040,6 +4050,7 @@ string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
+string select_all
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string state

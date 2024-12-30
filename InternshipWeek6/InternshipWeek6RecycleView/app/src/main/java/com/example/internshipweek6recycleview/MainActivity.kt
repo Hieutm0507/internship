@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -13,7 +12,7 @@ import com.example.internshipweek6recycleview.adapter.NhanVienAdapter
 import com.example.internshipweek6recycleview.databinding.ActivityMainBinding
 import com.example.internshipweek6recycleview.model.NhanVien
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
     private lateinit var toolbar: Toolbar
     private lateinit var bindingMain : ActivityMainBinding
     private lateinit var nhanVienAdapter: NhanVienAdapter
@@ -44,47 +43,48 @@ class MainActivity : AppCompatActivity() {
         mListNV.add(nhanVien2)
         val nhanVien3 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
         mListNV.add(nhanVien3)
-        val nhanVien4 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien4 = NhanVien("thanhnd", "Nguyễn Duy Thành", "Design", "Chính thức")
         mListNV.add(nhanVien4)
         val nhanVien5 = NhanVien("minhth", "Tạ Hiểu Minh", "Dev", "Thực tập")
         mListNV.add(nhanVien5)
-        val nhanVien6 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien6 = NhanVien("trungnt", "Nguyễn Thành Trung", "Kinh doanh", "Chính thức")
         mListNV.add(nhanVien6)
-        val nhanVien7 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien7 = NhanVien("anhnm", "Nguyễn Minh Anh", "Marketing", "Thực tập")
         mListNV.add(nhanVien7)
-        val nhanVien8 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien8 = NhanVien("thangnv", "Nguyễn Văn Thắng", "Dev", "Chính thức")
         mListNV.add(nhanVien8)
-        val nhanVien9 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien9 = NhanVien("huongmh", "Nguyễn Minh Hương", "Dev", "Chính thức")
         mListNV.add(nhanVien9)
-        val nhanVien10 = NhanVien("ola", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien10 = NhanVien("huynt", "Nguyễn Thế Huy", "Marketing", "Thực tập")
         mListNV.add(nhanVien10)
-        val nhanVien11 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien11 = NhanVien("anhpn", "Phan Ngọc Anh", "Kinh doanh", "Thực tập")
         mListNV.add(nhanVien11)
-        val nhanVien12 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien12 = NhanVien("chaupm", "Phạm Minh Châu", "Kinh doanh", "Thực tập")
         mListNV.add(nhanVien12)
-        val nhanVien13 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien13 = NhanVien("thanhnd", "Ngô Đình Thành", "Dev", "Thực tập")
         mListNV.add(nhanVien13)
-        val nhanVien14 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien14 = NhanVien("hoangnm", "Nguyễn Minh Hoàng", "Kinh doanh", "Chính thức")
         mListNV.add(nhanVien14)
-        val nhanVien15 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien15 = NhanVien("nguyennp", "Nguyễn Phúc Nguyên", "Design", "Chính thức")
         mListNV.add(nhanVien15)
-        val nhanVien16 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien16 = NhanVien("anhmn", "Mai Ngọc Ánh", "Design", "Chính thức")
         mListNV.add(nhanVien16)
-        val nhanVien17 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien17 = NhanVien("anhpd", "Phạm Đức Anh", "Dev", "Chính thức")
         mListNV.add(nhanVien17)
-        val nhanVien18 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien18 = NhanVien("giangnv", "Nguyễn Văn Giang", "Dev", "Thực tập")
         mListNV.add(nhanVien18)
         val nhanVien19 = NhanVien("phatnt", "Ngô Thành Phát", "Kinh doanh", "Chính thức")
         mListNV.add(nhanVien19)
-        val nhanVien20 = NhanVien("phucnv", "Nguyễn Văn Phúc", "Marketing", "Chính thức")
+        val nhanVien20 = NhanVien("minhnt", "Nguyễn Tùng Minh", "Design", "Chính thức")
         mListNV.add(nhanVien20)
 
-        val adapter = NhanVienAdapter(searchList)
+        val adapter = NhanVienAdapter(searchList)      // Thay mListNV bằng searchList thì dùng được search
         searchList.addAll(mListNV)                  // To display the mListNV at the beginning
         nhanVienAdapter = adapter
 
-        // Direct and sent data to InfoActivity
+        // Event Listeners for items in RecyclerView
         adapter.setOnClickListener(object : NhanVienAdapter.OnItemClickListener {
+            // Direct and sent data to InfoActivity
             override fun onItemClick(position: Int) {
                 val employee: NhanVien = mListNV[position]
                 Log.d("TAG_GET_IN4", "${employee.name}, ${employee.department}")
@@ -95,9 +95,20 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("EXTRA_SEND_DEPARTMENT", employee.department)
                 intent.putExtra("EXTRA_SEND_STATE", employee.state)
                 startActivity(intent)
-                Toast.makeText(this@MainActivity, "Clicked on $position", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@MainActivity, "Clicked on $position", Toast.LENGTH_SHORT).show()
             }
+
+            // Delete Item
+            override fun deleteItem(item: Int) {
+                mListNV.removeAt(item)
+//                mListNV.removeIf { it.id == item.id }
+                adapter.submitList(mListNV)
+                searchList.removeAt(item)
+                adapter.submitList(searchList)
+            }
+
         })
+
 
         val linearLayoutManager = LinearLayoutManager(this)
         bindingMain.rvListNv.layoutManager = linearLayoutManager
@@ -114,6 +125,9 @@ class MainActivity : AppCompatActivity() {
 
             @SuppressLint("NotifyDataSetChanged")
             override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+
+                }
                 val searchText = newText!!.lowercase()
                 searchList.clear()
                 if (searchText.isNotEmpty()) {
@@ -131,6 +145,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        // Activate SEARCH Button
+        bindingMain.ivSearch.setOnClickListener {
+            bindingMain.svSearchBar.requestFocus()
+        }
+
         // Activate ADD Button
         bindingMain.btAdd.setOnClickListener {
             val ft = fragmentManager.beginTransaction()
@@ -138,5 +157,14 @@ class MainActivity : AppCompatActivity() {
             ft.addToBackStack(null)
             ft.commit()
         }
+    }
+
+    // Receive Data from Add Fragment
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onDataPass(name: String, username: String, department: String, state: String) {
+        mListNV.add(NhanVien(name, username, department, state))
+        searchList.add(NhanVien(name, username, department, state))
+//        Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
+        nhanVienAdapter.notifyDataSetChanged()
     }
 }

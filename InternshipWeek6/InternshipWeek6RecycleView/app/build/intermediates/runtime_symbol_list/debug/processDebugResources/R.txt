@@ -3028,6 +3028,7 @@ int drawable ic_call_decline 0x7f07008e
 int drawable ic_call_decline_low 0x7f07008f
 int drawable ic_clear_black_24 0x7f070090
 int drawable ic_clock_black_24dp 0x7f070091
+int drawable ic_close 0x7f0700f9
 int drawable ic_delete 0x7f0700ee
 int drawable ic_delete_24 0x7f0700f0
 int drawable ic_des 0x7f0700f3
@@ -3050,6 +3051,7 @@ int drawable ic_mtrl_chip_close_circle 0x7f07009b
 int drawable ic_official 0x7f0700f7
 int drawable ic_search 0x7f07009c
 int drawable ic_search_black_24 0x7f07009d
+int drawable ic_select_all 0x7f0700fa
 int drawable ic_settings_24 0x7f07009e
 int drawable ic_warning 0x7f0700ed
 int drawable indeterminate_static 0x7f07009f
@@ -3370,9 +3372,12 @@ int id invisible 0x7f0800ea
 int id inward 0x7f0800eb
 int id italic 0x7f0800ec
 int id item_touch_helper_previous_elevation 0x7f0800ed
+int id iv_close 0x7f08021a
+int id iv_delete 0x7f08021b
 int id iv_department 0x7f080218
 int id iv_more 0x7f08020f
 int id iv_search 0x7f080216
+int id iv_select_all 0x7f08021c
 int id iv_state 0x7f080219
 int id jumpToEnd 0x7f0800ee
 int id jumpToStart 0x7f0800ef
@@ -3592,6 +3597,7 @@ int id tag_transition_group 0x7f0801c2
 int id tag_unhandled_key_event_manager 0x7f0801c3
 int id tag_unhandled_key_listeners 0x7f0801c4
 int id tag_window_insets_animation_callback 0x7f0801c5
+int id tb_select 0x7f08021e
 int id text 0x7f0801c6
 int id text2 0x7f0801c7
 int id textEnd 0x7f0801c8
@@ -3629,6 +3635,7 @@ int id transition_scene_layoutid_cache 0x7f0801e7
 int id transition_transform 0x7f0801e8
 int id triangle 0x7f0801e9
 int id tv_app_name 0x7f080217
+int id tv_count_selected 0x7f08021d
 int id tv_department 0x7f080205
 int id tv_header_title 0x7f080206
 int id tv_in4_department 0x7f080207
@@ -3796,6 +3803,7 @@ int layout design_navigation_menu_item 0x7f0b002a
 int layout design_text_input_end_icon 0x7f0b002b
 int layout design_text_input_start_icon 0x7f0b002c
 int layout fragment_add 0x7f0b006e
+int layout fragment_blank 0x7f0b006f
 int layout ime_base_split_test_activity 0x7f0b002d
 int layout ime_secondary_split_test_activity 0x7f0b002e
 int layout item_nhan_vien 0x7f0b002f
@@ -3912,6 +3920,7 @@ int string character_counter_content_description 0x7f10002c
 int string character_counter_overflowed_content_description 0x7f10002d
 int string character_counter_pattern 0x7f10002e
 int string clear_text_end_icon_content_description 0x7f10002f
+int string close 0x7f1000b4
 int string delete 0x7f1000aa
 int string department 0x7f1000ad
 int string edit 0x7f1000ab
@@ -3923,6 +3932,7 @@ int string fab_transformation_sheet_behavior 0x7f100034
 int string finish 0x7f1000ae
 int string go_back 0x7f1000af
 int string header_add 0x7f1000b0
+int string header_in4 0x7f1000b5
 int string hello_blank_fragment 0x7f1000ac
 int string hide_bottom_view_on_scroll_behavior 0x7f100035
 int string icon_content_description 0x7f100036
@@ -4039,6 +4049,7 @@ int string search_menu_title 0x7f1000a2
 int string searchbar_scrolling_view_behavior 0x7f1000a3
 int string searchview_clear_text_content_description 0x7f1000a4
 int string searchview_navigation_content_description 0x7f1000a5
+int string select_all 0x7f1000b6
 int string side_sheet_accessibility_pane_title 0x7f1000a6
 int string side_sheet_behavior 0x7f1000a7
 int string state 0x7f1000b2

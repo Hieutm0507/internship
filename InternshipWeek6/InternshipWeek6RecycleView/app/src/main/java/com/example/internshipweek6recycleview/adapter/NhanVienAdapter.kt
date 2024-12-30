@@ -13,23 +13,28 @@ import com.example.internshipweek6recycleview.databinding.ItemNhanVienBinding
 import com.example.internshipweek6recycleview.model.NhanVien
 
 class NhanVienAdapter(
-    private val mListNV: MutableList<NhanVien> = mutableListOf()
+    private var mListNV: MutableList<NhanVien> = mutableListOf()
 ) : RecyclerView.Adapter<NhanVienAdapter.NhanVienHolder>() {
-    private lateinit var mListener: OnItemClickListener
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-    }
+    private var mListener: OnItemClickListener? = null
+    private var totalChecked: Int = 0
 
     fun setOnClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
 
-    inner class NhanVienHolder(val binding: ItemNhanVienBinding, listener: OnItemClickListener) : RecyclerView.ViewHolder(binding.root) {
-        // Display the information of an Employee
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(listNV: MutableList<NhanVien>) {
+        mListNV = listNV
+        notifyDataSetChanged()
+    }
+
+    inner class NhanVienHolder(val binding: ItemNhanVienBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
+            // Display the information of an Employee
             binding.root.setOnClickListener {
-                listener.onItemClick(adapterPosition)
+                mListener?.onItemClick(adapterPosition)
             }
 
             val ivMore = binding.ivMore
@@ -40,10 +45,10 @@ class NhanVienAdapter(
             itemView.setOnLongClickListener {
                 ivMore.performClick()
             }
+
         }
 
         // PopUp Menu for each items
-        @SuppressLint("NotifyDataSetChanged")
         private fun popupMenus(view: View) {
             val popupMenus = PopupMenu(itemView.context, view)
             popupMenus.inflate(R.menu.item_more)
@@ -58,8 +63,7 @@ class NhanVienAdapter(
                             .setIcon(R.drawable.ic_warning)
                             .setMessage("Bạn chắc chắn muốn xoá nhân viên này?")
                             .setPositiveButton("Có") { dialog, _ ->
-                                mListNV.removeAt(adapterPosition)
-                                notifyDataSetChanged()
+                                mListener?.deleteItem(adapterPosition)
                                 Toast.makeText(itemView.context, "Đã xoá thành công", Toast.LENGTH_SHORT).show()
                                 dialog.dismiss()
                             }
@@ -74,12 +78,13 @@ class NhanVienAdapter(
             }
             popupMenus.show()
         }
+
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NhanVienHolder {
         val binding = ItemNhanVienBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return NhanVienHolder(binding, mListener)
+        return NhanVienHolder(binding)
     }
 
     override fun getItemCount(): Int = mListNV.size
@@ -102,5 +107,28 @@ class NhanVienAdapter(
             "Chính thức" -> holder.binding.ivState.setImageResource(R.drawable.ic_official)
             "Thực tập" -> holder.binding.ivState.setImageResource(R.drawable.ic_intern)
         }
+
+        // Display Select ToolBar
+//        holder.binding.cbSelect.setOnCheckedChangeListener(null)
+//        holder.binding.cbSelect.setOnCheckedChangeListener { _, isChecked ->
+//            holder.binding.cbSelect.isChecked = isChecked
+//
+//
+//
+//            if (holder.binding.cbSelect.isChecked) {
+//                totalChecked += 1
+//            }
+//            else {
+//                totalChecked -= 1
+//            }
+//        }
     }
+
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+        fun deleteItem(item: Int)
+    }
+
+
 }

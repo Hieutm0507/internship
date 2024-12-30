@@ -28,7 +28,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginHorizontal="40dp"
         android:gravity="center"
-        android:text="@string/header_add"
+        android:text="@string/header_in4"
         android:textStyle="bold"
         android:textSize="29sp"/>
 
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="@id/tv_header_title"
         android:layout_marginTop="40dp"
         android:text="@string/name"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_in4_name"
