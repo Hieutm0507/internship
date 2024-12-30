@@ -10,6 +10,7 @@ drawable ic_add
 drawable ic_back
 drawable ic_business
 drawable ic_close
+drawable ic_close_toolbar
 drawable ic_delete
 drawable ic_delete_24
 drawable ic_des

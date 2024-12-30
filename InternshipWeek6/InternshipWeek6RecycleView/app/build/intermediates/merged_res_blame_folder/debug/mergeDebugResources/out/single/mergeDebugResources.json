@@ -112,6 +112,10 @@
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_close_toolbar.xml.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_close_toolbar.xml"
+    },
+    {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\menu_item_more.xml.flat",
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\menu\\item_more.xml"
     },
@@ -152,12 +156,12 @@
         "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_deselect.xml.flat",
-        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_deselect.xml"
+        "merged": "com.example.internshipweek6recycleview.app-debug-32:/drawable_bg_fragment_add.xml.flat",
+        "source": "com.example.internshipweek6recycleview.app-main-34:/drawable/bg_fragment_add.xml"
     },
     {
-        "merged": "com.example.internshipweek6recycleview.app-debug-32:/layout_fragment_add.xml.flat",
-        "source": "com.example.internshipweek6recycleview.app-main-34:/layout/fragment_add.xml"
+        "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_deselect.xml.flat",
+        "source": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-main-34:\\drawable\\ic_deselect.xml"
     },
     {
         "merged": "C:\\Users\\Dell\\.gradle\\daemon\\8.9\\com.example.internshipweek6recycleview.app-debug-32:\\drawable_ic_close.xml.flat",

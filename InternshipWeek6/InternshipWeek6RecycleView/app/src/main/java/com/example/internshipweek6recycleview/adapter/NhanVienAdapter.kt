@@ -1,6 +1,7 @@
 package com.example.internshipweek6recycleview.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,23 +14,44 @@ import com.example.internshipweek6recycleview.databinding.ItemNhanVienBinding
 import com.example.internshipweek6recycleview.model.NhanVien
 
 class NhanVienAdapter(
-    private var mListNV: MutableList<NhanVien> = mutableListOf()
+    private var mListNV: MutableList<NhanVien> = mutableListOf(),
+    private var chosenList: MutableList<NhanVien> = mutableListOf()
 ) : RecyclerView.Adapter<NhanVienAdapter.NhanVienHolder>() {
     private var mListener: OnItemClickListener? = null
-    private var mIsCheck: OnCheckChangeListener? = null
-    private var totalChecked: Int = 0
 
     fun setOnClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
 
-    fun onChecked(isCheck: OnCheckChangeListener) {
-        mIsCheck = isCheck
+    fun setListNull() {
+        chosenList = mutableListOf()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun submitList(listNV: MutableList<NhanVien>) {
         mListNV = listNV
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun selectAll() {
+        for (item in mListNV) {
+            item.isSelect = true
+//            if (!chosenList.contains(item)) {
+//                chosenList.add(item)
+//            }
+        }
+        chosenList.clear()
+        chosenList.addAll(mListNV)
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun deSelectAll() {
+        for (item in mListNV) {
+            item.isSelect = false
+        }
+        chosenList.clear()
         notifyDataSetChanged()
     }
 
@@ -49,17 +71,18 @@ class NhanVienAdapter(
                 ivMore.performClick()
             }
 
-            // CheckBox isChecked Listener
-            binding.cbSelect.setOnCheckedChangeListener { _, _ ->
-                mIsCheck?.onChecked(true, adapterPosition)
-
-
-                if (binding.cbSelect.isChecked) {
-                    totalChecked += 1
+            // CheckBox Event Listener
+            binding.cbSelect.setOnCheckedChangeListener { _, isSelect ->
+                val chosenItem = mListNV[adapterPosition]
+                chosenItem.isSelect = isSelect
+                if (isSelect) {
+                    chosenList.add(chosenItem)
                 }
                 else {
-                    totalChecked -= 1
+                    chosenList.removeIf { it.id == chosenItem.id }
                 }
+                mListener?.onChosenListChangeListener(chosenList)
+                Log.d("TAG_CHOSEN_LIST", chosenList.toString())
             }
         }
 
@@ -71,6 +94,8 @@ class NhanVienAdapter(
                 when (it.itemId) {
                     R.id.edit_employee -> {
 //                        Toast.makeText(itemView.context, "Clicked on Edit $adapterPosition", Toast.LENGTH_SHORT).show()
+
+
                         true
                     }
                     R.id.delete_employee -> {
@@ -93,7 +118,6 @@ class NhanVienAdapter(
             }
             popupMenus.show()
         }
-
     }
 
 
@@ -123,29 +147,22 @@ class NhanVienAdapter(
             "Thực tập" -> holder.binding.ivState.setImageResource(R.drawable.ic_intern)
         }
 
-        // Display Select ToolBar
-//        holder.binding.cbSelect.setOnCheckedChangeListener(null)
-//        holder.binding.cbSelect.setOnCheckedChangeListener { _, isChecked ->
-//            holder.binding.cbSelect.isChecked = isChecked
-//
-//
-//
-//            if (holder.binding.cbSelect.isChecked) {
-//                totalChecked += 1
-//            }
-//            else {
-//                totalChecked -= 1
-//            }
-//        }
+        holder.binding.cbSelect.isChecked = nhanVien.isSelect
+        holder.binding.cbSelect.setOnCheckedChangeListener { _, isSelect ->
+            nhanVien.isSelect = isSelect
+            if (isSelect) {
+                chosenList.add(nhanVien)
+            }
+            else {
+                chosenList.removeIf { it.id == nhanVien.id }
+            }
+            mListener?.onChosenListChangeListener(chosenList)
+        }
     }
-
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
         fun deleteItem(item: NhanVien)
-    }
-
-    interface OnCheckChangeListener {
-        fun onChecked(boolean: Boolean, position: Int)
+        fun onChosenListChangeListener (chosenList: MutableList<NhanVien>)
     }
 }

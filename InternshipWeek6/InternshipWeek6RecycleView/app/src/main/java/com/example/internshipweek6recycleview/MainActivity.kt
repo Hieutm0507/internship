@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -79,12 +81,12 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
         val nhanVien20 = NhanVien("minhnt", "Nguyễn Tùng Minh", "Design", "Chính thức")
         mListNV.add(nhanVien20)
 
-        val adapter = NhanVienAdapter(searchList)      // Thay mListNV bằng searchList thì dùng được search
+        val adapter = NhanVienAdapter(searchList)
         searchList.addAll(mListNV)                  // To display the mListNV at the beginning
         nhanVienAdapter = adapter
 
         // Event Listeners for items in RecyclerView
-        adapter.setOnClickListener(object : NhanVienAdapter.OnItemClickListener, NhanVienAdapter.OnCheckChangeListener {
+        adapter.setOnClickListener(object : NhanVienAdapter.OnItemClickListener {
             // Direct and sent data to InfoActivity
             override fun onItemClick(position: Int) {
                 val employee: NhanVien = mListNV[position]
@@ -110,13 +112,53 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
 
             // Checked
             // TODO: Click on CheckBox will display Select_ToolBar
-            override fun onChecked(boolean: Boolean, position: Int) {
-                bindingMain.tbSelect.visibility = View.VISIBLE
+            @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
+            override fun onChosenListChangeListener(chosenList: MutableList<NhanVien>) {
+                if (chosenList.isEmpty()) {
+                    bindingMain.tbSelect.visibility = View.GONE
+                }
+                else {
+                    bindingMain.tbSelect.visibility = View.VISIBLE
+                }
 
+                // Count Item
+                bindingMain.tvCountSelected.text = "${chosenList.count()} selected"
+
+                // Activate Close in Select_ToolBar
+                bindingMain.ivClose.setOnClickListener {
+                    bindingMain.tbSelect.visibility = View.GONE
+                    adapter.deSelectAll()
+                }
+
+                // Activate Delete Selected Items in Select_ToolBar
+                bindingMain.ivDelete.setOnClickListener {
+                    AlertDialog.Builder(this@MainActivity).setTitle("Xoá nhân viên")
+                        .setIcon(R.drawable.ic_warning)
+                        .setMessage("Bạn chắc chắn muốn xoá ${chosenList.count()} nhân viên này?")
+                        .setPositiveButton("Có") { dialog,_ ->
+                            for (item in chosenList) {
+                                mListNV.removeIf { it.id == item.id }
+                                searchList.removeIf { it.id == item.id }
+                                adapter.submitList(mListNV)
+                                adapter.submitList(searchList)
+                                adapter.setListNull()
+                            }
+                            dialog.dismiss()
+                        }
+                        .setNegativeButton("Không") {dialog,_ ->
+                            dialog.dismiss()
+                        }
+                        .create().show()
+                    bindingMain.tbSelect.visibility = View.GONE
+                }
+
+                // Activate SelectAll in Select_ToolBar
+                bindingMain.ivSelectAll.setOnClickListener {
+                    adapter.selectAll()
+                }
             }
+
         })
-
-
 
         val linearLayoutManager = LinearLayoutManager(this)
         bindingMain.rvListNv.layoutManager = linearLayoutManager
@@ -172,11 +214,9 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
     override fun onDataPass(name: String, username: String, department: String, state: String) {
         mListNV.add(NhanVien(username, name, department, state))
         searchList.add(NhanVien(username, name, department, state))
-//        Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
 
         nhanVienAdapter.notifyDataSetChanged()
-        //nhanVienAdapter.submitList(mListNV)
-        //nhanVienAdapter.submitList(searchList)
 
     }
 }
