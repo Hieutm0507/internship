@@ -14,7 +14,7 @@ import com.example.internshipweek6codeforslides.ex_gridview.model.Book
 class OnlineBookActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnlineBookBinding
     lateinit var gvBook: GridView
-    lateinit var bookList: MutableList<Book>
+    var bookList: MutableList<Book> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +22,10 @@ class OnlineBookActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         gvBook = binding.gvOnlineBooks
-        bookList.add(Book("Calulus", "unknown", R.drawable.img_calculus))
-
-
-//        bookList = bookList + Book("Calulus", "unknown", R.drawable.img_calculus)
-//        bookList = bookList + Book("Linear Algebra", "unknown", R.drawable.img_linear)
-//        bookList = bookList + Book("Probability and Statistic", "unknown", R.drawable.img_prob)
-//        bookList = bookList + Book("Algebraic Structure", "unknown", R.drawable.img_algebraic_structure)
+        bookList.add(Book("Calulus", "Morris Kline", R.drawable.img_calculus))
+        bookList.add(Book("Linear Algebra", "Stephen H. Friedberg", R.drawable.img_linear))
+        bookList.add(Book("Probability and Statistic", "Alder/Roessler", R.drawable.img_prob))
+        bookList.add(Book("Algebraic Structure", "Larry J. Gerstein", R.drawable.img_algebraic_structure))
 
         val bookAdapter = BookAdapter(bookList, this@OnlineBookActivity)
         gvBook.adapter = bookAdapter

@@ -33,8 +33,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
         android:numColumns="2"
-        android:verticalSpacing="6dp"
-        android:horizontalSpacing="6dp"/>
+        android:verticalSpacing="15dp"
+        android:horizontalSpacing="15dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

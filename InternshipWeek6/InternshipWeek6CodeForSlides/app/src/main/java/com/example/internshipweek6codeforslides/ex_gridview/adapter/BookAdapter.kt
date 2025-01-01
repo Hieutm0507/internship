@@ -9,7 +9,6 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.internshipweek6codeforslides.R
-import com.example.internshipweek6codeforslides.databinding.ItemGridviewBinding
 import com.example.internshipweek6codeforslides.ex_gridview.model.Book
 
 class BookAdapter (
@@ -36,24 +35,25 @@ class BookAdapter (
 
     @SuppressLint("InflateParams")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var convertView = convertView
+        var view = convertView
 
         if (layoutInflater == null) {
             layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
 
-        if (convertView == null) {
-            convertView = layoutInflater!!.inflate(R.layout.item_gridview, null)
+        if (view == null) {
+            view = layoutInflater!!.inflate(R.layout.item_gridview, null)
         }
 
-        tvName = convertView!!.findViewById(R.id.tv_book_name)
-        tvAuthor = convertView.findViewById(R.id.tv_author)
+        tvName = view!!.findViewById(R.id.tv_book_name)
+        tvAuthor = view.findViewById(R.id.tv_author)
+        ivBook = view.findViewById(R.id.iv_book_cover)
 
         tvName.text = bookList[position].name
-        tvName.text = bookList[position].author
+        tvAuthor.text = bookList[position].author
         ivBook.setImageResource(bookList[position].image)
 
-        return convertView
+        return view
     }
 
 }
