@@ -43,6 +43,7 @@ class NhanVienAdapter(
         }
         chosenList.clear()
         chosenList.addAll(mListNV)
+        Log.d("TAG_SELECT_ALL", chosenList.size.toString())
         notifyDataSetChanged()
     }
 

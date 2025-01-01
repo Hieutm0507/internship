@@ -93,10 +93,11 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
                 Log.d("TAG_GET_IN4", "${employee.name}, ${employee.department}")
 
                 val intent = Intent(this@MainActivity, InfoActivity::class.java)
-                intent.putExtra("EXTRA_SEND_NAME", employee.name)
-                intent.putExtra("EXTRA_SEND_USERNAME", employee.id)
-                intent.putExtra("EXTRA_SEND_DEPARTMENT", employee.department)
-                intent.putExtra("EXTRA_SEND_STATE", employee.state)
+                intent.putExtra("EXTRA_SEND_EMPLOYEE", employee)
+//                intent.putExtra("EXTRA_SEND_NAME", employee.name)
+//                intent.putExtra("EXTRA_SEND_USERNAME", employee.id)
+//                intent.putExtra("EXTRA_SEND_DEPARTMENT", employee.department)
+//                intent.putExtra("EXTRA_SEND_STATE", employee.state)
                 startActivity(intent)
                 //Toast.makeText(this@MainActivity, "Clicked on $position", Toast.LENGTH_SHORT).show()
             }
@@ -222,12 +223,5 @@ class MainActivity : AppCompatActivity(), AddFragment.OnDataPass {
 
             nhanVienAdapter.notifyDataSetChanged()
         }
-
-//        mListNV.add(NhanVien(username, name, department, state))
-//        searchList.add(NhanVien(username, name, department, state))
-//        //Toast.makeText(this, "$name, $username, $department, $state", Toast.LENGTH_SHORT).show()
-//
-//        nhanVienAdapter.notifyDataSetChanged()
-
     }
 }

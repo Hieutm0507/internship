@@ -256,7 +256,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/internshipweek6recycleview/MainActivity.kt</url>
-          <line>95</line>
+          <line>96</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
