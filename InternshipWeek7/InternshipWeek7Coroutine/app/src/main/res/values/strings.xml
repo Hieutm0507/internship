@@ -1,12 +1,22 @@
 <resources>
     <string name="app_name">Internship Week 7 Coroutine</string>
+    <string name="author">Powered by MINH HIEU TA</string>
+
     <string name="add">CỘNG 1 SAU KHI DELAY 1S</string>
     <string name="minus">TRỪ 1 SAU KHI DELAY 1S</string>
     <string name="multiply">NHÂN 2 SAU KHI DELAY 5S</string>
     <string name="random">RANDOM 1 SỐ NGẪU NHIÊN SAU 3S</string>
+
     <string name="value">Giá trị hiện tại là:</string>
+
     <string name="stop_add">Dừng cộng</string>
     <string name="stop_minus">Dừng trừ</string>
     <string name="stop_multiply">Dừng nhân</string>
     <string name="stop_random">Dừng random</string>
+
+    <string name="play_add">Chạy lại cộng</string>
+    <string name="play_minus">Chạy lại trừ</string>
+    <string name="play_multiply">Chạy lại nhân</string>
+    <string name="play_random">Chạy lại random</string>
+    <string name="num_default">0</string>
 </resources>
