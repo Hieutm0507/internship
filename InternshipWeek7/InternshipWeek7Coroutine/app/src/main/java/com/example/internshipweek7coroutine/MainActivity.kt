@@ -2,16 +2,17 @@ package com.example.internshipweek7coroutine
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.internshipweek7coroutine.databinding.ActivityMainBinding
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -23,12 +24,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private var countPlus = 0
     private var countMinus = 0
-    private var countMulti = 1
+    private var countMulti = 1L         // Sử dụng Long vì để INT sẽ bị giới hạn đến 2147483647
+                                        // => Sau 32 lần thì giá trị sẽ quay về 0
     private var countRandom = 0
-    private lateinit var plusScope: CoroutineScope
-    private lateinit var minusScope: CoroutineScope
-    private lateinit var multiplyScope: CoroutineScope
-    private lateinit var randomScope: CoroutineScope
+    private lateinit var plusScopeJob: Job
+    private lateinit var minusScopeJob: Job
+    private lateinit var multiplyScopeJob: Job
+    private lateinit var randomScopeJob: Job
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         // Toolbar
         toolbar = binding.toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = ""        // Xoá đi tên app mặc định
+        supportActionBar?.title = ""        // Xoá đi tên app default
 
         // Sử dụng Coroutines
         usingCoroutine()
@@ -54,13 +57,14 @@ class MainActivity : AppCompatActivity() {
         multiplyCoroutine()
         randomCoroutine()
 
-        // On Click Listeners
+
+        // TODO: Xử lý sự kiện: On Click Listeners
         binding.btStopAdd.setOnClickListener {
             it.visibility = View.INVISIBLE
             binding.btPlayAdd.visibility = View.VISIBLE
 
-            if (::plusScope.isInitialized && plusScope.isActive) {
-                plusScope.cancel()
+            if (::plusScopeJob.isInitialized && plusScopeJob.isActive) {
+                plusScopeJob.cancel()
             }
         }
 
@@ -68,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             it.visibility = View.INVISIBLE
             binding.btStopAdd.visibility = View.VISIBLE
 
-            if (::plusScope.isInitialized || !plusScope.isActive) {
+            if (::plusScopeJob.isInitialized || !plusScopeJob.isActive) {
                 usingCoroutine()
             }
         }
@@ -77,8 +81,8 @@ class MainActivity : AppCompatActivity() {
             it.visibility = View.INVISIBLE
             binding.btPlayMinus.visibility = View.VISIBLE
 
-            if (::minusScope.isInitialized && minusScope.isActive) {
-                minusScope.cancel()
+            if (::minusScopeJob.isInitialized && minusScopeJob.isActive) {
+                minusScopeJob.cancel()
             }
         }
 
@@ -86,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             it.visibility = View.INVISIBLE
             binding.btStopMinus.visibility = View.VISIBLE
 
-            if (::minusScope.isInitialized || !minusScope.isActive) {
+            if (::minusScopeJob.isInitialized || !minusScopeJob.isActive) {
                 minusCoroutine()
             }
         }
@@ -95,8 +99,8 @@ class MainActivity : AppCompatActivity() {
             it.visibility = View.INVISIBLE
             binding.btPlayMultiply.visibility = View.VISIBLE
 
-            if (::multiplyScope.isInitialized && multiplyScope.isActive) {
-                multiplyScope.cancel()
+            if (::multiplyScopeJob.isInitialized && multiplyScopeJob.isActive) {
+                multiplyScopeJob.cancel()
             }
         }
 
@@ -104,7 +108,7 @@ class MainActivity : AppCompatActivity() {
             it.visibility = View.INVISIBLE
             binding.btStopMultiply.visibility = View.VISIBLE
 
-            if (::multiplyScope.isInitialized || !multiplyScope.isActive) {
+            if (::multiplyScopeJob.isInitialized || !multiplyScopeJob.isActive) {
                 multiplyCoroutine()
             }
         }
@@ -113,8 +117,8 @@ class MainActivity : AppCompatActivity() {
             it.visibility = View.INVISIBLE
             binding.btPlayRandom.visibility = View.VISIBLE
 
-            if (::randomScope.isInitialized && randomScope.isActive) {
-                randomScope.cancel()
+            if (::randomScopeJob.isInitialized && randomScopeJob.isActive) {
+                randomScopeJob.cancel()
             }
         }
 
@@ -122,30 +126,42 @@ class MainActivity : AppCompatActivity() {
             it.visibility = View.INVISIBLE
             binding.btStopRandom.visibility = View.VISIBLE
 
-            if (::randomScope.isInitialized || !randomScope.isActive) {
+            if (::randomScopeJob.isInitialized || !randomScopeJob.isActive) {
                 randomCoroutine()
             }
         }
     }
 
 
-    // SET UP COROUTINE
-    // TODO: Sử dụng Dispatchers.Main (vì pass giá trị vào các View)
-
+    /* SET UP COROUTINE
+     * TODO: Sử dụng Dispatchers.Main (vì pass giá trị vào các View)
+     * Hướng solve: Sử dụng WHILE loop
+    */
     private fun usingCoroutine() {
-        plusScope = CoroutineScope(Dispatchers.Main)
-        plusScope.launch {
+        // Sử dụng lifecycleScope để đóng luồng khi Activity bị destroy
+        plusScopeJob = lifecycleScope.launch(Dispatchers.Main) {
             while (isActive) {
                 binding.tvValueAdd.text = countPlus.toString()
                 countPlus++
                 delay(1000L)        // L stands for LONG
             }
         }
+
+        /* Gán luồng trực tiếp cho CoroutineScope
+         * Nên khi MainActivity này destroy thì luồng này chưa bị đóng
+         */
+//        plusScope = CoroutineScope(Dispatchers.Main)
+//        plusScope.launch {
+//            while (isActive) {
+//                binding.tvValueAdd.text = countPlus.toString()
+//                countPlus++
+//                delay(1000L)        // L stands for LONG
+//            }
+//        }
     }
 
     private fun minusCoroutine() {
-        minusScope = CoroutineScope(Dispatchers.Main)
-        minusScope.launch {
+        minusScopeJob = lifecycleScope.launch(Dispatchers.Main) {
             while (isActive) {
                 binding.tvValueMinus.text = countMinus.toString()
                 countMinus--
@@ -155,19 +171,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun multiplyCoroutine() {
-        multiplyScope = CoroutineScope(Dispatchers.Main)
-        multiplyScope.launch {
+        multiplyScopeJob = lifecycleScope.launch(Dispatchers.Main) {
             while (isActive) {
                 binding.tvValueMultiply.text = countMulti.toString()
                 countMulti *= 2
                 delay(5000L)
+                Log.d("TAG_CHECK_MULTIPLY", countMulti.toString())
             }
         }
     }
 
     private fun randomCoroutine() {
-        randomScope = CoroutineScope(Dispatchers.Main)
-        randomScope.launch {
+        randomScopeJob = lifecycleScope.launch(Dispatchers.Main) {
             while (isActive) {
                 binding.tvValueRandom.text = countRandom.toString()
                 countRandom = Random.nextInt()
