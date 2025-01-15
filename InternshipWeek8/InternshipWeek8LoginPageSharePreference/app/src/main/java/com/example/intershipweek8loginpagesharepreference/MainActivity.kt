@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     private var saveEmail : String? = ""
     private var savePasswd : String? = ""
     private var rememberMe: Boolean? = null
+    private lateinit var registerAcc: SharedPreferences
+    private var listAcc : MutableList<User> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,6 +32,15 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        getUserList()
+
+        binding.btLogin.setOnClickListener {
+            when {
+                listAcc.any { it.email != binding.etEmail.text.toString() } -> binding.etEmail.error = "Account does not exist"
+                else -> Toast.makeText(this, "Login Successfully", LENGTH_SHORT).show()
+            }
         }
 
         binding.tvSignUp.setOnClickListener {
@@ -48,6 +59,18 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         callData()
+    }
+
+    private fun getUserList() {
+        registerAcc = this.getSharedPreferences("userAccount", Context.MODE_PRIVATE)
+        val data: Map<String, *> = registerAcc.all
+        for ((key,value) in data) {
+            Log.d("TAG_VALUE", value.toString())
+            val arr = value.toString().split("__")
+            val acc = User(arr[0], arr[1], arr[2], key)
+            listAcc.add(acc)
+            Log.d("TAG_LIST", listAcc.toString())
+        }
     }
 
     @SuppressLint("CommitPrefEdits")
