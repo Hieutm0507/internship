@@ -37,9 +37,19 @@ class MainActivity : AppCompatActivity() {
         getUserList()
 
         binding.btLogin.setOnClickListener {
-            when {
-                listAcc.any { it.email != binding.etEmail.text.toString() } -> binding.etEmail.error = "Account does not exist"
-                else -> Toast.makeText(this, "Login Successfully", LENGTH_SHORT).show()
+            Log.d("TAG_SEARCH", listAcc.toString())
+            val account = listAcc.find { it.email == binding.etEmail.text.toString() }
+            Log.d("TAG_SEARCH_ACC", account.toString())
+            if (account == null) {
+                binding.etEmail.error = "Account does not exist"
+            }
+            else {
+                if (binding.etPassword.text.toString() == account.passwd) {
+                    Toast.makeText(this, "Login Successfully", LENGTH_SHORT).show()
+                }
+                else {
+                    binding.etPassword.error = "Incorrect username or password"
+                }
             }
         }
 

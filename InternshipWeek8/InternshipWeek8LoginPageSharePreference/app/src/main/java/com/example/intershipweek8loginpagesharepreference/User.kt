@@ -1,8 +1,8 @@
 package com.example.intershipweek8loginpagesharepreference
 
 data class User (
-    var username : String,
-    var email : String,
-    val passwd : String,
+    var email : String,             // UNIQUE
+    var passwd : String,
+    val username : String,          // UNIQUE
     val key : String
 )
