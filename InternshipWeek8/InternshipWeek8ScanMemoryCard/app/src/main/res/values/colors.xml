@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bg_memory">#D6F6D5</color>
+    <color name="pink">#E4443F</color>
 </resources>

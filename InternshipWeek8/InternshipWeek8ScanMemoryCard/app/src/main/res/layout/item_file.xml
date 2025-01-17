@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <ImageView
+        android:id="@+id/iv_type"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/ic_launcher_background"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/iv_type"
+        app:layout_constraintStart_toEndOf="@id/iv_type"
+        app:layout_constraintBottom_toTopOf="@id/tv_path"
+        android:layout_marginStart="10dp"
+        android:text="File Name"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        tools:ignore="HardCodedText"/>
+
+    <TextView
+        android:id="@+id/tv_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        app:layout_constraintBottom_toBottomOf="@id/iv_type"
+        app:layout_constraintStart_toEndOf="@id/iv_type"
+        android:layout_marginStart="10dp"
+        android:text="C:\Users\Dell\AndroidStudioProjects"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/iv_type"
+        app:layout_constraintBottom_toBottomOf="@id/iv_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="200MB"
+        android:textSize="14sp"
+        tools:ignore="HardCodedText"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
