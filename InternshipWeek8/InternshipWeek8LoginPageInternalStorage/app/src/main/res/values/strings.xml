@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Intership Week 8 LoginPage SharePreference</string>
+    <string name="greetings">Hi, Welcome Back! 👋</string>
+    <string name="email">Email</string>
+    <string name="hint_email">example@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="hint_password">Enter Your Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="login">Login</string>
+    <string name="not_have_acc">Don\'t have an account ?</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="greetings_signup">Ready to join with us ?</string>
+    <string name="username">Username</string>
+    <string name="hint_username">coding123</string>
+    <string name="cf_password">Confirm Password</string>
+    <string name="hint_cf_password">Re-Enter Your Password</string>
+    <string name="have_acc">Already have an account ?</string>
+
+
+</resources>
