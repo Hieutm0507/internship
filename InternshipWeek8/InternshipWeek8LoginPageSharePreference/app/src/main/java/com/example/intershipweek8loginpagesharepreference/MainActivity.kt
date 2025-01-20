@@ -107,8 +107,11 @@ class MainActivity : AppCompatActivity() {
         savePasswd = sharePreferences.getString("KEY_PASSWD", null)
         rememberMe = sharePreferences.getBoolean("KEY_RMB", false)
 
-        binding.etEmail.setText(saveEmail)
-        binding.etPassword.setText(savePasswd)
         binding.cbRememberMe.isChecked = rememberMe!!
+
+        if (rememberMe == true) {
+            binding.etEmail.setText(saveEmail)
+            binding.etPassword.setText(savePasswd)
+        }
     }
 }

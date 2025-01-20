@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Intership Week 8 LoginPage SharePreference</string>
+    <string name="app_name">Internship Week 8 LoginPage SharePreference</string>
     <string name="greetings">Hi, Welcome Back! 👋</string>
     <string name="email">Email</string>
     <string name="hint_email">example@gmail.com</string>
