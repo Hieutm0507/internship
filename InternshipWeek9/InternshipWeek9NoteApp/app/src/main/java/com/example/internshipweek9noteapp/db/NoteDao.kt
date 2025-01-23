@@ -13,8 +13,23 @@ import com.example.internshipweek9noteapp.model.Note
 interface NoteDao {
     // TODO: Declare methods to access database
 
-    @Query("SELECT * FROM notes ORDER BY id DESC")
+    @Query("SELECT * FROM notes ORDER BY modifyTime DESC")
     fun getAllNote() : MutableList<Note>
+
+    @Query("SELECT * FROM notes ORDER BY modifyTime ASC")
+    fun getAllNoteASC() : MutableList<Note>
+
+    @Query("SELECT * FROM notes ORDER BY id DESC")
+    fun getAllNoteCreDESC() : MutableList<Note>
+
+    @Query("SELECT * FROM notes ORDER BY id ASC")
+    fun getAllNoteCreASC() : MutableList<Note>
+
+    @Query("SELECT * FROM notes ORDER BY title ASC")
+    fun getAllNoteAZ() : MutableList<Note>
+
+    @Query("SELECT * FROM notes ORDER BY title DESC")
+    fun getAllNoteZA() : MutableList<Note>
 
     @Update
     fun updateNote(note: Note)

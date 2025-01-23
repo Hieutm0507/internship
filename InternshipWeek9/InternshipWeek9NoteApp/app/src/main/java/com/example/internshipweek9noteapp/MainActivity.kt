@@ -2,6 +2,7 @@ package com.example.internshipweek9noteapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -16,14 +17,21 @@ import com.example.internshipweek9noteapp.adapter.NoteAdapter
 import com.example.internshipweek9noteapp.databinding.ActivityMainBinding
 import com.example.internshipweek9noteapp.db.NoteDB
 import com.example.internshipweek9noteapp.model.Note
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var noteAdapter: NoteAdapter
     private lateinit var listNote : MutableList<Note>
+    private lateinit var listNoteASC : MutableList<Note>
+    private lateinit var listNoteCreTimeNewToOld : MutableList<Note>
+    private lateinit var listNoteCreTimeOldToNew : MutableList<Note>
+    private lateinit var listNoteAZ : MutableList<Note>
+    private lateinit var listNoteZA : MutableList<Note>
     private lateinit var searchView : SearchView
     private lateinit var searchListNote : MutableList<Note>
-    private var isShown : Boolean = false
+    private var isShown : Boolean = false               // For displaying SearchView
+    private var optionSelect : Int = 0                  // For Sorting
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +57,6 @@ class MainActivity : AppCompatActivity() {
         binding.rvListNote.layoutManager = linearLayoutManager
         binding.rvListNote.adapter = noteAdapter
 
-        // Load Data when this Activity is created
-        loadData()
-
         // Event Listener for Adapter
         noteAdapter.setOnClickListener(object : NoteAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
@@ -59,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
                 val intent = Intent(this@MainActivity, DisplayNoteActivity::class.java)
                 intent.putExtra("EXTRA_SEND_NOTE", note)
+                Log.d("TAG_CHOSEN", note.toString())
                 startActivity(intent)
             }
 
@@ -67,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        
+
         // TODO: Display Search Bar
         binding.ivSearch.setOnClickListener {
             if (!isShown) {
@@ -102,16 +108,19 @@ class MainActivity : AppCompatActivity() {
         })
 
         // TODO: Filter the list
+        binding.ivSort.setOnClickListener {
+            sortingNotes()
+        }
 
         // TODO: Add new note
         binding.abAddNote.setOnClickListener {
-            moveToDisplayActivity()
+//            moveToDisplayActivity()
 
 
             // Tạm thời
-//            val noteNew = Note(title = "12345", content = "This is content")
-//            NoteDB.getInstance(this).getNoteDao().addNote(noteNew)
-//            loadData()
+            val noteNew = Note(title = "Chạy deadline", content = "Deadline dí nhưng vẫn chill")
+            NoteDB.getInstance(this).getNoteDao().addNote(noteNew)
+            loadData()
         }
     }
 
@@ -149,9 +158,72 @@ class MainActivity : AppCompatActivity() {
         popupMenu.show()
     }
 
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
     private fun loadData() {
         listNote = NoteDB.getInstance(this).getNoteDao().getAllNote().toMutableList()
         noteAdapter.setData(listNote)
+    }
+
+    private fun sortingNotes() {
+        val items = arrayOf(
+            "Modification Time (Newest first)",
+            "Modification Time (Oldest first)",
+            "Creation Time (Newest First)",
+            "Creation Time (Oldest First)",
+            "Name A-Z",
+            "Name Z-A"
+        )
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Sorted by").setSingleChoiceItems(items, optionSelect) { _,selectedOptionIndex ->
+                optionSelect = selectedOptionIndex
+            }
+            .setPositiveButton("OK"){ _,_ ->
+                when(optionSelect) {
+                    0 -> {
+                        optionSelect = 0
+                        noteAdapter.setData(listNote)
+                        Toast.makeText(this, "Sorted by Modification Time NTO", Toast.LENGTH_SHORT).show()
+                    }
+                    1 -> {
+                        optionSelect = 1
+                        listNoteASC = NoteDB.getInstance(this).getNoteDao().getAllNoteASC()
+                        noteAdapter.setData(listNoteASC)
+                        Toast.makeText(this, "Sorted by Modification Time OTN", Toast.LENGTH_SHORT).show()
+                    }
+                    2 -> {
+                        optionSelect = 2
+                        listNoteCreTimeNewToOld = NoteDB.getInstance(this).getNoteDao().getAllNoteCreDESC()
+                        noteAdapter.setData(listNoteCreTimeNewToOld)
+                        Toast.makeText(this, "Sorted by Creation Time NTO", Toast.LENGTH_SHORT).show()
+                    }
+                    3 -> {
+                        optionSelect = 3
+                        listNoteCreTimeOldToNew = NoteDB.getInstance(this).getNoteDao().getAllNoteCreASC()
+                        noteAdapter.setData(listNoteCreTimeOldToNew)
+                        Toast.makeText(this, "Sorted by Creation Time OTN", Toast.LENGTH_SHORT).show()
+                    }
+                    4 -> {
+                        optionSelect = 4
+                        listNoteAZ = NoteDB.getInstance(this).getNoteDao().getAllNoteAZ()
+                        noteAdapter.setData(listNoteAZ)
+                        Toast.makeText(this, "Sorted by Name A-Z", Toast.LENGTH_SHORT).show()
+                    }
+                    5 -> {
+                        optionSelect = 5
+                        listNoteZA = NoteDB.getInstance(this).getNoteDao().getAllNoteZA()
+                        noteAdapter.setData(listNoteZA)
+                        Toast.makeText(this, "Sorted by Name Z-A", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .setNegativeButton("Cancel") { dialog,_ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
 }

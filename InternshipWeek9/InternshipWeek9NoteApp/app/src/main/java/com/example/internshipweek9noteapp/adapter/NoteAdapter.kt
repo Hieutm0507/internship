@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internshipweek9noteapp.databinding.ItemNoteBinding
 import com.example.internshipweek9noteapp.model.Note
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder> () {
     private var listNote: MutableList<Note> = mutableListOf()
@@ -42,6 +45,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder> () {
 
         holder.bindingHolder.tvTitle.text = currentNote.title
         holder.bindingHolder.tvPreContent.text = currentNote.content
+        holder.bindingHolder.tvModifyTime.text = convertTime(currentNote.modifyTime)
 
         holder.bindingHolder.ivMore.setOnClickListener {
             mListener?.deleteItem(currentNote, it)
@@ -52,6 +56,12 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder> () {
         mListener = listener
     }
 
+    fun convertTime (time : Long): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd   HH:mm", Locale.getDefault())
+        val formattedDate = dateFormat.format(Date(time))
+
+        return formattedDate
+    }
 
 
     interface OnItemClickListener {

@@ -17,7 +17,5 @@ data class Note (
 
     var content: String = "",
 
-    var createTime: Long = 0,
-
     var modifyTime: Long = 0
 ) : Parcelable
