@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +20,10 @@ import com.example.internshipweek9noteapp.model.Note
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var noteAdapter: NoteAdapter
-    private var isShown : Boolean = false
     private lateinit var listNote : MutableList<Note>
+    private lateinit var searchView : SearchView
+    private lateinit var searchListNote : MutableList<Note>
+    private var isShown : Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
+        
         // TODO: Display Search Bar
         binding.ivSearch.setOnClickListener {
             if (!isShown) {
@@ -78,6 +81,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         // TODO: Search by title and content
+        searchView = binding.svSearchBar
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                query?.let {
+                    searchListNote = NoteDB.getInstance(this@MainActivity).getNoteDao().searchNote(it)
+                    noteAdapter.setData(searchListNote)
+                }
+                if (query.isNullOrEmpty()) {
+                    noteAdapter.setData(listNote)
+                }
+                return true
+            }
+        })
 
         // TODO: Filter the list
 
