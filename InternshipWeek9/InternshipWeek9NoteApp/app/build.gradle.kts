@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -40,6 +42,13 @@ android {
 }
 
 dependencies {
+    // RoomDB
+    implementation(libs.androidx.room.runtime)
+    // Project uses Kotlin source, so we use Kotlin Symbol Processing (KSP)
+    ksp(libs.androidx.room.compiler)
+
+    // View Model Scope
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
