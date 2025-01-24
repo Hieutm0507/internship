@@ -7,4 +7,6 @@
     <string name="add">Add note</string>
     <string name="more">More</string>
     <string name="delete">Delete</string>
+    <string name="back">go back</string>
+    <string name="save_change">save change</string>
 </resources>

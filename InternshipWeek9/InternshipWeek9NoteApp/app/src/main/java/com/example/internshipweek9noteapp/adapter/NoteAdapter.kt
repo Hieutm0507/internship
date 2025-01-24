@@ -56,7 +56,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder> () {
         mListener = listener
     }
 
-    fun convertTime (time : Long): String {
+    private fun convertTime (time : Long): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd   HH:mm", Locale.getDefault())
         val formattedDate = dateFormat.format(Date(time))
 

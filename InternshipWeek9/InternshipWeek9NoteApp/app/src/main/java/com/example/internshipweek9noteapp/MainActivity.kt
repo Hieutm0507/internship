@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     private var isShown : Boolean = false               // For displaying SearchView
     private var optionSelect : Int = 0                  // For Sorting
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
@@ -45,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
 
         // Khởi tạo database
         listNote = NoteDB.getInstance(this).getNoteDao().getAllNote().toMutableList()
@@ -114,19 +114,20 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: Add new note
         binding.abAddNote.setOnClickListener {
-//            moveToDisplayActivity()
+            val intentAdd = Intent(this, AddNewNoteActivity::class.java)
+            startActivity(intentAdd)
 
 
             // Tạm thời
-            val noteNew = Note(title = "Chạy deadline", content = "Deadline dí nhưng vẫn chill")
-            NoteDB.getInstance(this).getNoteDao().addNote(noteNew)
-            loadData()
+//            val noteNew = Note(title = "Chạy deadline", content = "Deadline dí nhưng vẫn chill")
+//            NoteDB.getInstance(this).getNoteDao().addNote(noteNew)
+//            loadData()
         }
     }
 
-    private fun moveToDisplayActivity() {
-        val intent = Intent(this, DisplayNoteActivity::class.java)
-        startActivity(intent)
+    override fun onResume() {
+        super.onResume()
+        loadData()
     }
 
     private fun deleteNote(item: Note, view: View) {
@@ -156,11 +157,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         popupMenu.show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        loadData()
     }
 
     private fun loadData() {
