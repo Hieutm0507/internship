@@ -6,7 +6,7 @@ import com.example.internshipweek9dictionaryapp.model.Chinese
 
 @Dao
 interface ChineseDao {
-    @Query("SELECT * FROM han_tu ORDER BY id ASC")
+    @Query("SELECT * FROM han_tu ORDER BY _id ASC")
     fun getAllWord() : List<Chinese>
 
     @Query("SELECT * FROM han_tu WHERE viet LIKE '%' || :query || '%'")

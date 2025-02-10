@@ -10,15 +10,15 @@ import com.example.internshipweek9dictionaryapp.model.VietChina
 @Database(entities = [VietChina::class, Chinese::class], version = 1, exportSchema = false)
 abstract class DictDB : RoomDatabase() {
     companion object {
-        private const val NAME = "Dict_DB"
+        private const val NAME = "vt.db"
         @Volatile
         private var instance : DictDB? = null
         fun getInstance(context: Context) : DictDB {
             return instance ?: synchronized(this) {
                 instance =
                     Room.databaseBuilder(context.applicationContext, DictDB::class.java, NAME)
-                        .createFromAsset("vt.db")
-                        .allowMainThreadQueries().build()
+                        .createFromAsset(NAME)
+                        .build()
                 instance!!
             }
         }

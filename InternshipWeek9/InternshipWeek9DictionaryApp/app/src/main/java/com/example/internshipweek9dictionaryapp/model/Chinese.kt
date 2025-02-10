@@ -9,18 +9,18 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "han_tu")
 @Parcelize
 data class Chinese (
-    @PrimaryKey
-    val id : Int = 0,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo("_id")
+    val id : Int?,
 
     @ColumnInfo("han")
-    val han : String = "",
+    val han : String?,
 
     @ColumnInfo("viet")
-    val viet : String = "",
+    val viet : String?,
 
     @ColumnInfo("pinyin")
-    val pinyin : String = "",
+    val pinyin : String?,
 
     @ColumnInfo("mean")
-    val mean : String = ""
+    val mean : String?
 ) : Parcelable

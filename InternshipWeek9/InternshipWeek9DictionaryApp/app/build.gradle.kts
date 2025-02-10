@@ -47,6 +47,14 @@ dependencies {
     // Project uses Kotlin source, so we use Kotlin Symbol Processing (KSP)
     ksp(libs.androidx.room.compiler)
 
+
+    // If this project only uses Java source, use the Java annotationProcessor
+    // No additional plugins are necessary
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.6.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
