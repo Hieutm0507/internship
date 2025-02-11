@@ -1,12 +1,13 @@
 package com.example.internshipweek9dictionaryapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internshipweek9dictionaryapp.databinding.ItemChineseBinding
 import com.example.internshipweek9dictionaryapp.model.Chinese
 
-class DictAdapter(private val listChinese: List<Chinese> = listOf()) : RecyclerView.Adapter<DictAdapter.DictViewHolder> () {
+class ChineseAdapter(private var listChinese: List<Chinese> = listOf()) : RecyclerView.Adapter<ChineseAdapter.DictViewHolder> () {
 
     inner class DictViewHolder(val binding : ItemChineseBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -19,10 +20,18 @@ class DictAdapter(private val listChinese: List<Chinese> = listOf()) : RecyclerV
 
     override fun getItemCount(): Int = listChinese.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DictViewHolder, position: Int) {
         val currentWord = listChinese[position]
 
         holder.binding.tvChinese.text = currentWord.han
         holder.binding.tvViet.text = currentWord.viet
+        holder.binding.tvPinyin.text = "[ ${currentWord.pinyin} ]"
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newItems: List<Chinese>) {
+        listChinese = newItems
+        notifyDataSetChanged()
     }
 }

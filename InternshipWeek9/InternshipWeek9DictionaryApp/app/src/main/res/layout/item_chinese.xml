@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginVertical="5dp"
+    android:background="@drawable/bg_item"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -19,16 +21,51 @@
         android:textSize="24sp"
         tools:ignore="HardcodedText"/>
 
+    <View
+        android:id="@+id/v_stack"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/tv_chinese"
+        app:layout_constraintBottom_toBottomOf="@id/tv_chinese"
+        app:layout_constraintStart_toEndOf="@id/tv_chinese"
+        android:layout_marginStart="10dp"
+        android:background="@color/black"/>
+
     <TextView
         android:id="@+id/tv_viet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/tv_chinese"
-        app:layout_constraintBottom_toBottomOf="@id/tv_chinese"
-        app:layout_constraintStart_toEndOf="@id/tv_chinese"
+        app:layout_constraintBottom_toTopOf="@id/tv_phonetics"
+        app:layout_constraintStart_toEndOf="@id/v_stack"
         android:layout_marginStart="20dp"
         android:text="lận"
         android:textStyle="bold"
         android:textSize="20sp"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/tv_phonetics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_viet"
+        app:layout_constraintBottom_toBottomOf="@id/tv_chinese"
+        app:layout_constraintStart_toStartOf="@id/tv_viet"
+        android:layout_marginTop="5dp"
+        android:text="Phiên âm:"
+        android:textSize="12sp"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/tv_pinyin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_phonetics"
+        app:layout_constraintBottom_toBottomOf="@id/tv_phonetics"
+        app:layout_constraintStart_toEndOf="@id/tv_phonetics"
+        android:layout_marginStart="5dp"
+        android:text="[lin4]"
+        android:textStyle="bold"
+        android:textSize="12sp"
         tools:ignore="HardcodedText"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
