@@ -8,4 +8,6 @@
     <string name="han_viet">Hán việt:</string>
     <string name="common_source">Từ điển trích dẫn:</string>
     <string name="phonetics">Phiên âm:</string>
+    <string name="vietnamese_word">Tiếng Việt:</string>
+    <string name="chinese_word">Tiếng Trung:</string>
 </resources>

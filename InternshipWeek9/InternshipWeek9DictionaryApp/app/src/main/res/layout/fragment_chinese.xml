@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#E2E5DE"
+    android:clickable="false"
+    android:focusable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="20dp"
     tools:context=".ChineseFragment">
 
     <ImageButton
@@ -118,7 +121,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_han_viet"
         app:layout_constraintStart_toStartOf="@id/tv_han_viet"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="@string/common_source"
         android:textStyle="italic"
         android:textColor="@color/black"
@@ -140,7 +143,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/tv_common"
         app:layout_constraintEnd_toEndOf="parent"
-        android:lineSpacingExtra="3dp"
+        android:lineSpacingExtra="5dp"
         android:text="\n\t1. Truyền. Ðem của người này mà trao cho kẻ kia là truyền. Như truyền vị 傳位 truyền ngôi, truyền đạo 傳道 truyền đạo, v.v. \n\t2. Sai người bảo. Như truyền kiến 傳見 truyền cho vào yết kiến. \n\t3. Một âm là truyện. Dạy bảo. Như Xuân Thu Tả thị truyện 春秋左氏傳 họ Tả giải nghĩa kinh Xuân Thu để dạy bảo người. \n\t4. Truyện ký. Như Liệt nữ truyện 列女傳 truyện các gái hiền. \n\t5. Một âm nữa là truyến, nhà trạm. Nhà để đưa kẻ đi đón kẻ lại cũng gọi là truyến."
         android:textSize="18sp"
         android:textColor="@color/black"

@@ -2,6 +2,7 @@ package com.example.internshipweek9dictionaryapp
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -18,6 +19,7 @@ import com.example.internshipweek9dictionaryapp.model.VietChina
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -101,15 +103,57 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    // TODO: Set up Event listener right after the adapter is created
+    //   Instead of calling the Event listener function outside of the function below
+    //   TARGET: To prevent from crashing app with the error "Adapter var hasn't been initialized"
     private fun setUpAdapter() {
         if (dictType == "Viet-Chi") {
             vietChinaAdapter = VietChinaAdapter(listVietTrung)
             binding.rvWords.layoutManager = LinearLayoutManager(this)
             binding.rvWords.adapter = vietChinaAdapter
-        } else {
+
+            vietChinaAdapter.setOnClickListener(object : VietChinaAdapter.OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    val selectedItem : VietChina = listVietTrung[position]
+                    Log.d("TAG_OBJECT", selectedItem.toString())
+
+                    val bundle = Bundle()
+                    bundle.putParcelable("SEND_VIET_CHINA", selectedItem)
+
+                    val vietChinaFragment = VietChinaFragment()
+                    vietChinaFragment.arguments = bundle
+
+                    val ft = supportFragmentManager.beginTransaction()
+                    ft.add(R.id.fm_display, vietChinaFragment)
+                    ft.addToBackStack(null)
+                    ft.commit()
+                }
+            })
+        }
+
+        else {
             chineseAdapter = ChineseAdapter(listChinese)
             binding.rvWords.layoutManager = LinearLayoutManager(this)
             binding.rvWords.adapter = chineseAdapter
+
+            chineseAdapter.setOnClickListener(object : ChineseAdapter.OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    val selectedItem : Chinese = listChinese[position]
+                    Log.d("TAG_OBJECT", selectedItem.toString())
+
+                    val bundle = Bundle()
+                    bundle.putParcelable("SEND_CHINESE", selectedItem)
+
+                    val chineseFragment = ChineseFragment()
+                    chineseFragment.arguments = bundle
+
+                    val ft = supportFragmentManager.beginTransaction()
+                    ft.add(R.id.fm_display, chineseFragment)
+                    ft.addToBackStack(null)
+                    ft.commit()
+                }
+            })
         }
     }
 

@@ -5,13 +5,19 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.internshipweek9dictionaryapp.adapter.ChineseAdapter.OnItemClickListener
 import com.example.internshipweek9dictionaryapp.databinding.ItemVietChinaBinding
 import com.example.internshipweek9dictionaryapp.model.VietChina
 
 class VietChinaAdapter(private var listVietChina: List<VietChina> = listOf()) : RecyclerView.Adapter<VietChinaAdapter.DictViewHolder> () {
+    private var mListener : OnItemClickListener? = null
 
     inner class DictViewHolder(val binding : ItemVietChinaBinding) : RecyclerView.ViewHolder(binding.root) {
-
+        init {
+            binding.root.setOnClickListener {
+                mListener?.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DictViewHolder {
@@ -30,16 +36,17 @@ class VietChinaAdapter(private var listVietChina: List<VietChina> = listOf()) : 
         holder.binding.tvViet.text = currentWord.word
     }
 
+    fun setOnClickListener( listener : OnItemClickListener) {
+        mListener = listener
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newItems: List<VietChina>) {
         listVietChina = newItems
         notifyDataSetChanged()
     }
 
-    // TODO: Convert HTML code to XML
-    //   Because the column "CONTENT" in "viet_trung" table contains html elements
-    private fun convertHtmlToXml( htmlString : String ) : String {
-        val xmlString = String.format(htmlString)
-        return xmlString
+    interface OnItemClickListener {
+        fun onItemClick(position : Int)
     }
 }

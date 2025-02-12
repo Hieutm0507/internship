@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#E2E5DE"
+    android:clickable="true"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".VietChinaFragment">
+
+    <ImageButton
+        android:id="@+id/bt_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_search"
+        android:src="@drawable/ic_back"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/go_back"/>
+
+    <TextView
+        android:id="@+id/tv_viet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bt_back"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="60dp"
+        android:text="@string/vietnamese_word"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_viet"
+        app:layout_constraintStart_toStartOf="@id/tv_viet"
+        app:layout_constraintEnd_toEndOf="@id/tv_viet"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/tv_viet"
+        app:layout_constraintStart_toEndOf="@id/tv_viet"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:text="truyện, truyền, truyến"
+        tools:ignore="HardcodedText"/>
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_viet"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_trung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/v_line"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:text="@string/chinese_word"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_trung"
+        app:layout_constraintStart_toStartOf="@id/tv_trung"
+        app:layout_constraintEnd_toEndOf="@id/tv_trung"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_trung"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_trung"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:lineSpacingExtra="5dp"
+        android:text="\n\t1. Truyền. Ðem của người này mà trao cho kẻ kia là truyền. Như truyền vị 傳位 truyền ngôi, truyền đạo 傳道 truyền đạo, v.v. \n\t2. Sai người bảo. Như truyền kiến 傳見 truyền cho vào yết kiến. \n\t3. Một âm là truyện. Dạy bảo. Như Xuân Thu Tả thị truyện 春秋左氏傳 họ Tả giải nghĩa kinh Xuân Thu để dạy bảo người. \n\t4. Truyện ký. Như Liệt nữ truyện 列女傳 truyện các gái hiền. \n\t5. Một âm nữa là truyến, nhà trạm. Nhà để đưa kẻ đi đón kẻ lại cũng gọi là truyến."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        tools:ignore="HardcodedText"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
