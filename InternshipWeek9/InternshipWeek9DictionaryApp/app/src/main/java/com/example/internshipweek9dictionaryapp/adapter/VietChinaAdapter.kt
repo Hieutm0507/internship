@@ -5,7 +5,6 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.internshipweek9dictionaryapp.adapter.ChineseAdapter.OnItemClickListener
 import com.example.internshipweek9dictionaryapp.databinding.ItemVietChinaBinding
 import com.example.internshipweek9dictionaryapp.model.VietChina
 
@@ -15,7 +14,10 @@ class VietChinaAdapter(private var listVietChina: List<VietChina> = listOf()) : 
     inner class DictViewHolder(val binding : ItemVietChinaBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                mListener?.onItemClick(adapterPosition)
+                val selectedItem = getItem(adapterPosition)
+                if (selectedItem != null) {
+                    mListener?.onItemClick(selectedItem)
+                }
             }
         }
     }
@@ -46,7 +48,11 @@ class VietChinaAdapter(private var listVietChina: List<VietChina> = listOf()) : 
         notifyDataSetChanged()
     }
 
+    fun getItem(position: Int): VietChina? {
+        return if (position in listVietChina.indices) listVietChina[position] else null
+    }
+
     interface OnItemClickListener {
-        fun onItemClick(position : Int)
+        fun onItemClick(item : VietChina)
     }
 }

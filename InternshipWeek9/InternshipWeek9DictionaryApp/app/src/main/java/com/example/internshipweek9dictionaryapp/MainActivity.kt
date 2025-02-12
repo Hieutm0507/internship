@@ -19,7 +19,6 @@ import com.example.internshipweek9dictionaryapp.model.VietChina
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -114,8 +113,8 @@ class MainActivity : AppCompatActivity() {
             binding.rvWords.adapter = vietChinaAdapter
 
             vietChinaAdapter.setOnClickListener(object : VietChinaAdapter.OnItemClickListener {
-                override fun onItemClick(position: Int) {
-                    val selectedItem : VietChina = listVietTrung[position]
+                override fun onItemClick(item: VietChina) {
+                    val selectedItem : VietChina? = listVietTrung.find { it.id == item.id }
                     Log.d("TAG_OBJECT", selectedItem.toString())
 
                     val bundle = Bundle()
@@ -138,8 +137,8 @@ class MainActivity : AppCompatActivity() {
             binding.rvWords.adapter = chineseAdapter
 
             chineseAdapter.setOnClickListener(object : ChineseAdapter.OnItemClickListener {
-                override fun onItemClick(position: Int) {
-                    val selectedItem : Chinese = listChinese[position]
+                override fun onItemClick(item : Chinese) {
+                    val selectedItem : Chinese? = listChinese.find { it.id == item.id }
                     Log.d("TAG_OBJECT", selectedItem.toString())
 
                     val bundle = Bundle()

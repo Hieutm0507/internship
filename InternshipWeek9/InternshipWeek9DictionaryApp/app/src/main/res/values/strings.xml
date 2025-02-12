@@ -2,7 +2,7 @@
     <string name="app_name">VIETNAMESE DICTIONARY</string>
     <string name="dict_chi_vie">Việt - Trung</string>
     <string name="dict_chinese">Hán Tự</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="go_back">Go back</string>
     <string name="han_viet">Hán việt:</string>

@@ -1,7 +1,6 @@
 package com.example.internshipweek9dictionaryapp.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +13,10 @@ class ChineseAdapter(private var listChinese: List<Chinese> = listOf()) : Recycl
     inner class DictViewHolder(val binding : ItemChineseBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                mListener?.onItemClick(adapterPosition)
+                val selectedItem = getItem(adapterPosition)
+                if (selectedItem != null) {
+                    mListener?.onItemClick(selectedItem)
+                }
             }
         }
     }
@@ -45,7 +47,12 @@ class ChineseAdapter(private var listChinese: List<Chinese> = listOf()) : Recycl
         notifyDataSetChanged()
     }
 
+    fun getItem(position: Int): Chinese? {
+        return if (position in listChinese.indices) listChinese[position]
+        else null
+    }
+
     interface OnItemClickListener {
-        fun onItemClick(position : Int)
+        fun onItemClick(item : Chinese)
     }
 }
