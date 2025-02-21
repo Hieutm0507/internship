@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">c Instagram</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="create_new">Create New</string>
+    <string name="noti">Notification</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chat">Chat</string>
+    <string name="posts">Posts</string>
+    <string name="followers">Followers</string>
+    <string name="create_new_account">Create new account</string>
+    <string name="author">Hieutm</string>
+    <string name="hint_login">Username, email or mobile number</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="my_story">My Story</string>
+    <string name="full_name">Full name</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
