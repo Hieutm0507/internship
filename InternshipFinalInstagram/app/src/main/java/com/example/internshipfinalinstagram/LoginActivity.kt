@@ -8,17 +8,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.internshipfinalinstagram.databinding.ActivityLoginBinding
 import com.example.internshipfinalinstagram.models.LoginRequest
-import com.example.internshipfinalinstagram.repositories.APIRepositoryImpl
 import com.example.internshipfinalinstagram.viewmodels.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@Suppress("UNCHECKED_CAST")
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var loginViewModel: LoginViewModel
+    private val loginViewModel: LoginViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +27,8 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        observeViewModel()
 
         binding.btCreateAcc.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -43,19 +42,10 @@ class LoginActivity : AppCompatActivity() {
 
             login(loginRequest)
         }
-
-        val apiRepository = APIRepositoryImpl()
-        loginViewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return LoginViewModel(apiRepository) as T
-            }
-        })[LoginViewModel::class.java]
-
-        observeViewModel()
     }
 
     private fun observeViewModel() {
-        loginViewModel.loginResult.observe(this) { result ->
+        loginViewModel.authResult.observe(this) { result ->
             result.onSuccess { response ->
                 Toast.makeText(this, "Login Success: ${response.status}", Toast.LENGTH_SHORT).show()
 
@@ -69,16 +59,13 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        loginViewModel.loginState.observe(this) { isLoading ->
+        // Displaying Progress Bar when connecting to the API
+        loginViewModel.authState.observe(this) { isLoading ->
             if (isLoading) {
                 binding.pbProgressBar.visibility = View.VISIBLE
             } else {
                 binding.pbProgressBar.visibility = View.GONE
             }
-        }
-
-        loginViewModel.loginError.observe(this) { errorMessage ->
-            Toast.makeText(this, "Error: $errorMessage", Toast.LENGTH_SHORT).show()
         }
     }
 

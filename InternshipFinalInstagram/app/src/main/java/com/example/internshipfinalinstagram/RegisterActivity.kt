@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.internshipfinalinstagram.databinding.ActivityRegisterBinding
+import com.example.internshipfinalinstagram.models.RegisterRequest
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding : ActivityRegisterBinding
@@ -25,5 +26,15 @@ class RegisterActivity : AppCompatActivity() {
         binding.btBack.setOnClickListener {
             finish()
         }
+
+        binding.btSignup.setOnClickListener {
+            val name = binding.etName.text.toString()
+            val username = binding.etUsername.text.toString()
+            val password = binding.etPassword.text.toString()
+        }
+    }
+
+    private fun register(registerRequest: RegisterRequest) {
+
     }
 }
