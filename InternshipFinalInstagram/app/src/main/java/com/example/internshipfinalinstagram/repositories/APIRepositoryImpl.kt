@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.internshipfinalinstagram.apis.ApiClient
 import com.example.internshipfinalinstagram.models.LoginRequest
 import com.example.internshipfinalinstagram.models.AuthResponse
+import com.example.internshipfinalinstagram.models.RegisterRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,4 +39,32 @@ class APIRepositoryImpl : APIRepository {
 
          return ApiClient.getApi().loginUser(loginRequest)
      }
+
+    override fun registerUser(
+        registerRequest: RegisterRequest,
+        callback: (Result<AuthResponse>) -> Unit
+    ): Call<AuthResponse> {
+        ApiClient.getApi().registerUser(registerRequest).enqueue(object : Callback<AuthResponse> {
+            override fun onResponse(call: Call<AuthResponse>?, response: Response<AuthResponse>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        if (it.code == 400) {
+                            callback(Result.failure(Exception(it.message)))
+                        }
+                        else {
+                            callback(Result.success(it))
+                        }
+                    }
+                }
+                else {
+                    callback(Result.failure(Exception("Register failed with code: ${response.code()}")))
+                }
+            }
+
+            override fun onFailure(call: Call<AuthResponse>?, t: Throwable) {
+                callback(Result.failure(t))
+            }
+        })
+        return ApiClient.getApi().registerUser(registerRequest)
+    }
 }

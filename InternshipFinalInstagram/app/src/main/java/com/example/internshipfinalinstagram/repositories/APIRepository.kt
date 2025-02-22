@@ -7,4 +7,6 @@ import retrofit2.Call
 
 interface APIRepository {
     fun loginUser(loginRequest: LoginRequest, callback: (Result<AuthResponse>) -> Unit) : Call<AuthResponse>
+
+    fun registerUser(registerRequest: RegisterRequest, callback: (Result<AuthResponse>) -> Unit) : Call<AuthResponse>
 }

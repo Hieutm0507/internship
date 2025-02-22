@@ -10,12 +10,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.internshipfinalinstagram.databinding.ActivityLoginBinding
 import com.example.internshipfinalinstagram.models.LoginRequest
-import com.example.internshipfinalinstagram.viewmodels.LoginViewModel
+import com.example.internshipfinalinstagram.viewmodels.AuthViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private val loginViewModel: LoginViewModel by viewModel()
+    private val loginViewModel: AuthViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

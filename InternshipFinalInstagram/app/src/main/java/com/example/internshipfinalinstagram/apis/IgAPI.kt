@@ -10,4 +10,7 @@ import retrofit2.http.POST
 interface IgAPI {
     @POST("api/v1/login")
     fun loginUser(@Body loginRequest : LoginRequest) : Call<AuthResponse>
+
+    @POST("api/v1/signup")
+    fun registerUser(@Body registerRequest: RegisterRequest) : Call<AuthResponse>
 }
