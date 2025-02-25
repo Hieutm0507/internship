@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/ll_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ib_more"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher_background"
+                android:adjustViewBounds="true"
+                android:importantForAccessibility="no" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="instagramUser"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/color_text"
+            tools:ignore="HardcodedText"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ib_more"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintTop_toTopOf="@id/ll_author"
+        app:layout_constraintBottom_toBottomOf="@id/ll_author"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_more"
+        android:contentDescription="@string/more"/>
+    
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ll_author"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/img_sample"
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no"/>
+
+    <ImageButton
+        android:id="@+id/ib_like"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_image"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/ic_heart"
+        android:importantForAccessibility="no"/>
+
+    <TextView
+        android:id="@+id/tv_num_liked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ib_like"
+        app:layout_constraintBottom_toBottomOf="@id/ib_like"
+        app:layout_constraintStart_toEndOf="@id/ib_like"
+        android:layout_marginStart="5dp"
+        android:text="45"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/color_text"/>
+
+    <ImageButton
+        android:id="@+id/ib_cmt"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toTopOf="@id/ib_like"
+        app:layout_constraintBottom_toBottomOf="@id/ib_like"
+        app:layout_constraintStart_toEndOf="@id/tv_num_liked"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/ic_cmt"
+        android:importantForAccessibility="no"/>
+
+    <TextView
+        android:id="@+id/tv_num_cmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ib_cmt"
+        app:layout_constraintBottom_toBottomOf="@id/ib_cmt"
+        app:layout_constraintStart_toEndOf="@id/ib_cmt"
+        android:layout_marginStart="5dp"
+        android:text="2"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/color_text"/>
+
+    <ImageButton
+        android:id="@+id/ib_share"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintTop_toTopOf="@id/ib_like"
+        app:layout_constraintBottom_toBottomOf="@id/ib_like"
+        app:layout_constraintStart_toEndOf="@id/tv_num_cmt"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/ic_share"
+        android:rotation="16"
+        android:importantForAccessibility="no"/>
+
+    <ImageButton
+        android:id="@+id/ib_save"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintTop_toTopOf="@id/ib_like"
+        app:layout_constraintBottom_toBottomOf="@id/ib_like"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_save"
+        android:importantForAccessibility="no"/>
+
+    <TextView
+        android:id="@+id/tv_list_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ib_like"
+        app:layout_constraintStart_toStartOf="@id/ib_like"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/color_text"
+        android:textSize="18sp"
+        android:text="Liked by Lionel Messi and others"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_list_like"
+        app:layout_constraintStart_toStartOf="@id/ib_like"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/color_text"
+        android:textSize="18sp"
+        android:text="instagramUser"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_author"
+        app:layout_constraintStart_toStartOf="@id/ib_like"
+        app:layout_constraintEnd_toEndOf="@id/ib_save"
+        android:textColor="@color/color_text"
+        android:textSize="18sp"
+        android:text="Beautiful scene with mon amie"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_content"
+        app:layout_constraintStart_toStartOf="@id/ib_like"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        android:text="February 24, 2025"
+        tools:ignore="HardcodedText"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
