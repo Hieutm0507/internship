@@ -4,14 +4,13 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.internshipfinalinstagram.models.AllPostsResponse
 import com.example.internshipfinalinstagram.models.PostData
 import com.example.internshipfinalinstagram.repositories.APIRepositoryImpl
 import com.example.internshipfinalinstagram.untilities.Coroutines
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class PostViewModel(private val apiRepositoryImpl: APIRepositoryImpl) : ViewModel() {
-    val allPosts = MutableLiveData<AllPostsResponse>()
-    val postList = MutableLiveData<List<PostData>>()
     private val getPostState = MutableLiveData<PostDataState>()
     val get : LiveData<PostDataState> get() = getPostState
 
@@ -20,7 +19,8 @@ class PostViewModel(private val apiRepositoryImpl: APIRepositoryImpl) : ViewMode
             runCatching {
                 emitPostDataState(isLoading = true)
                 apiRepositoryImpl.getAllPosts(sort, page, perPage) {
-                    val data = it
+                    val data = it.data.data
+                    Log.d("TAG_POSTDATA", data.toString())
                 }
             }.onFailure { error ->
                 emitPostDataState(error = error.message.toString())

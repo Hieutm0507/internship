@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
 
 
         // TODO: Get list of posts for displaying in HomeFragment
-        val psa = postViewModel.getAllPosts(sort, page, perPage)
-        Log.d("TAG_POSTS", psa.toString())
+//        val psa = postViewModel.getAllPosts(sort, page, perPage)
+//        Log.d("TAG_POSTS", psa.toString())
 //        postViewModel.allPosts.observe(this) { posts ->
 //            Log.d("TAG_POSTS", posts.toString()) // Log dữ liệu khi nhận được từ API
 //        }

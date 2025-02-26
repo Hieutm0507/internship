@@ -5,13 +5,10 @@ import com.example.internshipfinalinstagram.apis.ApiClient
 import com.example.internshipfinalinstagram.models.AllPostsResponse
 import com.example.internshipfinalinstagram.models.LoginRequest
 import com.example.internshipfinalinstagram.models.AuthResponse
-import com.example.internshipfinalinstagram.models.PostData
 import com.example.internshipfinalinstagram.models.RegisterRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class APIRepositoryImpl : APIRepository {
     override fun loginUser(
@@ -77,9 +74,9 @@ class APIRepositoryImpl : APIRepository {
         sort: String,
         page: Int,
         perPage: Int,
-        callback: (Result<AllPostsResponse>?) -> Unit
+        callback: (AllPostsResponse) -> Unit
     ) {
-        var data: AllPostsResponse?= null
+        var data: AllPostsResponse
         ApiClient.getApi().getAllPost(sort, page, perPage)
             .enqueue(object : Callback<AllPostsResponse> {
                 override fun onResponse(
@@ -88,27 +85,10 @@ class APIRepositoryImpl : APIRepository {
                 ) {
                     data = response.body()
                     callback(data)
-                    if (response.isSuccessful) {
-                        response.body()?.let {
-                            callback(Result.success(it))
-                        } ?: callback(Result.failure(Exception("Response body is null")))
-                        Log.d("TAG_POST", response.body().toString())
-                    } else {
-                        callback(
-                            Result.failure(
-                                Exception(
-                                    "API error: ${
-                                        response.errorBody()?.string()
-                                    }"
-                                )
-                            )
-                        )
-                    }
+                    Log.d("TAG_POST_TEST", response.body().toString())
                 }
 
                 override fun onFailure(call: Call<AllPostsResponse>?, t: Throwable?) {
-                    callback(Result.failure(t ?: Exception("Unknown error")))
-                    return
                 }
             })
     }

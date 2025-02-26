@@ -29,11 +29,11 @@ class HomeFragment : Fragment() {
 
         return binding.root
 
-//        val psa = postViewModel.getAllPosts(sort, page, perPage)
-//        Log.d("TAG_POSTS", psa.toString())
-//
+        val psa = postViewModel.getAllPosts(sort, page, perPage)
+        Log.d("TAG_POSTS", psa.toString())
+
 //        postAdapter = PostAdapter(psa)
-//        binding.rvStories.layoutManager = LinearLayoutManager(context)
-//        binding.rvStories.adapter = postAdapter
+        binding.rvStories.layoutManager = LinearLayoutManager(context)
+        binding.rvStories.adapter = postAdapter
     }
 }
