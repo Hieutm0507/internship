@@ -12,7 +12,6 @@ import com.example.internshipfinalinstagram.databinding.FragmentHomeBinding
 import com.example.internshipfinalinstagram.viewmodels.PostViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@Suppress("UNREACHABLE_CODE")
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private val postViewModel: PostViewModel by viewModel()
@@ -27,13 +26,35 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        initMain()
+
         return binding.root
+    }
 
-        val psa = postViewModel.getAllPosts(sort, page, perPage)
-        Log.d("TAG_POSTS", psa.toString())
+    private fun initMain() {
+        setObserver()
+        initView()
+    }
 
-//        postAdapter = PostAdapter(psa)
+    private fun initView() {
+        postAdapter = PostAdapter(emptyList()) // Khởi tạo adapter với danh sách rỗng ban đầu
         binding.rvStories.layoutManager = LinearLayoutManager(context)
         binding.rvStories.adapter = postAdapter
     }
+
+    private fun setObserver() {
+        postViewModel.getAllPosts(sort, page, perPage)
+
+        postViewModel.postsLiveData.observe(viewLifecycleOwner) { postDataState ->
+            if (postDataState.isLoading) {
+                Log.d("TAG_LOADING", "Đang tải dữ liệu...")
+            } else if (postDataState.result != null) {
+                postAdapter.updateData(postDataState.result)
+                Log.d("TAG_POSTS", postDataState.result.toString())
+            } else if (postDataState.error != null) {
+                Log.e("TAG_ERROR", "Lỗi lấy bài viết: ${postDataState.error}")
+            }
+        }
+    }
+
 }

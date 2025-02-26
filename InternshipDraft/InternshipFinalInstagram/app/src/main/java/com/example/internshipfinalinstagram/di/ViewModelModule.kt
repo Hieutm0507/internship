@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     single {
-        APIRepositoryImpl()
+        APIRepositoryImpl(get())
     }
 
     viewModel {

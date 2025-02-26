@@ -2,15 +2,19 @@ package com.example.internshipfinalinstagram.repositories
 
 import android.util.Log
 import com.example.internshipfinalinstagram.apis.ApiClient
+import com.example.internshipfinalinstagram.apis.IgAPI
 import com.example.internshipfinalinstagram.models.AllPostsResponse
 import com.example.internshipfinalinstagram.models.LoginRequest
 import com.example.internshipfinalinstagram.models.AuthResponse
 import com.example.internshipfinalinstagram.models.RegisterRequest
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class APIRepositoryImpl : APIRepository {
+class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
     override fun loginUser(
         loginRequest: LoginRequest,
         callback: (Result<AuthResponse>?) -> Unit
@@ -70,26 +74,25 @@ class APIRepositoryImpl : APIRepository {
         return ApiClient.getApi().registerUser(registerRequest)
     }
 
-    override suspend fun getAllPosts(
-        sort: String,
-        page: Int,
-        perPage: Int,
-        callback: (AllPostsResponse) -> Unit
-    ) {
-        var data: AllPostsResponse
-        ApiClient.getApi().getAllPost(sort, page, perPage)
-            .enqueue(object : Callback<AllPostsResponse> {
-                override fun onResponse(
-                    call: Call<AllPostsResponse>,
-                    response: Response<AllPostsResponse>
-                ) {
-                    data = response.body()
-                    callback(data)
-                    Log.d("TAG_POST_TEST", response.body().toString())
-                }
+    override suspend fun getAllPosts(sort: String, page: Int, perPage: Int, callback: (AllPostsResponse?) -> Unit) {
+        var dataAfterGetAllPost: AllPostsResponse ?= null
+        CoroutineScope(Dispatchers.Default).launch {
+            apiService.getAllPost(sort, page, perPage)
+                .enqueue(object : Callback<AllPostsResponse>{
+                    override fun onResponse(
+                        call: Call<AllPostsResponse>,
+                        response: Response<AllPostsResponse>
+                    ) {
+                        dataAfterGetAllPost = response.body()
+                        callback(dataAfterGetAllPost)
+                    }
 
-                override fun onFailure(call: Call<AllPostsResponse>?, t: Throwable?) {
-                }
-            })
+                    override fun onFailure(call: Call<AllPostsResponse>, t: Throwable) {
+                        t.printStackTrace()
+                        callback(dataAfterGetAllPost)
+                        return
+                    }
+                })
+        }
     }
 }
