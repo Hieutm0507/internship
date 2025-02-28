@@ -2,43 +2,54 @@ package com.example.internshipfinalinstagram.repositories
 
 import android.util.Log
 import com.example.internshipfinalinstagram.apis.ApiClient
+import com.example.internshipfinalinstagram.apis.IgAPI
+import com.example.internshipfinalinstagram.models.AllPostsResponse
 import com.example.internshipfinalinstagram.models.LoginRequest
 import com.example.internshipfinalinstagram.models.AuthResponse
+import com.example.internshipfinalinstagram.models.In4UserResponse
+import com.example.internshipfinalinstagram.models.LikeRequest
+import com.example.internshipfinalinstagram.models.LikeResponse
 import com.example.internshipfinalinstagram.models.RegisterRequest
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class APIRepositoryImpl : APIRepository {
-     override fun loginUser(loginRequest: LoginRequest, callback: (Result<AuthResponse>) -> Unit): Call<AuthResponse> {
-         ApiClient.getApi().loginUser(loginRequest).enqueue(object : Callback<AuthResponse> {
+class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
+    override fun loginUser(
+        loginRequest: LoginRequest,
+        callback: (Result<AuthResponse>?) -> Unit
+    ): Call<AuthResponse> {
+        ApiClient.getApi().loginUser(loginRequest).enqueue(object : Callback<AuthResponse> {
 
-             // Khi connect tới API thành công
-             // Hướng làm: Sử dụng callback khi move từ LoginViewModel sang APIRepositoryImpl
-             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                 if (response.isSuccessful) {
-                     response.body()?.let {
-                         Log.i(APIRepositoryImpl::class.java.simpleName, "onResponse: code: $it")
+            // Khi connect tới API thành công
+            // Hướng làm: Sử dụng callback khi move từ LoginViewModel sang APIRepositoryImpl
+            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        Log.i(APIRepositoryImpl::class.java.simpleName, "onResponse: code: $it")
 
-                         if (it.code == 400 || it.code == 404) {
-                             callback(Result.failure(Exception(it.message)))
-                         } else {
-                             callback(Result.success(it))
-                         }
-                     }
-                 } else {
-                     callback(Result.failure(Exception("Login failed with code: ${response.code()}")))
-                 }
-             }
+                        if (it.code == 400 || it.code == 404) {
+                            callback(Result.failure(Exception(it.message)))
+                        } else {
+                            callback(Result.success(it))
+                        }
+                    }
+                } else {
+                    callback(Result.failure(Exception("Login failed with code: ${response.code()}")))
+                }
+            }
 
-             // Khi connect tới API failed
-             override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                 callback(Result.failure(t))
-             }
-         })
+            // Khi connect tới API failed
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                callback(Result.failure(t))
+            }
+        })
 
-         return ApiClient.getApi().loginUser(loginRequest)
-     }
+        return ApiClient.getApi().loginUser(loginRequest)
+    }
 
     override fun registerUser(
         registerRequest: RegisterRequest,
@@ -50,13 +61,11 @@ class APIRepositoryImpl : APIRepository {
                     response.body()?.let {
                         if (it.code == 400) {
                             callback(Result.failure(Exception(it.message)))
-                        }
-                        else {
+                        } else {
                             callback(Result.success(it))
                         }
                     }
-                }
-                else {
+                } else {
                     callback(Result.failure(Exception("Register failed with code: ${response.code()}")))
                 }
             }
@@ -66,5 +75,124 @@ class APIRepositoryImpl : APIRepository {
             }
         })
         return ApiClient.getApi().registerUser(registerRequest)
+    }
+
+    override suspend fun getAllPosts(
+        sort: String,
+        page: Int,
+        perPage: Int,
+        callback: (AllPostsResponse?) -> Unit
+    ) {
+        var dataAfterGAP: AllPostsResponse ?= null
+//        ApiClient.getApi().getAllPost(sort, page, perPage)
+//            .enqueue(object : Callback<AllPostsResponse> {
+//                override fun onResponse(
+//                    call: Call<AllPostsResponse>,
+//                    response: Response<AllPostsResponse>
+//                ) {
+//                    dataAfterGAP = response.body()
+//                    callback(dataAfterGAP)
+//                    Log.d("TAG_POST_TEST", response.body().toString())
+//                }
+//
+//                override fun onFailure(call: Call<AllPostsResponse>?, t: Throwable) {
+//                    t.printStackTrace()
+//                    callback(dataAfterGAP)
+//                    return
+//                }
+//            })
+        CoroutineScope(Dispatchers.IO).launch {
+            apiService.getAllPost(sort, page, perPage)
+                .enqueue(object : Callback<AllPostsResponse>{
+                    override fun onResponse(
+                        call: Call<AllPostsResponse>,
+                        response: Response<AllPostsResponse>
+                    ) {
+                        dataAfterGAP = response.body()
+                        callback(dataAfterGAP)
+                    }
+
+                    override fun onFailure(call: Call<AllPostsResponse>, t: Throwable) {
+                        t.printStackTrace()
+                        callback(dataAfterGAP)
+                        return
+                    }
+                })
+        }
+    }
+
+    override fun getPostsOfUser(
+        username: String,
+        sort: String,
+        page: Int,
+        perPage: Int,
+        callback: (AllPostsResponse?) -> Unit
+    ) {
+        var dataAfterGPU: AllPostsResponse ?= null
+
+        CoroutineScope(Dispatchers.IO).launch {
+            apiService.getPostsOfUser(username, sort, page, perPage)
+                .enqueue(object : Callback<AllPostsResponse>{
+                    override fun onResponse(
+                        call: Call<AllPostsResponse>,
+                        response: Response<AllPostsResponse>
+                    ) {
+                        dataAfterGPU = response.body()
+                        callback(dataAfterGPU)
+                    }
+
+                    override fun onFailure(call: Call<AllPostsResponse>, t: Throwable) {
+                        t.printStackTrace()
+                        callback(dataAfterGPU)
+                        return
+                    }
+                })
+        }
+    }
+
+    override fun likePost(
+        likeRequest: LikeRequest,
+        callback: (LikeResponse?) -> Unit
+    ) {
+        var dataLikePost: LikeResponse ?= null
+
+        CoroutineScope(Dispatchers.IO).launch {
+            apiService.likePost(likeRequest)
+                .enqueue(object : Callback<LikeResponse>{
+                    override fun onResponse(
+                        call: Call<LikeResponse>,
+                        response: Response<LikeResponse>
+                    ) {
+                        dataLikePost = response.body()
+                        callback(dataLikePost)
+                    }
+
+                    override fun onFailure(call: Call<LikeResponse>, t: Throwable) {
+                        t.printStackTrace()
+                        callback(dataLikePost)
+                        return
+                    }
+                })
+        }
+    }
+
+    override fun getUserIn4(username: String, callback : (In4UserResponse?) -> Unit) {
+        var dataAfterGUI : In4UserResponse? = null
+        CoroutineScope(Dispatchers.IO).launch {
+            apiService.getUserIn4(username).enqueue(object : Callback<In4UserResponse>{
+                override fun onResponse(
+                    call: Call<In4UserResponse>?,
+                    response: Response<In4UserResponse>?
+                ) {
+                    dataAfterGUI = response!!.body()
+                    callback(dataAfterGUI)
+                }
+
+                override fun onFailure(call: Call<In4UserResponse>?, t: Throwable) {
+                    t.printStackTrace()
+                    callback(dataAfterGUI)
+                }
+            })
+        }
     }
 }

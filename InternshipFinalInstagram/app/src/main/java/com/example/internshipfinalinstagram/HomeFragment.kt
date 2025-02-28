@@ -1,59 +1,97 @@
 package com.example.internshipfinalinstagram
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.internshipfinalinstagram.adapters.PostAdapter
+import com.example.internshipfinalinstagram.databinding.FragmentHomeBinding
+import com.example.internshipfinalinstagram.viewmodels.PostViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding : FragmentHomeBinding
+    private val postViewModel: PostViewModel by viewModel()
+    private lateinit var postAdapter : PostAdapter
+    private val sort : String = "moi-nhat"
+    private var page : Int = 1
+    private val perPage : Int = 10
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    @SuppressLint("CommitTransaction")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        initMain()
+
+        binding.rvStories.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val totalItemCount = layoutManager.itemCount
+                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+
+                if (lastVisibleItem == totalItemCount - 1) {  // Nếu cuộn đến phần tử cuối cùng
+                    loadMorePosts()
+                    Log.d("TAG_PAGE", page.toString())
                 }
             }
+        })
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // For Message Fragment
+        binding.ivMessage.setOnClickListener {
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.add(R.id.fl_sub_fragment, MessageFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+    }
+
+    private fun initMain() {
+        setObserver()
+        initView()
+    }
+
+    private fun initView() {
+        postAdapter = PostAdapter(emptyList())      // Khởi tạo adapter với danh sách rỗng ban đầu
+        binding.rvStories.layoutManager = LinearLayoutManager(context)
+        binding.rvStories.adapter = postAdapter
+    }
+
+    private fun setObserver() {
+        // Lấy data từ API
+        postViewModel.getAllPosts(sort, page, perPage)
+
+        postViewModel.postsLiveData.observe(viewLifecycleOwner) { postDataState ->
+            if (postDataState.isLoading) {
+                Log.d("TAG_LOADING", "Đang tải dữ liệu...")
+            } else if (postDataState.result != null) {
+                val newPosts = postDataState.result
+                val currentPosts = postAdapter.getCurrentData()  // Lấy dữ liệu hiện tại từ adapter
+                postAdapter.updateData(currentPosts + newPosts)  // Thêm dữ liệu mới vào danh sách
+                Log.d("TAG_POSTS", "Thêm ${newPosts.size} bài viết, tổng: ${currentPosts.size + newPosts.size}")
+            } else if (postDataState.error != null) {
+                Log.e("TAG_ERROR", "Lỗi lấy bài viết: ${postDataState.error}")
+            }
+        }
+    }
+
+    private fun loadMorePosts() {
+        page++  // Tăng page lên 1
+        postViewModel.getAllPosts(sort, page, perPage)  // Gọi API lấy dữ liệu mới
     }
 }

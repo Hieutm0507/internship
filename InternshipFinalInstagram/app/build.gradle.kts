@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
 }
 
 android {
@@ -40,7 +41,13 @@ android {
 }
 
 dependencies {
-    implementation("io.insert-koin:koin-android:3.2.0-beta-1")
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    // KOIN (to run viewModel at same moment with app running
+    implementation("io.insert-koin:koin-android:3.4.2")
 
     // For using RETROFIT
     implementation(libs.gson)

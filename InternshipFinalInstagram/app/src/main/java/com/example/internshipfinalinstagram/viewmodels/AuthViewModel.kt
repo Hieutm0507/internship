@@ -8,7 +8,6 @@ import com.example.internshipfinalinstagram.models.RegisterRequest
 import com.example.internshipfinalinstagram.repositories.APIRepositoryImpl
 
 class AuthViewModel(private val apiRepositoryImpl: APIRepositoryImpl) : ViewModel() {
-
     val authResult = MutableLiveData<Result<AuthResponse>>()
     val authState = MutableLiveData<Boolean>()
     private val authError = MutableLiveData<String>()
@@ -19,9 +18,9 @@ class AuthViewModel(private val apiRepositoryImpl: APIRepositoryImpl) : ViewMode
         apiRepositoryImpl.loginUser(loginRequest) { result ->
             authState.postValue(false) // Kết thúc login
 
-            result.onSuccess { response ->
+            result?.onSuccess { response ->
                 authResult.postValue(Result.success(response))
-            }.onFailure { error ->
+            }?.onFailure { error ->
                 authError.postValue(error.message ?: "Unknown error")
                 authResult.postValue(Result.failure(error))
             }

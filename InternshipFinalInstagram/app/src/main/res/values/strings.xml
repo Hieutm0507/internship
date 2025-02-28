@@ -16,7 +16,13 @@
     <string name="password">Password</string>
     <string name="log_in">Log in</string>
     <string name="forgot_password">Forgot password?</string>
-    <string name="my_story">My Story</string>
+    <string name="your_story">Your Story</string>
     <string name="full_name">Full name</string>
     <string name="sign_up">Sign Up</string>
+    <string name="more">More</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="share_profile">Share Profile</string>
+    <string name="add_post">Add Post</string>
+    <string name="add_reels">Add Reels</string>
+    <string name="new_post">New Post</string>
 </resources>
