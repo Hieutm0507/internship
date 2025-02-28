@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:text="username"
         android:textStyle="bold"
@@ -145,7 +144,7 @@
             android:id="@+id/tv_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/followers"
+            android:text="@string/following"
             android:textSize="14sp"
             android:textColor="@color/color_text"/>
     </LinearLayout>
@@ -213,7 +212,7 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/ll_buttons"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="20dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

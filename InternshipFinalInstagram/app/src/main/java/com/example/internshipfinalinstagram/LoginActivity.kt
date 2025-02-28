@@ -59,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
 
                     currentUsername = response.data!!.username
                     currentUser = currentUsername
+                    currentUserId = response.data.id.toString()
                 }
             }
             result.onFailure { error ->
@@ -82,5 +83,6 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         var currentUser : String = ""
+        var currentUserId : String = ""
     }
 }

@@ -18,6 +18,7 @@ import java.time.temporal.ChronoUnit
 
 class PostAdapter(private var listPost: List<PostData> = listOf()) : RecyclerView.Adapter<PostAdapter.PostHolder>() {
     private lateinit var imageSliderAdapter: ImageSliderAdapter
+    private var mListener : OnItemClickListener? = null
 
     inner class PostHolder(val binding : ItemPostBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -32,6 +33,7 @@ class PostAdapter(private var listPost: List<PostData> = listOf()) : RecyclerVie
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
         val currentPost = listPost[position]
+
 
         holder.binding.tvNickname.text = currentPost.author.name
         holder.binding.tvAuthor.text = currentPost.author.name
@@ -67,7 +69,9 @@ class PostAdapter(private var listPost: List<PostData> = listOf()) : RecyclerVie
         holder.binding.tvDate.text = calculateTimeAgo(currentPost.updatedAt)
     }
 
-    fun setAvaImage() {}
+    fun setOnClickListener( listener : OnItemClickListener) {
+        mListener = listener
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newList: List<PostData>) {
@@ -79,8 +83,7 @@ class PostAdapter(private var listPost: List<PostData> = listOf()) : RecyclerVie
         return listPost
     }
 
-
-    // Format time
+    // TODO: Format time
     @RequiresApi(Build.VERSION_CODES.O)
     fun calculateTimeAgo(postTime: String): String {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
@@ -92,10 +95,15 @@ class PostAdapter(private var listPost: List<PostData> = listOf()) : RecyclerVie
         val days = ChronoUnit.DAYS.between(postDateTime, currentDateTime)
 
         return when {
+            minutes < 1 -> "Just now"
             minutes < 60 -> "$minutes minutes ago"
             hours < 24 -> "$hours hours ago"
             days < 7 -> "$days days ago"
             else -> postDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item : PostData)
     }
 }

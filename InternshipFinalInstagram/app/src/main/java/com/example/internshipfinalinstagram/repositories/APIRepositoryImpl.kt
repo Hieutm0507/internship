@@ -10,12 +10,20 @@ import com.example.internshipfinalinstagram.models.In4UserResponse
 import com.example.internshipfinalinstagram.models.LikeRequest
 import com.example.internshipfinalinstagram.models.LikeResponse
 import com.example.internshipfinalinstagram.models.RegisterRequest
+import com.example.internshipfinalinstagram.models.AddPostResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
     override fun loginUser(
@@ -149,6 +157,57 @@ class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
                 })
         }
     }
+
+    override fun addPost(
+        userId: String,
+        imageFiles: List<File>,
+        content: String,
+        callback: (AddPostResponse?) -> Unit
+    ) {
+        var dataAfterAP: AddPostResponse ?= null
+
+        val requestUserId = userId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val requestContent = content.toRequestBody("text/plain".toMediaTypeOrNull())
+
+        val imageParts = imageFiles.map { file ->
+            val requestFile = file.asRequestBody("image/jpg".toMediaTypeOrNull())
+            MultipartBody.Part.createFormData("images", file.name, requestFile)
+        }
+
+        Log.d("DEBUG2API", "Ta có: ID: $requestUserId, IMAGE: $imageParts, CONTENT: $requestContent")
+
+        CoroutineScope(Dispatchers.IO).launch {
+            apiService.addPost(requestUserId, imageParts, requestContent)
+                .enqueue(object : Callback<AddPostResponse>{
+                    override fun onResponse(
+                        call: Call<AddPostResponse>,
+                        response: Response<AddPostResponse>
+                    ) {
+                        Log.d("DEBUG2API", "Response Code: ${response.code()}")
+                        Log.d("DEBUG2API", "Response Body: ${response.body()}")
+                        if (!response.isSuccessful) {
+                            Log.e("DEBUG2API", "Error Body: ${response.errorBody()?.string()}")
+                        }
+                        dataAfterAP = response.body()
+                        callback(dataAfterAP)
+                    }
+
+                    override fun onFailure(call: Call<AddPostResponse>, t: Throwable) {
+                        t.printStackTrace()
+                        callback(dataAfterAP)
+                        return
+                    }
+                })
+        }
+    }
+
+
+//    private fun fileListToMultipart(files: List<File>): List<MultipartBody.Part> {
+//        return files.map { file ->
+//            val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
+//            MultipartBody.Part.createFormData("files", file.name, requestFile)
+//        }
+//    }
 
     override fun likePost(
         likeRequest: LikeRequest,

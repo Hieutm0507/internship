@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internshipfinalinstagram.adapters.PostAdapter
 import com.example.internshipfinalinstagram.databinding.FragmentHomeBinding
+import com.example.internshipfinalinstagram.models.PostData
 import com.example.internshipfinalinstagram.viewmodels.PostViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -88,6 +89,15 @@ class HomeFragment : Fragment() {
                 Log.e("TAG_ERROR", "Lỗi lấy bài viết: ${postDataState.error}")
             }
         }
+    }
+
+    private fun displayUserIn4() {
+        postAdapter.setOnClickListener(object : PostAdapter.OnItemClickListener {
+            override fun onItemClick(item: PostData) {
+                val selectedUsername = item.author.username
+            }
+
+        })
     }
 
     private fun loadMorePosts() {

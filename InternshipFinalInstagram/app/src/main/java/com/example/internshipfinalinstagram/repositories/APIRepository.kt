@@ -7,7 +7,9 @@ import com.example.internshipfinalinstagram.models.In4UserResponse
 import com.example.internshipfinalinstagram.models.LikeRequest
 import com.example.internshipfinalinstagram.models.LikeResponse
 import com.example.internshipfinalinstagram.models.RegisterRequest
+import com.example.internshipfinalinstagram.models.AddPostResponse
 import retrofit2.Call
+import java.io.File
 
 interface APIRepository {
     fun loginUser(loginRequest: LoginRequest, callback: (Result<AuthResponse>?) -> Unit) : Call<AuthResponse>
@@ -17,6 +19,8 @@ interface APIRepository {
     suspend fun getAllPosts(sort : String, page : Int, perPage : Int, callback : (AllPostsResponse?) -> Unit)
 
     fun getPostsOfUser(username: String, sort: String, page : Int, perPage : Int, callback: (AllPostsResponse?) -> Unit)
+
+    fun addPost(userId: String, imageFiles: List<File>, content: String, callback: (AddPostResponse?) -> Unit)
 
     fun likePost(likeRequest: LikeRequest, callback :(LikeResponse?) -> Unit)
 
