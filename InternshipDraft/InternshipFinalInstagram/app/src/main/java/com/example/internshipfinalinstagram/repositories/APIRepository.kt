@@ -11,5 +11,6 @@ interface APIRepository {
 
     fun registerUser(registerRequest: RegisterRequest, callback: (Result<AuthResponse>) -> Unit) : Call<AuthResponse>
 
-    suspend fun getAllPosts(sort : String, page : Int, perPage : Int, callback: (AllPostsResponse) -> Unit)
+    suspend fun getAllPosts(sort: String, page: Int, perPage: Int, callback: (AllPostsResponse?) -> Unit)
+
 }
