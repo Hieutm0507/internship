@@ -1,5 +1,7 @@
 package com.example.internshipfinalinstagram
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -47,13 +50,39 @@ class MainActivity : AppCompatActivity() {
 
 
         // TODO: Get list of posts for displaying in HomeFragment
-//        val psa = postViewModel.getAllPosts(sort, page, perPage)
-//        Log.d("TAG_POSTS", psa.toString())
-//        postViewModel.allPosts.observe(this) { posts ->
-//            Log.d("TAG_POSTS", posts.toString()) // Log dữ liệu khi nhận được từ API
-//        }
-//        postViewModel.getAllPosts(sort, page, perPage)
+
+
+
+
     }
+
+//    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            if (permissions[Manifest.permission.READ_MEDIA_IMAGES] == true ||
+//                permissions[Manifest.permission.READ_MEDIA_VIDEO] == true) {
+//                // perform task`
+//            }
+//        } else {
+//            if (permissions[Manifest.permission.READ_EXTERNAL_STORAGE] == true &&
+//                permissions[Manifest.permission.WRITE_EXTERNAL_STORAGE] == true) {
+//                // perform task`
+//            } else {
+//                Toast.makeText(this, "Permissions denied", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
+//
+//    private fun checkPermissionAndLoad() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            requestPermissionLauncher.launch(arrayOf(
+//                Manifest.permission.READ_MEDIA_IMAGES,
+//                Manifest.permission.READ_MEDIA_VIDEO
+//            ))
+//        } else {
+//            requestPermissionLauncher.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE))
+//        }
+//    }
 
 
     private fun setupNavigationBar() {
@@ -61,7 +90,10 @@ class MainActivity : AppCompatActivity() {
             when(item.itemId) {
                 R.id.home -> loadFragment(HomeFragment())
                 R.id.search -> loadFragment(SearchFragment())
-                R.id.new_post -> loadFragment(NewPostFragment())
+                R.id.new_post -> {
+                    val intent = Intent(this@MainActivity, SelectImageActivity::class.java)
+                    startActivity(intent)
+                }
                 R.id.noti -> loadFragment(NotificationFragment())
                 R.id.profile -> loadFragment(ProfileFragment())
             }

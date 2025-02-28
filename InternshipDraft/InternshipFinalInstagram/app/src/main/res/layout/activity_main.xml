@@ -35,6 +35,17 @@
             android:textSize="20sp"
             android:textColor="@color/grey"
             tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/author"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout

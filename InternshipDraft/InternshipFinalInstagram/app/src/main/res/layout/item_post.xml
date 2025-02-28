@@ -54,21 +54,18 @@
         android:background="@drawable/ic_more"
         android:contentDescription="@string/more"/>
     
-    <ImageView
-        android:id="@+id/iv_image"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         app:layout_constraintTop_toBottomOf="@id/ll_author"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/img_sample"
-        android:adjustViewBounds="true"
-        android:importantForAccessibility="no"/>
+        android:layout_marginTop="10dp"/>
 
     <ImageButton
         android:id="@+id/ib_like"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintTop_toBottomOf="@id/iv_image"
+        app:layout_constraintTop_toBottomOf="@id/vp_image"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="15dp"
         android:layout_marginStart="20dp"
@@ -83,10 +80,11 @@
         app:layout_constraintBottom_toBottomOf="@id/ib_like"
         app:layout_constraintStart_toEndOf="@id/ib_like"
         android:layout_marginStart="5dp"
-        android:text="45"
+        android:text="0"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/color_text"/>
+        android:textColor="@color/color_text"
+        tools:ignore="HardcodedText"/>
 
     <ImageButton
         android:id="@+id/ib_cmt"
@@ -107,10 +105,11 @@
         app:layout_constraintBottom_toBottomOf="@id/ib_cmt"
         app:layout_constraintStart_toEndOf="@id/ib_cmt"
         android:layout_marginStart="5dp"
-        android:text="2"
+        android:text="0"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/color_text"/>
+        android:textColor="@color/color_text"
+        tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/ib_share"
@@ -135,52 +134,52 @@
         android:background="@drawable/ic_save"
         android:importantForAccessibility="no"/>
 
-    <TextView
-        android:id="@+id/tv_list_like"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/ib_like"
         app:layout_constraintStart_toStartOf="@id/ib_like"
         android:layout_marginTop="10dp"
-        android:textColor="@color/color_text"
-        android:textSize="18sp"
-        android:text="Liked by Lionel Messi and others"
-        tools:ignore="HardcodedText"/>
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_list_like"
-        app:layout_constraintStart_toStartOf="@id/ib_like"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:textColor="@color/color_text"
-        android:textSize="18sp"
-        android:text="instagramUser"
-        tools:ignore="HardcodedText"/>
+        <TextView
+            android:id="@+id/tv_list_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text"
+            android:textSize="18sp"
+            android:text="Liked by Lionel Messi and others"
+            tools:ignore="HardcodedText"/>
 
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_author"
-        app:layout_constraintStart_toStartOf="@id/ib_like"
-        app:layout_constraintEnd_toEndOf="@id/ib_save"
-        android:textColor="@color/color_text"
-        android:textSize="18sp"
-        android:text="Beautiful scene with mon amie"
-        tools:ignore="HardcodedText"/>
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/color_text"
+            android:textSize="18sp"
+            android:text="instagramUser"
+            tools:ignore="HardcodedText"/>
 
-    <TextView
-        android:id="@+id/tv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_content"
-        app:layout_constraintStart_toStartOf="@id/ib_like"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/grey"
-        android:textSize="18sp"
-        android:text="February 24, 2025"
-        tools:ignore="HardcodedText"/>
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text"
+            android:textSize="18sp"
+            android:text="Beautiful scene with mon amie"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:text="February 24, 2025"
+            tools:ignore="HardcodedText"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

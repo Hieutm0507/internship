@@ -16,6 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: AuthViewModel by viewModel()
+    private lateinit var currentUsername : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,9 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()                // Để khi ấn nút Back sẽ not go back to LoginActivity này
+
+                    currentUsername = response.data!!.username
+                    currentUser = currentUsername
                 }
             }
             result.onFailure { error ->
@@ -74,5 +78,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(loginRequest: LoginRequest) {
         loginViewModel.login(loginRequest)
+    }
+
+    companion object {
+        var currentUser : String = ""
     }
 }

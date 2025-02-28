@@ -13,6 +13,6 @@ data class PostData (
     val content : String = "",
     val createdAt : String,
     val updatedAt : String,
-    val listLike : List<UserData>,
+    val listLike : List<UserData> = emptyList(),
     val totalLike : Int = 0
 )

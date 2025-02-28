@@ -1,59 +1,94 @@
 package com.example.internshipfinalinstagram
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
+import com.example.internshipfinalinstagram.adapters.GridPostAdapter
+import com.example.internshipfinalinstagram.databinding.FragmentProfileBinding
+import com.example.internshipfinalinstagram.models.PostData
+import com.example.internshipfinalinstagram.models.UserData
+import com.example.internshipfinalinstagram.viewmodels.PostViewModel
+import com.example.internshipfinalinstagram.viewmodels.UserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding : FragmentProfileBinding
+    private val userViewModel : UserViewModel by viewModel()
+    private val postViewModel: PostViewModel by viewModel()
+    private lateinit var gridPostAdapter : GridPostAdapter
+    private val sort : String = "moi-nhat"
+    private var page : Int = 1
+    private val perPage : Int = 10
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        initMain()
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun initMain() {
+        setObserver()
+        initView()
+    }
+
+    private fun initView() {
+        gridPostAdapter = GridPostAdapter(emptyList())      // Khởi tạo adapter với danh sách rỗng ban đầu
+        binding.rvGridPosts.layoutManager = GridLayoutManager(context, 3)
+        binding.rvGridPosts.adapter = gridPostAdapter
+
+//        val list : List<PostData> = mutableListOf()
+//        val item1 = PostData("65fe35b807a80d3c6b918c60", UserData(null,"hihihi", null, "anh Thang", null, null, null, null), String(), "", "2024-03-16T06:20:49.384Z", "2024-03-16T06:20:49.384Z")
+    }
+
+    private fun setObserver() {
+        // Lấy data từ API
+        userViewModel.getUserIn4(LoginActivity.currentUser)
+
+        userViewModel.in4LiveData.observe(viewLifecycleOwner) { getIn4State ->
+            if (getIn4State.isLoading) {
+                Log.d("TAG_LOADING", "Đang tải dữ liệu...")
+            } else if (getIn4State.result != null) {
+                val userIn4 = getIn4State.result
+                binding.tvUsername.text = userIn4.data.username
+                binding.tvName.text = userIn4.data.name
+                binding.tvBio.text = userIn4.data.introduce
+
+                val avaUrl = userIn4.data.avatar
+                if (!avaUrl.contentEquals(null)) {
+                    Glide.with(binding.ivAvatar.context).load(avaUrl).centerCrop().into(binding.ivAvatar)
                 }
+                else {
+                    binding.ivAvatar.setImageResource(R.drawable.img_default_ava)
+                }
+
+            } else if (getIn4State.error != null) {
+                Log.e("TAG_ERROR", "Lỗi lấy thông tin user: ${getIn4State.error}")
             }
+        }
+
+        postViewModel.getPostsOfUser(LoginActivity.currentUser, sort, page, perPage)
+
+        postViewModel.postsLiveData.observe(viewLifecycleOwner) { postDataState ->
+            if (postDataState.isLoading) {
+                Log.d("TAG_LOADING", "Đang tải dữ liệu...")
+            } else if (postDataState.result != null) {
+                val newPosts = postDataState.result
+                val currentPosts = gridPostAdapter.getCurrentData()  // Lấy dữ liệu hiện tại từ adapter
+                gridPostAdapter.updateData(currentPosts + newPosts)  // Thêm dữ liệu mới vào danh sách
+                Log.d("TAG_POSTS", "Thêm ${newPosts.size} bài viết, tổng: ${currentPosts.size + newPosts.size}")
+            } else if (postDataState.error != null) {
+                Log.e("TAG_ERROR", "Lỗi lấy bài viết: ${postDataState.error}")
+            }
+        }
     }
 }
