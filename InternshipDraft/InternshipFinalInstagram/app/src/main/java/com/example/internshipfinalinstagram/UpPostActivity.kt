@@ -49,6 +49,7 @@ class UpPostActivity : AppCompatActivity() {
         eventListeners()
     }
 
+
     private fun eventListeners() {
         binding.btCancel.setOnClickListener {
             finish()
@@ -69,7 +70,11 @@ class UpPostActivity : AppCompatActivity() {
             val imageFiles = convertUrisToFiles(this, imageUris)
 
             if (imageUris.isNotEmpty()) {
+                Log.d("DEBUG", "Sending post: userId = ${LoginActivity.currentUser}, content = $content, images count = ${imageFiles.size}")
                 setObserver(imageFiles, content)
+                imageFiles.forEachIndexed { index, file ->
+                    Log.d("DEBUG", "Image[$index]: path=${file.absolutePath}, size=${file.length()} bytes")
+                }
             }
             else {
                 Toast.makeText(this, "Hãy chọn ảnh nè!!!", Toast.LENGTH_SHORT).show()
@@ -91,27 +96,27 @@ class UpPostActivity : AppCompatActivity() {
         }
     }
 
-    fun uploadSingleUri(uri: Uri) {
-        val context = this // or requireContext() if in Fragment
+//    fun uploadSingleUri(uri: Uri) {
+//        val context = this // or requireContext() if in Fragment
+//
+//        // Chuyển đổi Uri thành MultipartBody.Part
+//        val imagePart = uriToMultipartBodyPart(uri, context, "images")
+//
+//        // Tạo RequestBody cho userId và content (giả sử bạn có userId và content)
+//        val userIdRequestBody = RequestBody.create(MediaType.parse("text/plain"), "your_user_id")
+//        val contentRequestBody = RequestBody.create(MediaType.parse("text/plain"), "your_content")
+//    }
 
-        // Chuyển đổi Uri thành MultipartBody.Part
-        val imagePart = uriToMultipartBodyPart(uri, context, "images")
-
-        // Tạo RequestBody cho userId và content (giả sử bạn có userId và content)
-        val userIdRequestBody = RequestBody.create(MediaType.parse("text/plain"), "your_user_id")
-        val contentRequestBody = RequestBody.create(MediaType.parse("text/plain"), "your_content")
-    }
-
-    fun uriToMultipartBodyPart(uri: Uri, context: Context, partName: String): MultipartBody.Part {
-        val contentResolver = context.contentResolver
-        val inputStream = contentResolver.openInputStream(uri)
-        val byteArray = inputStream?.readBytes() ?: ByteArray(0)
-        val requestFile = RequestBody.create(
-            MediaType.parse(contentResolver.getType(uri) ?: "image/jpeg"),
-            byteArray
-        )
-        return MultipartBody.Part.createFormData(partName, "image.jpg", requestFile)
-    }
+//    fun uriToMultipartBodyPart(uri: Uri, context: Context, partName: String): MultipartBody.Part {
+//        val contentResolver = context.contentResolver
+//        val inputStream = contentResolver.openInputStream(uri)
+//        val byteArray = inputStream?.readBytes() ?: ByteArray(0)
+//        val requestFile = RequestBody.create(
+//            MediaType.parse(contentResolver.getType(uri) ?: "image/jpeg"),
+//            byteArray
+//        )
+//        return MultipartBody.Part.createFormData(partName, "image.jpg", requestFile)
+//    }
 
 
     private fun convertUrisToFiles(context: Context, uris: MutableList<Uri>): List<File> {

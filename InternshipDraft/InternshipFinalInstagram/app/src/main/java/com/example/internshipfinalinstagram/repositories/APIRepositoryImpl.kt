@@ -15,8 +15,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -163,10 +166,18 @@ class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
     ) {
         var dataAfterAP: AddPostResponse ?= null
 
-        val imageMultipart = fileListToMultipart(imageFiles)
+        val requestUserId = userId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val requestContent = content.toRequestBody("text/plain".toMediaTypeOrNull())
+
+        val imageParts = imageFiles.map { file ->
+            val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+            MultipartBody.Part.createFormData("images", file.name, requestFile)
+        }
+
+        Log.d("DEBUG2API", "Ta có: ID: $requestUserId, IMAGE: $imageParts, CONTENT: $requestContent")
 
         CoroutineScope(Dispatchers.IO).launch {
-            apiService.addPost(userId, imageMultipart, content)
+            apiService.addPost(requestUserId, imageParts, requestContent)
                 .enqueue(object : Callback<AddPostResponse>{
                     override fun onResponse(
                         call: Call<AddPostResponse>,
@@ -185,12 +196,12 @@ class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
         }
     }
 
-    private fun fileListToMultipart(files: List<File>): List<MultipartBody.Part> {
-        return files.map { file ->
-            val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
-            MultipartBody.Part.createFormData("files", file.name, requestFile)
-        }
-    }
+//    private fun fileListToMultipart(files: List<File>): List<MultipartBody.Part> {
+//        return files.map { file ->
+//            val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
+//            MultipartBody.Part.createFormData("files", file.name, requestFile)
+//        }
+//    }
 
     override fun likePost(
         likeRequest: LikeRequest,

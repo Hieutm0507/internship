@@ -25,9 +25,6 @@
             android:name=".UpPostActivity"
             android:exported="false" />
         <activity
-            android:name=".SelectImageActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

@@ -9,6 +9,7 @@ import com.example.internshipfinalinstagram.models.LikeRequest
 import com.example.internshipfinalinstagram.models.LikeResponse
 import com.example.internshipfinalinstagram.models.RegisterRequest
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.POST
 import retrofit2.http.Body
@@ -44,9 +45,10 @@ interface IgAPI {
     @Multipart
     @POST("api/v1/post")
     fun addPost(
-        @Part ("userId") userId : String,
+        @Part ("userId") userId : RequestBody,
+//        @Part images: List<File>,
         @Part images: List<MultipartBody.Part>,
-        @Part ("content") content : String
+        @Part ("content") content : RequestBody
     ) : Call<AddPostResponse>
 
     @POST("api/v1/like")
