@@ -14,5 +14,5 @@ data class PostData (
     val createdAt : String,
     val updatedAt : String,
     val listLike : List<UserData> = emptyList(),
-    val totalLike : Int = 0
+    val totalLike : Int? = 0
 )

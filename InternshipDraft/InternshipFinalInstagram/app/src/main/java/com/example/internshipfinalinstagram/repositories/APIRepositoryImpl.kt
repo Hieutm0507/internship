@@ -10,12 +10,17 @@ import com.example.internshipfinalinstagram.models.In4UserResponse
 import com.example.internshipfinalinstagram.models.LikeRequest
 import com.example.internshipfinalinstagram.models.LikeResponse
 import com.example.internshipfinalinstagram.models.RegisterRequest
+import com.example.internshipfinalinstagram.models.AddPostResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
     override fun loginUser(
@@ -147,6 +152,43 @@ class APIRepositoryImpl(private val apiService: IgAPI) : APIRepository {
                         return
                     }
                 })
+        }
+    }
+
+    override fun addPost(
+        userId: String,
+        imageFiles: List<File>,
+        content: String,
+        callback: (AddPostResponse?) -> Unit
+    ) {
+        var dataAfterAP: AddPostResponse ?= null
+
+        val imageMultipart = fileListToMultipart(imageFiles)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            apiService.addPost(userId, imageMultipart, content)
+                .enqueue(object : Callback<AddPostResponse>{
+                    override fun onResponse(
+                        call: Call<AddPostResponse>,
+                        response: Response<AddPostResponse>
+                    ) {
+                        dataAfterAP = response.body()
+                        callback(dataAfterAP)
+                    }
+
+                    override fun onFailure(call: Call<AddPostResponse>, t: Throwable) {
+                        t.printStackTrace()
+                        callback(dataAfterAP)
+                        return
+                    }
+                })
+        }
+    }
+
+    private fun fileListToMultipart(files: List<File>): List<MultipartBody.Part> {
+        return files.map { file ->
+            val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
+            MultipartBody.Part.createFormData("files", file.name, requestFile)
         }
     }
 

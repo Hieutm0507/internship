@@ -145,7 +145,7 @@
             android:id="@+id/tv_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/followers"
+            android:text="@string/following"
             android:textSize="14sp"
             android:textColor="@color/color_text"/>
     </LinearLayout>

@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -91,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> loadFragment(HomeFragment())
                 R.id.search -> loadFragment(SearchFragment())
                 R.id.new_post -> {
-                    val intent = Intent(this@MainActivity, SelectImageActivity::class.java)
+                    val intent = Intent(this@MainActivity, UpPostActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.noti -> loadFragment(NotificationFragment())

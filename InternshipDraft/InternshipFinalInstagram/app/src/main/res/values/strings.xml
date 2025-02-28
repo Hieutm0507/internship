@@ -25,4 +25,8 @@
     <string name="add_post">Add Post</string>
     <string name="add_reels">Add Reels</string>
     <string name="new_post">New Post</string>
+    <string name="following">Following</string>
+    <string name="write_a_caption">Write a caption</string>
+    <string name="add_a_location">Add a location</string>
+    <string name="cancel">Cancel</string>
 </resources>

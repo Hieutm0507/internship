@@ -1,5 +1,6 @@
 package com.example.internshipfinalinstagram.apis
 
+import com.example.internshipfinalinstagram.models.AddPostResponse
 import com.example.internshipfinalinstagram.models.AllPostsResponse
 import com.example.internshipfinalinstagram.models.LoginRequest
 import com.example.internshipfinalinstagram.models.AuthResponse
@@ -16,6 +17,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.io.File
 
 interface IgAPI {
     @POST("api/v1/login")
@@ -45,7 +47,7 @@ interface IgAPI {
         @Part ("userId") userId : String,
         @Part images: List<MultipartBody.Part>,
         @Part ("content") content : String
-    )
+    ) : Call<AddPostResponse>
 
     @POST("api/v1/like")
     fun likePost(@Body likeRequest: LikeRequest) : Call<LikeResponse>

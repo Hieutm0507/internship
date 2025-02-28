@@ -92,6 +92,7 @@ class PostAdapter(private var listPost: List<PostData> = listOf()) : RecyclerVie
         val days = ChronoUnit.DAYS.between(postDateTime, currentDateTime)
 
         return when {
+            minutes < 1 -> "Just now"
             minutes < 60 -> "$minutes minutes ago"
             hours < 24 -> "$hours hours ago"
             days < 7 -> "$days days ago"

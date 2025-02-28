@@ -12,6 +12,7 @@ import com.example.internshipfinalinstagram.adapters.GridPostAdapter
 import com.example.internshipfinalinstagram.databinding.FragmentProfileBinding
 import com.example.internshipfinalinstagram.models.PostData
 import com.example.internshipfinalinstagram.models.UserData
+import com.example.internshipfinalinstagram.repositories.APIRepositoryImpl
 import com.example.internshipfinalinstagram.viewmodels.PostViewModel
 import com.example.internshipfinalinstagram.viewmodels.UserViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,9 +46,6 @@ class ProfileFragment : Fragment() {
         gridPostAdapter = GridPostAdapter(emptyList())      // Khởi tạo adapter với danh sách rỗng ban đầu
         binding.rvGridPosts.layoutManager = GridLayoutManager(context, 3)
         binding.rvGridPosts.adapter = gridPostAdapter
-
-//        val list : List<PostData> = mutableListOf()
-//        val item1 = PostData("65fe35b807a80d3c6b918c60", UserData(null,"hihihi", null, "anh Thang", null, null, null, null), String(), "", "2024-03-16T06:20:49.384Z", "2024-03-16T06:20:49.384Z")
     }
 
     private fun setObserver() {
